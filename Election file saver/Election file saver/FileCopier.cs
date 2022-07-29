@@ -10,10 +10,11 @@ namespace Election_file_saver
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
-        static string destinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
-        //static string destinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
+        //static string destinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
+        static string destinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
         static string localDestinationPath = @"C:\Election_Data";
         static string sourcePath = @"D:\";
+        DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
         DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);
         DirectoryInfo destinationDir = new DirectoryInfo(destinationPath);
 
@@ -64,6 +65,8 @@ namespace Election_file_saver
                 foreach (var dir in directories)
                 {
                     filesList.AddRange(dir.GetFiles("*.pdf", SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(dir.GetFiles("*.accdb", SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(dir.GetFiles("*.csv", SearchOption.TopDirectoryOnly));
                 }
 
                 foreach(var file in filesList)
@@ -111,16 +114,17 @@ namespace Election_file_saver
         }
 
         //print files
-        public int PrintFiles(int waitTimeInSeconds)
+        public int PrintFiles(int waitTimeInSeconds, string precinct)
         {
 
             int fileCount = 0; //using so we know how many times to run the counter for the progress bar
-
+            string precintPath = Path.Combine(localDestinationPath, precinct);
             try
             {
-
+                
                 //all files except root files
-                DirectoryInfo[] directories = sourceDir.GetDirectories("*", SearchOption.AllDirectories);
+                DirectoryInfo localPrecinct = new DirectoryInfo(precintPath);
+                DirectoryInfo[] directories = localPrecinct.GetDirectories("*", SearchOption.AllDirectories);
                 List<FileInfo> filesList = new List<FileInfo>();
 
 
@@ -132,27 +136,31 @@ namespace Election_file_saver
                 int i = 0;
                 
                 //files in all directories other than root
-                do
+                if(filesList.Count > 0) //check if there was anything in the sub directories
                 {
-                    
-                    System.Diagnostics.Process process = new System.Diagnostics.Process();
-                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    startInfo.FileName = "cmd.exe";
-                    //const string quote = "\"";
-                    string arg = "/C PDFtoPrinter.exe \"" + filesList.ElementAt(i).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
-                    startInfo.Arguments = arg;
-                    //startInfo.Verb = "runas";
-                    process.StartInfo = startInfo;
-                    process.Start();
-                    System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
-                    fileCount++;
-                    i++;
-                } while (i < filesList.Count);
+                    do
+                    {
+
+                        System.Diagnostics.Process process = new System.Diagnostics.Process();
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                        startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                        startInfo.FileName = "cmd.exe";
+                        //const string quote = "\"";
+                        string arg = "/C PDFtoPrinter.exe \"" + filesList.ElementAt(i).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                        startInfo.Arguments = arg;
+                        //startInfo.Verb = "runas";
+                        process.StartInfo = startInfo;
+                        process.Start();
+                        System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
+                        fileCount++;
+                        i++;
+                    } while (i < filesList.Count);
+                }
+                
 
 
                 //files in root directory
-                FileInfo[] rootFiles = sourceDir.GetFiles();
+                FileInfo[] rootFiles = localPrecinct.GetFiles("*.pdf", SearchOption.TopDirectoryOnly);
 
                 int j = 0;
                 do

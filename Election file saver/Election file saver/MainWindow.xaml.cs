@@ -21,14 +21,16 @@ namespace Election_file_saver
     /// </summary>
     public partial class MainWindow : Window
     {
-       
-        
+
+        int fileCount;
+        int waitTimeINSecondsBetweenPrints;
         FileCopier fileCopier = new FileCopier();
         string currentPrecintWhenButtonPressed;
         public MainWindow()
         {
             InitializeComponent();
-
+            waitTimeINSecondsBetweenPrints = 10;
+            
         }
 
         private void CopyFilesButton_Click(object sender, RoutedEventArgs e)
@@ -45,12 +47,11 @@ namespace Election_file_saver
             CopyFilesButton.IsEnabled = true;
         }
 
-        int fileCount;
-        int waitTimeINSecondsBetweenPrints = 5;
+        
         private async void printButton_Click(object sender, RoutedEventArgs e)
         {
-
-            fileCount = fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints);
+            currentPrecintWhenButtonPressed = PreceintTextBox.Text;
+            fileCount = fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints, currentPrecintWhenButtonPressed);
             
             //for (int i = 0; i < fileCount; i++)
             //{
@@ -65,6 +66,12 @@ namespace Election_file_saver
             //    });
             //}
 
+        }
+
+        private void timeBetweenPrintsSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //waitTimeINSecondsBetweenPrints = Int32.Parse(timeBox.Text);
+            
         }
     }
 }
