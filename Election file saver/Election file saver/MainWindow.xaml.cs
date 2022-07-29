@@ -45,9 +45,26 @@ namespace Election_file_saver
             CopyFilesButton.IsEnabled = true;
         }
 
-        private void printButton_Click(object sender, RoutedEventArgs e)
+        int fileCount;
+        int waitTimeINSecondsBetweenPrints = 5;
+        private async void printButton_Click(object sender, RoutedEventArgs e)
         {
-            fileCopier.PrintFiles();
+
+            fileCount = fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints);
+            
+            //for (int i = 0; i < fileCount; i++)
+            //{
+            //    progressBar.Value = 0;
+            //    await Application.Current.Dispatcher.InvokeAsync(() =>
+            //    {
+            //        for (int j = 0; j < waitTimeINSecondsBetweenPrints; j++ )
+            //        {
+            //            progressBar.Value = ((j + 1) / waitTimeINSecondsBetweenPrints) * 100;
+            //            System.Threading.Thread.Sleep(1000); //wait 1 second
+            //        }
+            //    });
+            //}
+
         }
     }
 }

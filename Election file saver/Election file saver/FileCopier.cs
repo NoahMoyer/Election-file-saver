@@ -63,7 +63,7 @@ namespace Election_file_saver
 
                 foreach (var dir in directories)
                 {
-                    filesList.AddRange(dir.GetFiles());
+                    filesList.AddRange(dir.GetFiles("*.pdf", SearchOption.TopDirectoryOnly));
                 }
 
                 foreach(var file in filesList)
@@ -111,17 +111,10 @@ namespace Election_file_saver
         }
 
         //print files
-        public void PrintFiles()
+        public int PrintFiles(int waitTimeInSeconds)
         {
-            //System.Diagnostics.Process process = new System.Diagnostics.Process();
-            //System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            //startInfo.FileName = "cmd.exe";
-            //const string quote = "\"";
-            //string arg = "/C PDFtoPrinter.exe \"D:\\drivecloner.pdf\"";
-            //startInfo.Arguments = arg;
-            //process.StartInfo = startInfo;
-            //process.Start();
+
+            int fileCount = 0; //using so we know how many times to run the counter for the progress bar
 
             try
             {
@@ -133,25 +126,51 @@ namespace Election_file_saver
 
                 foreach (var dir in directories)
                 {
-                    filesList.AddRange(dir.GetFiles());
+                    filesList.AddRange(dir.GetFiles("*.pdf", SearchOption.TopDirectoryOnly));
                 }
 
-                //string printArgument ;
-                foreach (var file in filesList)
+                int i = 0;
+                
+                //files in all directories other than root
+                do
+                {
+                    
+                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    startInfo.FileName = "cmd.exe";
+                    //const string quote = "\"";
+                    string arg = "/C PDFtoPrinter.exe \"" + filesList.ElementAt(i).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                    startInfo.Arguments = arg;
+                    //startInfo.Verb = "runas";
+                    process.StartInfo = startInfo;
+                    process.Start();
+                    System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
+                    fileCount++;
+                    i++;
+                } while (i < filesList.Count);
+
+
+                //files in root directory
+                FileInfo[] rootFiles = sourceDir.GetFiles();
+
+                int j = 0;
+                do
                 {
                     System.Diagnostics.Process process = new System.Diagnostics.Process();
                     System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                     startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                     startInfo.FileName = "cmd.exe";
-                    const string quote = "\"";
-                    string arg = "/C PDFtoPrinter.exe \"" + file.FullName + "\" & timeout 15"; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                    //const string quote = "\"";
+                    string arg = "/C PDFtoPrinter.exe \"" + rootFiles.ElementAt(j).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
                     startInfo.Arguments = arg;
                     //startInfo.Verb = "runas";
                     process.StartInfo = startInfo;
                     process.Start();
-                }
-
-                
+                    System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
+                    fileCount++;
+                    j++;
+                } while (j < rootFiles.Length);
 
 
             }
@@ -159,6 +178,8 @@ namespace Election_file_saver
             {
                 Console.WriteLine(dirNotFound.Message);
             }
+
+            return fileCount;
         }
 
     }
