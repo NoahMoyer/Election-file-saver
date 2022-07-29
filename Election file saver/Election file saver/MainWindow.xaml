@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False"/>
+        <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Left" Margin="284,206,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False"/>
         <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Height="52" Margin="0,314,0,0" VerticalAlignment="Top" Width="454"/>
         <ComboBox HorizontalAlignment="Left" Margin="338,67,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="PreceintTextBox" HorizontalAlignment="Center" Margin="0,166,0,0" TextWrapping="Wrap" Text="Enter Precint Here" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged"/>
         <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Left" Margin="490,166,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="425,204,0,0" VerticalAlignment="Top" Height="58" Width="116" Click="printButton_Click"/>
 
     </Grid>
 </Window>

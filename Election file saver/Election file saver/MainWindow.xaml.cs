@@ -44,5 +44,10 @@ namespace Election_file_saver
         {
             CopyFilesButton.IsEnabled = true;
         }
+
+        private void printButton_Click(object sender, RoutedEventArgs e)
+        {
+            fileCopier.PrintFiles();
+        }
     }
 }

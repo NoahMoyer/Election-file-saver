@@ -31,7 +31,7 @@ namespace Election_file_saver
 
         //copy files from flash drive to network, locally
         //files need to be in a folder based on preceint name
-        public bool CopyFiles(string precinct, bool allowFileOverwrite)
+        public void CopyFiles(string precinct, bool allowFileOverwrite)
         {
             //if allowFileOverwrite is true it will allow files to be overwritten. If not it won't overwrite anything
 
@@ -107,14 +107,59 @@ namespace Election_file_saver
                 Console.WriteLine(dirNotFound.Message);
             }
 
-            return true;
+            
         }
 
         //print files
         public void PrintFiles()
         {
+            //System.Diagnostics.Process process = new System.Diagnostics.Process();
+            //System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            //startInfo.FileName = "cmd.exe";
+            //const string quote = "\"";
+            //string arg = "/C PDFtoPrinter.exe \"D:\\drivecloner.pdf\"";
+            //startInfo.Arguments = arg;
+            //process.StartInfo = startInfo;
+            //process.Start();
 
+            try
+            {
+
+                //all files except root files
+                DirectoryInfo[] directories = sourceDir.GetDirectories("*", SearchOption.AllDirectories);
+                List<FileInfo> filesList = new List<FileInfo>();
+
+
+                foreach (var dir in directories)
+                {
+                    filesList.AddRange(dir.GetFiles());
+                }
+
+                //string printArgument ;
+                foreach (var file in filesList)
+                {
+                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    startInfo.FileName = "cmd.exe";
+                    const string quote = "\"";
+                    string arg = "/C PDFtoPrinter.exe \"" + file.FullName + "\" & timeout 15"; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                    startInfo.Arguments = arg;
+                    //startInfo.Verb = "runas";
+                    process.StartInfo = startInfo;
+                    process.Start();
+                }
+
+                
+
+
+            }
+            catch (DirectoryNotFoundException dirNotFound)
+            {
+                Console.WriteLine(dirNotFound.Message);
+            }
         }
-        
+
     }
 }
