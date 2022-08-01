@@ -13,13 +13,14 @@ namespace Election_file_saver
         //static string destinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
         static string destinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
         static string localDestinationPath = @"C:\Election_Data";
-        static string sourcePath = @"D:\";
+        static string sourcePath = @"E:\";
         DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
         DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);
         DirectoryInfo destinationDir = new DirectoryInfo(destinationPath);
+        public DriveInfo[] allDrives = DriveInfo.GetDrives();
 
-        
-        
+
+
 
         //default constructor
         public FileCopier()
@@ -28,6 +29,23 @@ namespace Election_file_saver
                 
             }
 
+        public void setSourcePath(object labelInputName)
+        {
+
+            foreach (var drive in allDrives)
+            {
+                if (drive == labelInputName)
+                {
+                    //sourcePath = drive.VolumeLabel;
+                    sourceDir = drive.RootDirectory;
+                }
+            }
+        }
+
+        public string getSourcePath()
+        {
+            return sourcePath;
+        }
 
 
         //copy files from flash drive to network, locally
@@ -86,23 +104,28 @@ namespace Election_file_saver
                     
                 }
 
+                var extensions = new string[] { "*.pdf", "*.accdb", "*.csv" };
                 //root directory files
-                foreach(var file in sourceDir.GetFiles())
+                foreach (var ext in extensions)
                 {
-                    pathToCopyTo = Path.Combine(Path.Combine(destinationPath, precinct), file.Name);
-                    localPathToCopyTo = Path.Combine(Path.Combine(localDestinationPath, precinct), file.Name);
+                    foreach (var file in sourceDir.GetFiles(ext, SearchOption.TopDirectoryOnly))
+                    {
+                        pathToCopyTo = Path.Combine(Path.Combine(destinationPath, precinct), file.Name);
+                        localPathToCopyTo = Path.Combine(Path.Combine(localDestinationPath, precinct), file.Name);
 
-                    try
-                    {
-                        File.Copy(file.FullName, pathToCopyTo, allowFileOverwrite);
-                        File.Copy(file.FullName, localPathToCopyTo, allowFileOverwrite);
+                        try
+                        {
+                            File.Copy(file.FullName, pathToCopyTo, allowFileOverwrite);
+                            File.Copy(file.FullName, localPathToCopyTo, allowFileOverwrite);
+                        }
+                        catch (IOException copyError)
+                        {
+                            Console.WriteLine(copyError.Message);
+                        }
+
                     }
-                    catch(IOException copyError)
-                    {
-                        Console.WriteLine(copyError.Message);
-                    }
-                    
                 }
+                
     
             }
             catch (DirectoryNotFoundException dirNotFound)
