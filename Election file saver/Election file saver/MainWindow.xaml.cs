@@ -31,11 +31,6 @@ namespace Election_file_saver
             InitializeComponent();
             waitTimeINSecondsBetweenPrints = 10;
             
-            foreach(var drive in fileCopier.allDrives)
-            {
-                driveSelector.Items.Add(drive);
-            }
-            driveSelector.Text = fileCopier.getSourcePath();
         }
 
         private void CopyFilesButton_Click(object sender, RoutedEventArgs e)
@@ -77,11 +72,6 @@ namespace Election_file_saver
         {
             //waitTimeINSecondsBetweenPrints = Int32.Parse(timeBox.Text);
             
-        }
-
-        private void driveSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            fileCopier.setSourcePath(driveSelector.SelectedItem);
         }
     }
 }
