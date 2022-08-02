@@ -83,11 +83,21 @@ namespace Election_file_saver
         }
 
         
-        private void printButton_Click(object sender, RoutedEventArgs e)
+        private async void printButton_Click(object sender, RoutedEventArgs e)
         {
+            progressBar.Value = 0;
+            
             currentPrecintWhenButtonPressed = PreceintTextBox.Text;
             fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints, currentPrecintWhenButtonPressed);
-            
+            await Task.Delay(2000);
+            progressBar.Value = 25;
+            await Task.Delay(2000);
+            progressBar.Value = 50;
+            await Task.Delay(2000);
+            progressBar.Value = 75;
+            await Task.Delay(2000);
+            progressBar.Value = 100;
+
             //for (int i = 0; i < fileCount; i++)
             //{
             //    progressBar.Value = 0;
