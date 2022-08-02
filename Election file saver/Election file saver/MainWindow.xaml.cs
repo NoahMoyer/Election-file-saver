@@ -51,11 +51,14 @@ namespace Election_file_saver
             {
                 unlockBitlockerButton.IsEnabled = true;
             }
-            
+            progressBar.Visibility = Visibility.Hidden;
+            progressBarLabel.Visibility = Visibility.Hidden;
         }
 
         private async void CopyFilesButton_Click(object sender, RoutedEventArgs e)
         {
+            progressBarLabel.Visibility = Visibility.Visible;
+            progressBar.Visibility = Visibility.Visible;
             progressBar.Value = 0;
             currentPrecintWhenButtonPressed = PreceintTextBox.Text;
 
@@ -71,6 +74,8 @@ namespace Election_file_saver
             await Task.Delay(copyProgressBarWaitTime * 1000);
 
             
+            progressBar.Visibility = Visibility.Hidden;
+            progressBarLabel.Visibility = Visibility.Hidden;
 
 
 
@@ -83,11 +88,26 @@ namespace Election_file_saver
         }
 
         
-        private void printButton_Click(object sender, RoutedEventArgs e)
+        private async void printButton_Click(object sender, RoutedEventArgs e)
         {
+            progressBarLabel.Visibility = Visibility.Visible;
+            progressBar.Visibility = Visibility.Visible;
+            progressBar.Value = 0;
+            
             currentPrecintWhenButtonPressed = PreceintTextBox.Text;
             fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints, currentPrecintWhenButtonPressed);
-            
+            await Task.Delay(2000);
+            progressBar.Value = 25;
+            await Task.Delay(2000);
+            progressBar.Value = 50;
+            await Task.Delay(2000);
+            progressBar.Value = 75;
+            await Task.Delay(2000);
+            progressBar.Value = 100;
+            await Task.Delay(5000);
+            progressBar.Visibility = Visibility.Hidden;
+            progressBarLabel.Visibility = Visibility.Hidden;
+
             //for (int i = 0; i < fileCount; i++)
             //{
             //    progressBar.Value = 0;
