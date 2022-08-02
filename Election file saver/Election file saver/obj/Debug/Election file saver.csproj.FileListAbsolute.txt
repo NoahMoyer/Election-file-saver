@@ -62,3 +62,5 @@ C:\Users\Noah\source\repos\Election-file-saver\Election file saver\Election file
 C:\Users\Noah\source\repos\Election-file-saver\Election file saver\Election file saver\obj\Debug\Election file saver.csproj.CoreCompileInputs.cache
 C:\Users\Noah\source\repos\Election-file-saver\Election file saver\Election file saver\obj\Debug\Election file saver.exe
 C:\Users\Noah\source\repos\Election-file-saver\Election file saver\Election file saver\obj\Debug\Election file saver.pdb
+C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election file saver\Election file saver\bin\Debug\BitlockerManager.dll
+C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election file saver\Election file saver\obj\Debug\Election file saver.csproj.CopyComplete

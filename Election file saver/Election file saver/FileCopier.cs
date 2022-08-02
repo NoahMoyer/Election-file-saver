@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
+
+
 namespace Election_file_saver
 {
+    using BitLockerManager;
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
@@ -19,24 +23,44 @@ namespace Election_file_saver
         DirectoryInfo destinationDir = new DirectoryInfo(networkDestinationPath);
         static private DriveInfo[] allDrivesArray;
         public List<DriveInfo> allDrives;
-        
+
+        public BitLockerManager bitManager;
+
 
 
         //default constructor
         public FileCopier()
-            {
+        {
 
             allDrivesArray = DriveInfo.GetDrives();
             allDrives = new List<DriveInfo>(allDrivesArray);
             List<int> indexOfDrivesToRemove = new List<int>();
             allDrives.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
-            
+            foreach (DriveInfo drive in allDrives)
+            {
+                string sourceDrive = sourceDir.Root.ToString();
+                if (drive.Name.Contains(sourceDrive))
+                {
+                    bitManager = new BitLockerManager(drive);
+                }
+            }
 
+        }
+        
+        public void unlockBitLocker(string bitLockerPassword)
+        {
+
+            bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
         }
 
         public void setLocalDestinationPath(string newLocalDestinationInput)
         {
             localDestinationPath = newLocalDestinationInput;
+        }
+
+        public void setNetworkDestinationPath(string newNetworkDestinationPath)
+        {
+            networkDestinationPath = newNetworkDestinationPath;
         }
 
         public void updateDrives()
@@ -60,6 +84,15 @@ namespace Election_file_saver
                 {
                     //sourcePath = drive.VolumeLabel;
                     sourceDir = drive.RootDirectory;
+                }
+            }
+
+            foreach (DriveInfo drive in allDrives)
+            {
+                string sourceDrive = sourceDir.Root.ToString();
+                if (drive.Name.Contains(sourceDrive))
+                {
+                    bitManager = new BitLockerManager(drive);
                 }
             }
         }

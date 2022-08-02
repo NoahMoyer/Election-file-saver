@@ -27,11 +27,13 @@ namespace Election_file_saver
         int waitTimeINSecondsBetweenPrints;
         int copyProgressBarWaitTime;
         double waitPeriodToPercentageInterval;
-        FileCopier fileCopier = new FileCopier();
+        FileCopier fileCopier; 
         string currentPrecintWhenButtonPressed;
+        string bitLockerPassword = "a2CityClerksOffice!";
         public MainWindow()
         {
             InitializeComponent();
+            fileCopier = new FileCopier();
             waitTimeINSecondsBetweenPrints = 10;
             copyProgressBarWaitTime = 2;
             waitPeriodToPercentageInterval = 100 / copyProgressBarWaitTime;
@@ -40,6 +42,16 @@ namespace Election_file_saver
                 driveSelector.Items.Add(drive);
             }
             driveSelector.Text = fileCopier.getSourcePath();
+
+            if(driveSelector.SelectedItem == null)
+            {
+                unlockBitlockerButton.IsEnabled = false;
+            }
+            else if(driveSelector.SelectedItem != null)
+            {
+                unlockBitlockerButton.IsEnabled = true;
+            }
+            
         }
 
         private async void CopyFilesButton_Click(object sender, RoutedEventArgs e)
@@ -100,6 +112,7 @@ namespace Election_file_saver
         private void driveSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             fileCopier.setSourcePath(driveSelector.SelectedItem);
+            unlockBitlockerButton.IsEnabled = true;
         }
 
         private void refreshDrivesButton_Click(object sender, RoutedEventArgs e)
@@ -111,6 +124,19 @@ namespace Election_file_saver
                 driveSelector.Items.Add(drive);
             }
             //driveSelector.Text = fileCopier.getSourcePath();
+        }
+
+        private void unlockBitlockerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (driveSelector.SelectedItem != null)
+            {
+                fileCopier.unlockBitLocker(bitLockerPassword);
+            }
+        }
+
+        private void updateBitLockerPassword_Click(object sender, RoutedEventArgs e)
+        {
+                bitLockerPassword = bitLockerPasswordTextBox.ToString();
         }
     }
 }
