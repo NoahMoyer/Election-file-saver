@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Threading;
 
 namespace Election_file_saver
 {
@@ -24,12 +25,16 @@ namespace Election_file_saver
 
         int fileCount;
         int waitTimeINSecondsBetweenPrints;
+        int copyProgressBarWaitTime;
+        double waitPeriodToPercentageInterval;
         FileCopier fileCopier = new FileCopier();
         string currentPrecintWhenButtonPressed;
         public MainWindow()
         {
             InitializeComponent();
             waitTimeINSecondsBetweenPrints = 10;
+            copyProgressBarWaitTime = 2;
+            waitPeriodToPercentageInterval = 100 / copyProgressBarWaitTime;
             foreach (var drive in fileCopier.allDrives)
             {
                 driveSelector.Items.Add(drive);
@@ -37,25 +42,39 @@ namespace Election_file_saver
             driveSelector.Text = fileCopier.getSourcePath();
         }
 
-        private void CopyFilesButton_Click(object sender, RoutedEventArgs e)
+        private async void CopyFilesButton_Click(object sender, RoutedEventArgs e)
         {
-            progressBar.Value = 100;
+            progressBar.Value = 0;
             currentPrecintWhenButtonPressed = PreceintTextBox.Text;
-            
+
+
+            for (int i = 0; i < copyProgressBarWaitTime; i++)
+            {
+                await Task.Delay(1000);
+                progressBar.Value = (i + 1) * waitPeriodToPercentageInterval;
+            }
+
+            progressBar.Value = 100;
             fileCopier.CopyFiles(currentPrecintWhenButtonPressed, allowOverwriteCheckBox.IsChecked == true);
-            allowOverwriteCheckBox.IsChecked = false;
+            await Task.Delay(copyProgressBarWaitTime * 1000);
+
+            
+
+
+
         }
 
         private void PreceintTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             CopyFilesButton.IsEnabled = true;
+            printButton.IsEnabled = true;  
         }
 
         
-        private async void printButton_Click(object sender, RoutedEventArgs e)
+        private void printButton_Click(object sender, RoutedEventArgs e)
         {
             currentPrecintWhenButtonPressed = PreceintTextBox.Text;
-            fileCount = fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints, currentPrecintWhenButtonPressed);
+            fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints, currentPrecintWhenButtonPressed);
             
             //for (int i = 0; i < fileCount; i++)
             //{
@@ -81,6 +100,17 @@ namespace Election_file_saver
         private void driveSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             fileCopier.setSourcePath(driveSelector.SelectedItem);
+        }
+
+        private void refreshDrivesButton_Click(object sender, RoutedEventArgs e)
+        {
+            fileCopier.updateDrives();
+            driveSelector.Items.Clear();
+            foreach (var drive in fileCopier.allDrives)
+            {
+                driveSelector.Items.Add(drive);
+            }
+            //driveSelector.Text = fileCopier.getSourcePath();
         }
     }
 }
