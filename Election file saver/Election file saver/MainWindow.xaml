@@ -13,7 +13,7 @@
             <TabItem Header="Main">
                 <Grid Background="#FFE5E5E5">
                     <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Left" Margin="278,0,0,148" VerticalAlignment="Bottom" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False"/>
-                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Height="52" Margin="0,316,0,0" VerticalAlignment="Top" Width="454" Visibility="Visible"/>
+                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Height="52" Margin="0,316,0,0" VerticalAlignment="Top" Width="454" Visibility="Hidden"/>
                     <ComboBox x:Name="driveSelector" HorizontalAlignment="Left" Margin="342,74,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="18934.85,111261.719" SelectionChanged="driveSelector_SelectionChanged"/>
                     <TextBox x:Name="PreceintTextBox" HorizontalAlignment="Center" Margin="0,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged"/>
                     <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,166,105,0" VerticalAlignment="Top"/>

@@ -1,0 +1,7 @@
+NetworkDestination,\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\
+LocalDestination,C:\Election_Data
+defaultSourceDrive,E
+bitlockerPassword,a2CityClerksOffice!
+driveLettersToExclude,G,C,U,S01Usr
+fileExtensionsToCopy,pdf,accdb,csv
+waitTimeBetweenPrints,10
