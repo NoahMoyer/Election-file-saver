@@ -24,7 +24,7 @@ namespace Election_file_saver
         DirectoryInfo destinationDir = new DirectoryInfo(networkDestinationPath);
         static private DriveInfo[] allDrivesArray;
         public List<DriveInfo> allDrives;
-        public string settingsFileName = "settings.csv";
+        public string settingsFileName = @"C:\Temp\settings.csv";
         public BitLockerManager bitManager;
         public string bitLockerPassword = "a2CityClerksOffice!";
 
