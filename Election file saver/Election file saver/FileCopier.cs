@@ -11,23 +11,45 @@ namespace Election_file_saver
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
         //static string destinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
-        static string destinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
+        static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
         static string localDestinationPath = @"C:\Election_Data";
         static string sourcePath = @"E:\";
         DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
         DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);
-        DirectoryInfo destinationDir = new DirectoryInfo(destinationPath);
-        public DriveInfo[] allDrives = DriveInfo.GetDrives();
-
-
+        DirectoryInfo destinationDir = new DirectoryInfo(networkDestinationPath);
+        static private DriveInfo[] allDrivesArray;
+        public List<DriveInfo> allDrives;
+        
 
 
         //default constructor
         public FileCopier()
             {
-                
-                
-            }
+
+            allDrivesArray = DriveInfo.GetDrives();
+            allDrives = new List<DriveInfo>(allDrivesArray);
+            List<int> indexOfDrivesToRemove = new List<int>();
+            allDrives.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
+            
+
+        }
+
+        public void setLocalDestinationPath(string newLocalDestinationInput)
+        {
+            localDestinationPath = newLocalDestinationInput;
+        }
+
+        public void updateDrives()
+        {
+            DriveInfo[] allDrivesArrayNew = DriveInfo.GetDrives();
+            List<DriveInfo> allDrivesNew = new List<DriveInfo>(allDrivesArrayNew);
+            allDrives.Clear();
+            allDrivesNew.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
+
+            allDrives = allDrivesNew;
+            
+            
+        }
 
         public void setSourcePath(object labelInputName)
         {
@@ -63,9 +85,9 @@ namespace Election_file_saver
                 string pathToCopyTo;
                 string localPathToCopyTo;
                 //create the directory if it doesn't exist
-                if (!Directory.Exists(Path.Combine(destinationPath,precinct)))
+                if (!Directory.Exists(Path.Combine(networkDestinationPath,precinct)))
                 {
-                    Directory.CreateDirectory(Path.Combine(destinationPath, precinct));
+                    Directory.CreateDirectory(Path.Combine(networkDestinationPath, precinct));
                 }
                 
 
@@ -89,19 +111,28 @@ namespace Election_file_saver
 
                 foreach(var file in filesList)
                 {
-                    pathToCopyTo = Path.Combine(Path.Combine(destinationPath, precinct), file.Name);
+                    pathToCopyTo = Path.Combine(Path.Combine(networkDestinationPath, precinct), file.Name);
                     localPathToCopyTo = Path.Combine(Path.Combine(localDestinationPath, precinct), file.Name);
 
                     try
                     {
                         File.Copy(file.FullName, pathToCopyTo, allowFileOverwrite);
+                    }
+                    catch (IOException copyError)
+                    {
+                        Console.WriteLine(copyError.Message);
+                    }
+
+
+                    try
+                    {
                         File.Copy(file.FullName, localPathToCopyTo, allowFileOverwrite);
                     }
                     catch (IOException copyError)
                     {
                         Console.WriteLine(copyError.Message);
                     }
-                    
+
                 }
 
                 var extensions = new string[] { "*.pdf", "*.accdb", "*.csv" };
@@ -110,12 +141,21 @@ namespace Election_file_saver
                 {
                     foreach (var file in sourceDir.GetFiles(ext, SearchOption.TopDirectoryOnly))
                     {
-                        pathToCopyTo = Path.Combine(Path.Combine(destinationPath, precinct), file.Name);
+                        pathToCopyTo = Path.Combine(Path.Combine(networkDestinationPath, precinct), file.Name);
                         localPathToCopyTo = Path.Combine(Path.Combine(localDestinationPath, precinct), file.Name);
 
                         try
                         {
                             File.Copy(file.FullName, pathToCopyTo, allowFileOverwrite);
+                        }
+                        catch (IOException copyError)
+                        {
+                            Console.WriteLine(copyError.Message);
+                        }
+
+
+                        try
+                        {
                             File.Copy(file.FullName, localPathToCopyTo, allowFileOverwrite);
                         }
                         catch (IOException copyError)
@@ -135,11 +175,11 @@ namespace Election_file_saver
 
             
         }
-
+       
         //print files
-        public int PrintFiles(int waitTimeInSeconds, string precinct)
+        public async void PrintFiles(int waitTimeInSeconds, string precinct)
         {
-
+            
             int fileCount = 0; //using so we know how many times to run the counter for the progress bar
             string precintPath = Path.Combine(localDestinationPath, precinct);
             try
@@ -153,7 +193,18 @@ namespace Election_file_saver
 
                 foreach (var dir in directories)
                 {
-                    filesList.AddRange(dir.GetFiles("*.pdf", SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(dir.GetFiles("*.pdf", SearchOption.TopDirectoryOnly));
+                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    startInfo.FileName = "cmd.exe";
+                    //const string quote = "\"";
+                    string arg = $"/C PDFtoPrinter.exe \"{dir.FullName}\\*.pdf\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                    startInfo.Arguments = arg;
+                    //startInfo.Verb = "runas";
+                    process.StartInfo = startInfo;
+                    process.Start();
+                    await Task.Delay(waitTimeInSeconds * 1000);
                 }
 
                 int i = 0;
@@ -163,45 +214,72 @@ namespace Election_file_saver
                 {
                     do
                     {
+                        //var task = Task.Run(() =>
+                        //{
 
-                        System.Diagnostics.Process process = new System.Diagnostics.Process();
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                        startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                        startInfo.FileName = "cmd.exe";
-                        //const string quote = "\"";
-                        string arg = "/C PDFtoPrinter.exe \"" + filesList.ElementAt(i).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
-                        startInfo.Arguments = arg;
-                        //startInfo.Verb = "runas";
-                        process.StartInfo = startInfo;
-                        process.Start();
-                        System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
-                        fileCount++;
-                        i++;
+                            //System.Diagnostics.Process process = new System.Diagnostics.Process();
+                            //System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                            //startInfo.FileName = "cmd.exe";
+                            ////const string quote = "\"";
+                            //string arg = "/C PDFtoPrinter.exe \"" + filesList.ElementAt(i).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                            //startInfo.Arguments = arg;
+                            ////startInfo.Verb = "runas";
+                            //process.StartInfo = startInfo;
+                            //process.Start();
+                            //System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
+                            //fileCount++;
+                            //i++;
+
+                        //});
+                        //taskList.Add(task);
                     } while (i < filesList.Count);
                 }
-                
+
 
 
                 //files in root directory
-                FileInfo[] rootFiles = localPrecinct.GetFiles("*.pdf", SearchOption.TopDirectoryOnly);
-
-                int j = 0;
-                do
+                if(true)
                 {
                     System.Diagnostics.Process process = new System.Diagnostics.Process();
                     System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                     startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                     startInfo.FileName = "cmd.exe";
                     //const string quote = "\"";
-                    string arg = "/C PDFtoPrinter.exe \"" + rootFiles.ElementAt(j).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                    string arg = $"/C PDFtoPrinter.exe \"{localPrecinct}\\*.pdf\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
                     startInfo.Arguments = arg;
                     //startInfo.Verb = "runas";
                     process.StartInfo = startInfo;
                     process.Start();
-                    System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
-                    fileCount++;
-                    j++;
-                } while (j < rootFiles.Length);
+                    await Task.Delay(waitTimeInSeconds * 1000);
+                }
+                
+
+
+                //FileInfo[] rootFiles = localPrecinct.GetFiles("*.pdf", SearchOption.TopDirectoryOnly);
+
+                //int j = 0;
+                //do
+                //{
+                //    //var task = Task.Run(() =>
+                //    //{
+                //    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                //    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                //    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                //    startInfo.FileName = "cmd.exe";
+                //    //const string quote = "\"";
+                //    string arg = "/C PDFtoPrinter.exe \"" + rootFiles.ElementAt(j).FullName + "\""; //want to try to add wait to improve printing. If that doesn't work maybe try a way to combime pdfs the print one large file to print
+                //    startInfo.Arguments = arg;
+                //    //startInfo.Verb = "runas";
+                //    process.StartInfo = startInfo;
+                //    process.Start();
+                //    System.Threading.Thread.Sleep(waitTimeInSeconds * 1000);
+                //    fileCount++;
+                //    j++;
+
+                //    //});
+                //    //taskList.Add(task);
+                //} while (j < rootFiles.Length);
 
 
             }
@@ -210,7 +288,7 @@ namespace Election_file_saver
                 Console.WriteLine(dirNotFound.Message);
             }
 
-            return fileCount;
+            
         }
 
     }
