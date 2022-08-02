@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.FileIO;
 
 
 
@@ -23,9 +24,9 @@ namespace Election_file_saver
         DirectoryInfo destinationDir = new DirectoryInfo(networkDestinationPath);
         static private DriveInfo[] allDrivesArray;
         public List<DriveInfo> allDrives;
-
+        public string settingsFileName = "settings.csv";
         public BitLockerManager bitManager;
-
+        public string bitLockerPassword = "a2CityClerksOffice!";
 
 
         //default constructor
@@ -36,6 +37,8 @@ namespace Election_file_saver
             allDrives = new List<DriveInfo>(allDrivesArray);
             List<int> indexOfDrivesToRemove = new List<int>();
             allDrives.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
+            
+            //establish bitlocker
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
@@ -45,9 +48,36 @@ namespace Election_file_saver
                 }
             }
 
+            getSettings();
         }
-        
-        public void unlockBitLocker(string bitLockerPassword)
+
+        public void getSettings()
+        {
+            if (File.Exists(settingsFileName))
+            {
+                using (TextFieldParser csvParser = new TextFieldParser(settingsFileName))
+                {
+                    csvParser.CommentTokens = new string[] { "#" };
+                    csvParser.SetDelimiters(new string[] { "," });
+                    csvParser.HasFieldsEnclosedInQuotes = true;
+                    string[] fields;
+
+                    //read line and add each field to a entry in the array
+                    fields = csvParser.ReadFields();//bitlocker password
+                    bitLockerPassword = fields[1];
+
+                }
+
+            }
+        }
+        public void setBitLockerPassword(string newBitLockerPassword)
+        {
+            bitLockerPassword = newBitLockerPassword;
+
+            //need to write the new password to the file as well
+            File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
+        }
+        public void unlockBitLocker()
         {
 
             bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
@@ -77,7 +107,7 @@ namespace Election_file_saver
 
         public void setSourcePath(object labelInputName)
         {
-
+            //update drive to copy from
             foreach (var drive in allDrives)
             {
                 if (drive == labelInputName)
@@ -86,7 +116,7 @@ namespace Election_file_saver
                     sourceDir = drive.RootDirectory;
                 }
             }
-
+            //update bitlocker
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
@@ -113,7 +143,7 @@ namespace Election_file_saver
             {
 
                 //all files except root files
-                DirectoryInfo[] directories = sourceDir.GetDirectories("*",SearchOption.AllDirectories);
+                DirectoryInfo[] directories = sourceDir.GetDirectories("*", System.IO.SearchOption.AllDirectories);
                 List<FileInfo> filesList = new List<FileInfo>();
                 string pathToCopyTo;
                 string localPathToCopyTo;
@@ -137,9 +167,9 @@ namespace Election_file_saver
 
                 foreach (var dir in directories)
                 {
-                    filesList.AddRange(dir.GetFiles("*.pdf", SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(dir.GetFiles("*.accdb", SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(dir.GetFiles("*.csv", SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
                 }
 
                 foreach(var file in filesList)
@@ -172,7 +202,7 @@ namespace Election_file_saver
                 //root directory files
                 foreach (var ext in extensions)
                 {
-                    foreach (var file in sourceDir.GetFiles(ext, SearchOption.TopDirectoryOnly))
+                    foreach (var file in sourceDir.GetFiles(ext, System.IO.SearchOption.TopDirectoryOnly))
                     {
                         pathToCopyTo = Path.Combine(Path.Combine(networkDestinationPath, precinct), file.Name);
                         localPathToCopyTo = Path.Combine(Path.Combine(localDestinationPath, precinct), file.Name);
@@ -220,7 +250,7 @@ namespace Election_file_saver
                 
                 //all files except root files
                 DirectoryInfo localPrecinct = new DirectoryInfo(precintPath);
-                DirectoryInfo[] directories = localPrecinct.GetDirectories("*", SearchOption.AllDirectories);
+                DirectoryInfo[] directories = localPrecinct.GetDirectories("*", System.IO.SearchOption.AllDirectories);
                 List<FileInfo> filesList = new List<FileInfo>();
 
 

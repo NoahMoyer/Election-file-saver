@@ -29,7 +29,7 @@ namespace Election_file_saver
         double waitPeriodToPercentageInterval;
         FileCopier fileCopier; 
         string currentPrecintWhenButtonPressed;
-        string bitLockerPassword = "a2CityClerksOffice!";
+        //string bitLockerPassword = "a2CityClerksOffice!";
         public MainWindow()
         {
             InitializeComponent();
@@ -124,19 +124,28 @@ namespace Election_file_saver
                 driveSelector.Items.Add(drive);
             }
             //driveSelector.Text = fileCopier.getSourcePath();
+
+            if (driveSelector.SelectedItem == null)
+            {
+                unlockBitlockerButton.IsEnabled = false;
+            }
+            else if (driveSelector.SelectedItem != null)
+            {
+                unlockBitlockerButton.IsEnabled = true;
+            }
         }
 
         private void unlockBitlockerButton_Click(object sender, RoutedEventArgs e)
         {
             if (driveSelector.SelectedItem != null)
             {
-                fileCopier.unlockBitLocker(bitLockerPassword);
+                fileCopier.unlockBitLocker();
             }
         }
 
         private void updateBitLockerPassword_Click(object sender, RoutedEventArgs e)
         {
-                bitLockerPassword = bitLockerPasswordTextBox.ToString();
+            fileCopier.setBitLockerPassword(bitLockerPasswordTextBox.Password.ToString());
         }
     }
 }

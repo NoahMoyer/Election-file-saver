@@ -41,6 +41,7 @@
     <Reference Include="BitlockerManager, Version=1.0.1.0, Culture=neutral, PublicKeyToken=6c5c42dda1395a58, processorArchitecture=MSIL">
       <HintPath>..\packages\BitLockerManager.1.0.1\lib\net45\BitlockerManager.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
