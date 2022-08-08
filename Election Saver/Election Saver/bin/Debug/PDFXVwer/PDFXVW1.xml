@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+  <MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>3.11</MASTER_PAD_VERSION>
+    <MASTER_PAD_EDITOR>RoboSoft 4.0.738</MASTER_PAD_EDITOR>
+    <MASTER_PAD_EDITOR_URL>http://robosoft.rudenko.com</MASTER_PAD_EDITOR_URL>
+    <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+  </MASTER_PAD_VERSION_INFO>
+  <RoboSoft>
+    <Company_UIN>CMP-00A50B69EB6</Company_UIN>
+    <Company_Description>Tracker Software Products Ltd provide robust, commercial grade PDF and Imaging Creation, Modification, Viewing and Printing software for both end users and developers (via our SDK's) - including the highly regarded PDF-XChange FREE Viewer (widely regarded as the best alternative to the Adobe Acrobat Reader due to its host of free features for Annotation, Markup, Forms editing and much more)  and the commercially available PDF-XChange creation suite for the Windows platform.</Company_Description>
+    <Product_UIN>APP-00A50B50E8F</Product_UIN>
+    <Search_String>PDF-XChange Viewer</Search_String>
+    <Publish_on_CD>FALSE</Publish_on_CD>
+    <RSProductType></RSProductType>
+    <Press_Release_Search_String></Press_Release_Search_String>
+    <NewsFeed_Search_String></NewsFeed_Search_String>
+    <Search_Engine_Search_String></Search_Engine_Search_String>
+    <Web_Directories_Search_String></Web_Directories_Search_String>
+    <Search_String_Unique></Search_String_Unique>
+    <Comments_For_Reviewer></Comments_For_Reviewer>
+    <Backlink></Backlink>
+  </RoboSoft>
+  <Company_Info>
+    <Company_Name>Tracker Software Products Ltd</Company_Name>
+    <Address_1>P.O. Box 79</Address_1>
+    <Address_2>9622 Chemainus Rd</Address_2>
+    <City_Town>Chemainus</City_Town>
+    <State_Province>BC</State_Province>
+    <Zip_Postal_Code>V0R 1K0</Zip_Postal_Code>
+    <Country>Canada</Country>
+    <Company_WebSite_URL>http://www.tracker-software.com</Company_WebSite_URL>
+    <Contact_Info>
+      <Contact_First_Name>John</Contact_First_Name>
+      <Contact_Last_Name>Verbeeten</Contact_Last_Name>
+      <Contact_Email>support@tracker-software.com</Contact_Email>
+      <Author_First_Name>John</Author_First_Name>
+      <Author_Last_Name>Verbeeten</Author_Last_Name>
+      <Author_Email>support@tracker-software.com</Author_Email>
+    </Contact_Info>
+    <Support_Info>
+      <Sales_Email>support@tracker-software.com</Sales_Email>
+      <Support_Email>support@tracker-software.com</Support_Email>
+      <General_Email>support@tracker-software.com</General_Email>
+      <Sales_Phone>1-250-324-1621</Sales_Phone>
+      <Support_Phone>1-250-324-1621</Support_Phone>
+      <General_Phone>1-250-324-1621</General_Phone>
+      <Fax_Phone>1-250-324-1621</Fax_Phone>
+    </Support_Info>
+  </Company_Info>
+  <ASP>
+    <ASP_FORM>Y</ASP_FORM>
+    <ASP_Member>Y</ASP_Member>
+    <ASP_Member_Number>07191</ASP_Member_Number>
+  </ASP>
+  <NewsFeed>
+    <NewsFeed_FORM>Y</NewsFeed_FORM>
+    <NewsFeed_VERSION>1.0</NewsFeed_VERSION>
+    <NewsFeed_URL>http://Submit-Everywhere.com/extensions/NewsFeed.htm</NewsFeed_URL>
+    <NewsFeed_DESCRIPTION>This PAD extension allows you to add your RSS and Atom news feeds info into your PAD file. This info can be used by RSS feed submission software or by feed directories themselves.</NewsFeed_DESCRIPTION>
+    <NewsFeed_Type>RSS 0.90</NewsFeed_Type>
+    <NewsFeed_Language>English</NewsFeed_Language>
+    <NewsFeed_Purpose>News</NewsFeed_Purpose>
+    <NewsFeed_Author_Email>support@tracker-software.com</NewsFeed_Author_Email>
+    <NewsFeed_Author_First_Name>John</NewsFeed_Author_First_Name>
+    <NewsFeed_Author_Last_Name>Verbeeten</NewsFeed_Author_Last_Name>
+    <NewsFeed_Feed_URL>http://www.tracker-software.com/rss.xml</NewsFeed_Feed_URL>
+    <NewsFeed_Site_Name>Tracker Software</NewsFeed_Site_Name>
+    <NewsFeed_Site_URL>http://www.tracker-software.com/</NewsFeed_Site_URL>
+    <NewsFeed_Title>Tracker Software News</NewsFeed_Title>
+    <NewsFeed_Description_70></NewsFeed_Description_70>
+    <NewsFeed_Description_250></NewsFeed_Description_250>
+  </NewsFeed>
+  <Site>
+    <Site_FORM>Y</Site_FORM>
+    <Site_VERSION>1.0</Site_VERSION>
+    <Site_URL>http://Submit-Everywhere.com/extensions/Site.htm</Site_URL>
+    <Site_DESCRIPTION>This PAD extension allows you to add your site info into your PAD file. This info can be used by site submission software or by web directories themselves.</Site_DESCRIPTION>
+    <Site_Site_Title>Tracker Software Products Ltd</Site_Site_Title>
+    <Site_Site_URL>http://www.tracker-software.com</Site_Site_URL>
+    <Site_Description_100>Quality, robust software for the creation, modification, viewing &amp; printing of Image &amp; PDF files</Site_Description_100>
+    <Site_Description_250>Quality, robust software for the creation, modification, viewing &amp; printing of Image &amp; PDF files for end users and Developers using our commercial grade products. Products incl, PDF-XChange, TIFF-XChange, Raster-XChange, Image-XChange and OCR-XChange</Site_Description_250>
+    <Site_Description_450>Quality, robust software for the creation, modification, viewing &amp; printing of Image &amp; PDF files for end users and Developers using our commercial grade products. Products incl, PDF-XChange, TIFF-XChange, Raster-XChange, Image-XChange and OCR-XChange</Site_Description_450>
+    <Site_Keywords>PDF creation, PDF Viewing, Annotation, Editing, Highlighting, Scanning. PDF-XChange, PDFXChange, Foxit, Adobe, Acrobat, Nitro, Nuance, Raster-XChange, PDF Reader, PDF Editor, PDF Viewer, FREE</Site_Keywords>
+    <Site_Contact_Email>support@tracker-software.com</Site_Contact_Email>
+    <Site_Contact_First_Name>John</Site_Contact_First_Name>
+    <Site_Contact_Last_Name>Verbeeten</Site_Contact_Last_Name>
+  </Site>
+  <Press_Release>
+    <Related_URL>http://www.tracker-software.com/company/news_press_events</Related_URL>
+    <Press_Release>Free PDF creation tools when licensing the Advanced PDF-XChange Viewer 'PRO' version.
+
+Not content with giving users the ability to view and modify PDF files FREE - to all users who have licensed our PDF-XChange Viewer PRO version - we have decided to extend the options provided when they purchase the PDF-XChange Viewer PRO for $34.50 - to include FREE, our 5 star rated PDF-XChange Lite driver (retail value $24) that allows the ability to create a highly optimized PDF file from any Windows application that can print ! See here for more details. &lt;free_offer_lite.html&gt;
+
+If you have purchased a multi user license - you will also receive the same multi user license for PDF-XChange Lite !!!</Press_Release>
+    <Headline>Free PDF creation Tools</Headline>
+    <Summary>Not content with giving users the ability to view and modify PDF files FREE - to all licensees of our PRO licensed version we are also providing PDF creation through PDF-XChange Lite, Home/Academic users can take advantage of this offer at no cost !</Summary>
+    <Keywords>Free PDF Conversion tools, Tracker Software Products, PDF-XChange, PDF-XChange Viewer PRO, PDF Driver</Keywords>
+    <Press_Release_Plain>PDF Document Creator Now FREE for Non-Commercial SOHO and Academic Use
+
+FOR IMMEDIATE RELEASE
+
+(05 November 2010 -- Vancouver Island, BC, Canada) PDF-XChange Lite 4.0 - a light-weight, extremely fast, flexible and robust application derived from the company's flagship PDF-XChange line of commercial products - is now available as freeware.
+
+The President of Tracker Software Products Ltd, a Canadian company located in British Columbia, announced recently, "Tracker Software is excited to be able to offer non-commercial users a complete and functional suite of PDF creation and editing tools for academic and home use.” When asked how they could offer a full-function PDF creation tool at no cost, he said, "The massive increase in demand for our products in the business world over the last 2 years has allowed us to provide comprehensive tools for PDF creation and manipulation for non-commercial users - without needing to make a charge."
+
+Tracker Software offers some tips for creating outstanding PDF documents:
+
+- Keep them simple
+Use standard fonts and the minimum number of graphics necessary to convey the content effectively. Avoid the temptation to enhance appearance at the cost of time and bandwidth. Also, more users are relying on PDAs and handheld internet devices with limited screen sizes. Create your PDFs to be PDA-friendly. - Avoid CPU-intensive formats and features When possible, enable multi-thread and multi-core processing if your computer has either or both of those features. When creating a PDF, consider that a viewer may not be able to process PDFs without significant rendering time requirements. 
+
+PDF-XChange Lite generates ISO-compliant PDF formatted files which can be created, edited, concatenated and printed via all of the major Windows operating systems from W2K through the latest 64-bit Windows 7 Ultimate. PDF-XChange Lite is written in native-mode 32/64 bit code, with multi-thread and multi-core processing fully implemented. The installer is auto-sensing, selecting the proper package to install, dependent on the hardware and Windows OS installed.
+
+Fast rendering embedded fonts, graphics and multi-language support are features are included in this free application. PDF files are displayed with stunning speed when compared with other PDF software &lt;http://www.tracker-software.com&gt; products. While the PDF files can be viewed by any standard PDF reader &lt;http://www.tracker-software.com/product/pdf-xchange-viewer&gt;, the best speed and rendition is achieved with the Tracker Software PDF-Viewer, also available free and compliant with all modern browsers.
+
+Commercial or business also receive the benefits of a PDF-XChange Lite license at no cost with the purchase of the PDF-XChange Viewer PRO version. The success and wide acceptance of the PDF Viewer was the original impetus for opening the offer of the free PDF creator offer.
+
+For further information or direct contact please contact, Chris Attrell: sales@tracker-software.com</Press_Release_Plain>
+  </Press_Release>
+  <Program_Info>
+    <Program_Name>PDF-XChange Viewer</Program_Name>
+    <Program_Version>2.5.199</Program_Version>
+    <Program_Release_Month>09</Program_Release_Month>
+    <Program_Release_Day>27</Program_Release_Day>
+    <Program_Release_Year>2011</Program_Release_Year>
+    <Program_Cost_Dollars>0.00</Program_Cost_Dollars>
+    <Program_Cost_Other_Code>EUR</Program_Cost_Other_Code>
+    <Program_Cost_Other>0.00</Program_Cost_Other>
+    <Program_Type>Freeware</Program_Type>
+    <Program_Release_Status>Major Update</Program_Release_Status>
+    <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+    <Program_OS_Support>WinXP,WinVista,WinVista x64,Win7 x32,Win7 x64,Win2000,Other,WinServer</Program_OS_Support>
+    <Program_Language>English,Bulgarian,Catalan,Chinese,ChineseSimplified,ChineseTraditional,Czech,Danish,Dutch,Finnish,French,Frisian,German,Hungarian,Italian,Japanese,Korean,Norwegian,Other,Polish,Portuguese,Romanian,Russian,Spanish,Swedish,Turkish,Ukrainian</Program_Language>
+    <Program_Change_Info>Includes important security enhancements - reccomended for all new and existing users !</Program_Change_Info>
+    <Program_System_Requirements>Win2000,Win7 x32,Win7 x64,WinServer,WinVista,WinVista x64,WinXP</Program_System_Requirements>
+    <Program_Category_Class>Graphic Apps::Viewers</Program_Category_Class>
+    <File_Info>
+      <File_Size_Bytes>15072256</File_Size_Bytes>
+      <File_Size_K>14719</File_Size_K>
+      <File_Size_MB>14.37</File_Size_MB>
+      <Filename_Versioned></Filename_Versioned>
+      <Filename_Previous></Filename_Previous>
+      <Filename_Generic></Filename_Generic>
+      <Filename_Long></Filename_Long>
+    </File_Info>
+    <Expire_Info>
+      <Has_Expire_Info>N</Has_Expire_Info>
+      <Expire_Based_On>Days</Expire_Based_On>
+      <Expire_Count></Expire_Count>
+      <Expire_Other_Info></Expire_Other_Info>
+      <Expire_Month></Expire_Month>
+      <Expire_Day></Expire_Day>
+      <Expire_Year></Expire_Year>
+    </Expire_Info>
+    <Program_Categories>Viewers,PDF,PDF Editors</Program_Categories>
+    <Limitations>NONE - though Advanced features will oeprate in trial mode if used</Limitations>
+    <Awards>http://www.tracker-software.com/tracker-awards.html</Awards>
+    <Program_Specific_Category></Program_Specific_Category>
+    <Includes_JAVA_VM></Includes_JAVA_VM>
+    <Includes_VB_Runtime></Includes_VB_Runtime>
+    <Includes_DirectX></Includes_DirectX>
+  </Program_Info>
+  <Web_Info>
+    <Application_URLs>
+      <Application_Info_URL>http://www.tracker-software.com/product/pdf-xchange-viewer</Application_Info_URL>
+      <Application_Order_URL>http://www.tracker-software.com/buy-now</Application_Order_URL>
+      <Application_Screenshot_URL>http://www.tracker-software.com/PDFVwrSample_02.png</Application_Screenshot_URL>
+      <Application_Icon_URL>http://www.tracker-software.com/PDFX3.gif</Application_Icon_URL>
+      <Application_XML_File_URL>http://www.tracker-software.com/PDFXVW1.xml</Application_XML_File_URL>
+    </Application_URLs>
+    <Download_URLs>
+      <Primary_Download_URL>http://www.tracker-software.com/PDFXVwer.zip</Primary_Download_URL>
+      <Secondary_Download_URL></Secondary_Download_URL>
+      <Additional_Download_URL_1></Additional_Download_URL_1>
+      <Additional_Download_URL_2></Additional_Download_URL_2>
+    </Download_URLs>
+  </Web_Info>
+  <Permissions>
+    <Distribution_Permissions>This software may be distributed freely provided it is supplied complete and in tact and freely without any charge or payment required.</Distribution_Permissions>
+    <EULA>Tracker Software Products Ltd. PDF-XChange PDF Viewer End User License Agreement Versions 1 thru 2.x.
+
+PDF-XChange Viewer, This License Agreement details your rights and entitlement to use the PDF-XChange Viewer, please read it carefully and treat it as valuable Property.
+
+This Agreement is between you (either an individual or an entity) and Tracker Software Products Ltd, (hereinafter called ‘Tracker') Tracker is willing to grant you the following the rights to use the Software known as PDF-XChange Viewer and its accompanying documentation (collectively, the ‘Software') only if you agree to be bound by all of the terms and conditions of this Agreement, relevant to the version in use as distinguished by the term ‘End User.' If you are not willing to agree to any of the terms of this Agreement, Tracker is unwilling to grant you a license and you should not open the sealed media package or distributed software files if it was supplied by electronic distribution.
+Instead you must promptly return any sealed media packaging and documentation or in the case of electronic distribution delete it completely from any storage media you may have saved it to. 
+
+This software is provided for your use free of charge, or as a licensed and chargeable product if you intend to use and access the advanced ‘PRO' Viewer functionality, identified in the program User Interface. You may use the Free version without charge provided you are the End User and do not intend to distribute or incorporate it with or into any other product or software package intended for resale or distribution for any purpose whatsoever other than as provided for in this license. Should you wish to distribute the PDF-XChange Viewer (free version) for any purpose, whether for commercial gain or not - please email Tracker at sales@tracker-software.com and provided you receive no direct commercial or financial gain directly from doing so from such distribution - such permission will usually be granted ‘free' - promptly.
+
+1.Ownership: The Software is and shall remain a propriety product of Tracker. Tracker and its suppliers shall retain ownership of all Copyrights, Patents, Trademarks, Trade Names, Trade Secrets and other proprietary rights relating to or residing in the Software. Except for the license grant provided in Section 2, you shall have no right, title or interest in or to the Software. The Software is licensed, not sold, to you for you to use only under the terms of this Agreement. If you agree to be bound by all of the terms of this Agreement you will only own the media (if any) on which the Software may have been provided, not the Software itself.
+
+2.Grant of License: Tracker grants you a personal, non-exclusive, non-transferable, restricted right to use the Software, for your own Personal, Commercial, or Business uses provided you or your Business are end user's, not software developer's or distributors to end users - subject to the terms of this license Agreement. This license does not allow accessing of the API of the software - even if you have a developer's kit - this is an END USER version ONLY of the software - not a developer software tool, should you wish to utilise a version of this product linking to or from within another software application (directly or indirectly) - you must purchase and license a software development kit intended specifically for this purpose, available from Tracker Software Products. You understand that Tracker may update the Software at any time and in doing so incurs no obligation pursuant to this Agreement to furnish such updates to you.  
+
+We welcome all Magazine, Printed Publications. Software Download sites etc in facilitating the distribution of the FREE version of this software, freely - provided no re-engineering occurs of the installer or components and no added charge is made for the distribution - other than any usual publishers subscription or News stand fees etc, charged for their publication.
+
+3.Restrictions: I) TRACKER RESERVES ALL RIGHTS IN THE SOFTWARE NOT EXPRESSLY GRANTED TO YOU. II) EXCEPT AS PERMITTED IN SECTION 2, YOU MAY NOT USE, COPY, MODIFY, CREATE DERIVATIVE WORKS OF, SELL, DISTRIBUTE, ASSIGN, PLEDGE, SUB LICENSE, LEASE, LOAN, RENT, TIMESHARE, DELIVER, ELECTRONICALLY TRANSMIT OR OTHERWISE TRANSFER THE SOFTWARE, NOR PERMIT ANY THIRD PARTY TO DO ANY OF THE FOREGOING. III) YOU MAY NOT REMOVE FROM THE SOFTWARE, OR ALTER ANY OF THE TRADEMARKS, TRADE NAMES, LOGO'S, PATENT OR COPYRIGHT NOTICES OR MARKINGS, OR ADD ANY OF THE FOREGOING TO THE SOFTWARE. IV) YOU MAY NOT DERIVE OR ATTEMPT TO DERIVE ANY OF THE SOURCE CODE BY ANY MEANS, NOR PERMIT A THIRD PARTY TO DO SO. V) YOU MAY NOT REVERSE ENGINEER, DECOMPILE, DISASSEMBLE, OR TRANSLATE THIS SOFTWARE OR ANY PART THEREOF. VI) NO LICENSES ARE GRANTED UNDER THIS LICENSE AGREEMENT UNDER ANY PATENTS OF IMAGES. IF YOU BELIEVE YOU NEED ANY SUCH LICENSES YOU MUST CONTACT ANY THIRD PARTIES YOURSELF DIRECTLY TO OBTAIN THEM.  
+
+4.Limited Warranty: Tracker does not warrant that the functions contained in the Software will meet your requirement or that the operation of the Software will be uninterrupted or error free (it is finished ‘As Is' and without warranty as to performance or results). Tracker warrants that the media that the Software is supplied on will be free from defect for a period of thirty (30) days from the receipt of the Software or in the case of Electronic Supply that the ‘wrapper' the Software is contained in, shall be complete and without defect on our end of the connection.  We cannot warranty however that it will be received in the same condition as the means of supply is beyond our absolute control. This Limited Warranty shall be void if failure of the Software to conform with the Warranty has resulted from improper installation, misuse, testing, neglect, accident, fire or other hazard or any breach of this Agreement. This warranty is limited to you and is not transferable. No Tracker Supplier, agent or employee is authorized to make any changes, modifications, alterations, extensions or additions to this limited Warranty. This Software is not warranted against infringement of any third part patents. Tracker has done no investigation as to infringement, and you agree that you will assume the risk of any such infringement from your use of Software.  
+
+5.No Other Warranties: OTHER THAN THE FOREGOING LIMITED WARRANTY, WHICH IS MADE SOLELY BY TRACKER AND NOT BY ANY OTHER TRACKER SUPPLIER, THIS SOFTWARE IS BEING LICENSED TO YOU ‘AS IS' WITHOUT WARRANTY OF ANY KIND. TRACKER AND ITS SUPPLIERS DISCLAIM AND REJECT ALL OTHER WARRANTIES EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER OF IMPLIED WARRANTIES, SO THE ABOVE DISCLAIMER MAY NOT APPLY TO YOU, IN WHICH CASE THE DURATION OF ANY IMPLIED WARRANTIES IS SIXTY (60) DAYS FROM THE DATE THE SOFTWARE IS RECEIVED BY YOU. THIS WARRANTY GIVES YOU SPECIFIC LEGAL RIGHTS; YOU MAY HAVE OTHER LEGAL RIGHTS, WHICH VARY FROM JURISDICTION TO JURISDICTION.  
+
+ 
+6.Limitation Of Liability: TRACKER'S AGGREGATE LIABILITY IN CONNECTION WITH THIS AGREEMENT AND THE SOFTWARE, REGARDLESS OF THE FORM OF ACTION GIVING RISE TO SUCH LIABILITY (WHETHER IN CONTRACT, TORT OR OTHERWISE), SHALL NOT EXCEED THE LICENSE FEES PAID BY YOU TO TRACKER UNDER THIS AGREEMENT. NO TRACKER SUPPLIER'S SHALL HAVE ANY LIABILITY WHATSOEVER UNDER THIS AGREEMENT. TRACKER AND ANY OF TRACKER'S SUPPLIERS SHALL NOT BE LIABLE FOR ANY INDIRECT, EXEMPLARY, SPECIAL, CONSEQUENTIAL, OR INCIDENTAL DAMAGES OF ANY KIND (INCLUDING WITHOUT LIMITATION LOST PROFITS), EVEN IF TRACKER OR SUCH SUPPLIER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU. TRACKER SHALL NOT BE LIABLE FOR ANY CLAIMS OF THIRD PARTIES RELATING TO THE SOFTWARE. THE LIMITED WARRANTY, LIMITED REMEDIES AND LIMITED LIABILITY PROVISIONS CONTAINED IN THIS AGREEMENT ARE FUNDAMENTAL PARTS OF THE BASIS OF TRACKER'S BARGAIN HEREUNDER, AND TRACKER WOULD NOT BE ABLE TO PROVIDE THE SOFTWARE TO YOU ABSENT OF SUCH LIMITATIONS.
+
+7:Free &amp; Trial Versions: Where the Software is provided free on a permanent, semi permanent, limited use or trial basis all the terms relating to licensing shall be identical, save that you accept there has been no financial gain on Tracker's part and as such you use the Software without warranty or guarantees of any kind. The risk is entirely yours and you acknowledge this. You agree to indemnify us against all claims by you or any third party for any reason whatsoever. You accept that we have provided the Software for your sole benefit and have received nothing to our benefit and as such cannot be held responsible in any way and for any reason.
+ 
+8.Termination: You may terminate this Agreement at any time. This Agreement shall terminate automatically upon breach of any term of this Agreement. Upon termination you shall destroy the Software and any backup copy you made pursuant to this Agreement.
+
+9.Government End Users: This paragraph applies only if you are a branch or agency of the U.S. government. The Software is comprised of ‘Commercial Computer Software' and ‘Commercial Computer Software Documentation' as such terms are used in 48 C.F.R. 12.212 (Sept 1995) and is provided to the Government I) for acquisition by or on behalf of civilian agencies, consistent with the policy set forth in C.F.R. 12.212 or II) for acquisition by or on behalf of units of the Department of Defence, consistent with the policies set forth in 48 C.F.R. 227-7202-1 (Jun 1995) and 227-7202-3(Jun 1995).
+
+10.General: This Agreement shall for all purposes be governed by and interpreted in accordance with the laws of Canada.
+If any of the provisions of this Agreement is held by a court of competent jurisdiction to be unenforceable for any reason, the remaining provisions hereof shall be unaffected and remain in full force and effect. This Agreement is the final, complete and exclusive Agreement between the parties relating to the subject matter hereof, and supersedes all prior or contemporaneous understandings and agreements relating to such subject matter, whether oral or written, and may not be amended except by writing executed by both parties.
+
+11. Copyright: This Software and all accompanying documentation are copyrighted and Tracker reserves all rights. 
+The accompanying End User License Agreement specifies the terms and conditions governing use of this product
+Copyright © 2001-2010 Tracker Software Products (Canada) Ltd;466 Trans Canada Highway, Duncan, BC. V9L 3R6. Canada.
+http://www.tracker-software.com email: sales@tracker-software.com 
+
+ALL RIGHTS RESERVED.  
+
+All Other Trademarks/Copyrights acknowledged &amp; are the property of their respective owners, including: Zlib by Marl Adler &amp; Jean-Loup Gailly, Little CMS by Marti Maria and IPG (C) 1991-98.
+
+Interested in providing translation to your localised language if not available already ?</EULA>
+  </Permissions>
+  <Program_Descriptions>
+    <English>
+      <Keywords>PDF, PDF Reader, PDF Viewer, Editor, PDF-Tools, Acrobat, Foxit, PDF Driver,Print Driver,Document Archiving, Document Management,File Management,API,SDK,Royalty Free, Scan2PDF, Filing,DM,EDM,EDMS,Workflow,Merge,Split,Extract,Image Conversion</Keywords>
+      <Char_Desc_45>Comprehensive PDF Viewing  File manipulation,</Char_Desc_45>
+      <Char_Desc_80>Free - Everything needed to View &amp; Modify PDF Files - SDK available</Char_Desc_80>
+      <Char_Desc_250>Free - All you will ever need to View, modify and Print Adobe PDF files, Export PDF pages and files to Image Formats, Type on PDF pages and much much more. From the same authors as the award winning PDF-XChange product line - Developer SDK available</Char_Desc_250>
+      <Char_Desc_450>Free - All you will ever need to View, modify and Print Adobe PDF files, Export PDF pages and files to Image Formats, Type on PDF pages and much much more. From the same authors as the award winning PDF-XChange product line - Developer SDK available</Char_Desc_450>
+      <Char_Desc_2000>Free - All you will ever need to View, modify and Print Adobe PDF files, Export PDF pages and files to Image Formats, Type on PDF pages and much much more. From the same authors as the award winning PDF-XChange product line - Developer SDK available</Char_Desc_2000>
+    </English>
+  </Program_Descriptions>
+</XML_DIZ_INFO>
