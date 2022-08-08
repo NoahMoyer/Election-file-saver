@@ -69,6 +69,8 @@ namespace Election_Saver
                 }
 
             }
+
+            //TODO: make sure to create a settings file if it doesn't exist
         }
         public void setBitLockerPassword(string newBitLockerPassword)
         {
