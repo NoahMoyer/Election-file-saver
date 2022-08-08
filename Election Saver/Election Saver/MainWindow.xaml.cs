@@ -85,6 +85,12 @@ namespace Election_Saver
         {
             CopyFilesButton.IsEnabled = true;
             printButton.IsEnabled = true;  
+
+            if (PreceintTextBox.Text == "")
+            {
+                CopyFilesButton.IsEnabled = false;
+                printButton.IsEnabled = false;
+            }
         }
 
         
