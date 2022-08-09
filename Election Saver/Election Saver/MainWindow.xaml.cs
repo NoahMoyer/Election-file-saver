@@ -55,6 +55,11 @@ namespace Election_Saver
             progressBarLabel.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void CopyFilesButton_Click(object sender, RoutedEventArgs e)
         {
             progressBarLabel.Visibility = Visibility.Visible;

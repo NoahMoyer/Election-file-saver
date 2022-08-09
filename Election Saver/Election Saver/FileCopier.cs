@@ -51,6 +51,9 @@ namespace Election_Saver
             getSettings();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void getSettings()
         {
             if (File.Exists(settingsFileName))
@@ -72,6 +75,11 @@ namespace Election_Saver
 
             //TODO: make sure to create a settings file if it doesn't exist
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newBitLockerPassword"></param>
         public void setBitLockerPassword(string newBitLockerPassword)
         {
             bitLockerPassword = newBitLockerPassword;
@@ -79,22 +87,37 @@ namespace Election_Saver
             //need to write the new password to the file as well
             File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void unlockBitLocker()
         {
 
             bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newLocalDestinationInput"></param>
         public void setLocalDestinationPath(string newLocalDestinationInput)
         {
             localDestinationPath = newLocalDestinationInput;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newNetworkDestinationPath"></param>
         public void setNetworkDestinationPath(string newNetworkDestinationPath)
         {
             networkDestinationPath = newNetworkDestinationPath;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void updateDrives()
         {
             DriveInfo[] allDrivesArrayNew = DriveInfo.GetDrives();
@@ -107,6 +130,10 @@ namespace Election_Saver
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="labelInputName"></param>
         public void setSourcePath(object labelInputName)
         {
             //update drive to copy from
@@ -129,14 +156,23 @@ namespace Election_Saver
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string getSourcePath()
         {
             return sourcePath;
         }
 
 
-        //copy files from flash drive to network, locally
-        //files need to be in a folder based on preceint name
+        /// <summary>
+        /// copy files from flash drive to network, locally
+        /// files need to be in a folder based on preceint name
+        /// </summary>
+        /// <param name="precinct"></param>
+        /// <param name="allowFileOverwrite"></param>
+
         public void CopyFiles(string precinct, bool allowFileOverwrite)
         {
             //if allowFileOverwrite is true it will allow files to be overwritten. If not it won't overwrite anything
@@ -241,7 +277,11 @@ namespace Election_Saver
             
         }
        
-        //print files
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="waitTimeInSeconds"></param>
+        /// <param name="precinct"></param>
         public async void PrintFiles(int waitTimeInSeconds, string precinct)
         {
             
