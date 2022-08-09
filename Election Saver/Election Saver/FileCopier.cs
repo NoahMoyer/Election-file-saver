@@ -8,15 +8,16 @@ using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
 
 
-
 namespace Election_Saver
 {
     using BitLockerManager;
+    using System.Windows;
+
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
-        //static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
-        static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
+        static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
+        //static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
         static string localDestinationPath = @"C:\Election_Data";
         static string sourcePath = @"E:\";
         DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
@@ -157,7 +158,14 @@ namespace Election_Saver
                 string sourceDrive = sourceDir.Root.ToString();
                 if (drive.Name.Contains(sourceDrive))
                 {
-                    bitManager = new BitLockerManager(drive);
+                    try
+                    {
+                        bitManager = new BitLockerManager(drive);
+                    }
+                    catch (Exception copyError)
+                    {
+                        MessageBox.Show("Do you have permission to unlock BitLocker encrypted drives from the command line?", copyError.Message);
+                    }
                 }
             }
         }
