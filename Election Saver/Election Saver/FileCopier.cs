@@ -151,7 +151,7 @@ namespace Election_Saver
                 }
             }
             //update bitlocker
-            //Nathan: what is this loop doing exactly?
+            //This updates the bitManager to tell it what drive we want to unlock
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
@@ -192,7 +192,7 @@ namespace Election_Saver
             try
             {
 
-                //all files except root files
+                //This part of the function copies all files except those in the root directory.
                 DirectoryInfo[] directories = sourceDir.GetDirectories("*", System.IO.SearchOption.AllDirectories);
                 List<FileInfo> filesList = new List<FileInfo>();
                 string pathToCopyTo;
@@ -202,19 +202,21 @@ namespace Election_Saver
                 {
                     Directory.CreateDirectory(Path.Combine(networkDestinationPath, precinct));
                 }
-                
 
-                //if local paths don't exist
+
+                //if the local paths to copy to don't exist
+                //create C:\Election_Data\{precict}
                 if (!Directory.Exists(Path.Combine(localDestinationPath, precinct)))
                 {
                     Directory.CreateDirectory(Path.Combine(localDestinationPath, precinct));
                 }
-                
+                //create C:\Election_Data
                 if (!Directory.Exists(localDestinationPath))
                 {
                     Directory.CreateDirectory(localDestinationPath);
                 }
 
+                //adding each file into the fileList
                 foreach (var dir in directories)
                 {
                     filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
@@ -222,11 +224,13 @@ namespace Election_Saver
                     filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
                 }
 
+                //call copy function for each file in the fileList
                 foreach(var file in filesList)
                 {
                     pathToCopyTo = Path.Combine(Path.Combine(networkDestinationPath, precinct), file.Name);
                     localPathToCopyTo = Path.Combine(Path.Combine(localDestinationPath, precinct), file.Name);
 
+                    //copying to network path
                     try
                     {
                         File.Copy(file.FullName, pathToCopyTo, allowFileOverwrite);
@@ -236,7 +240,7 @@ namespace Election_Saver
                         Console.WriteLine(copyError.Message);
                     }
 
-
+                    //copying to local file path
                     try
                     {
                         File.Copy(file.FullName, localPathToCopyTo, allowFileOverwrite);
@@ -249,7 +253,7 @@ namespace Election_Saver
                 }
 
                 var extensions = new string[] { "*.pdf", "*.accdb", "*.csv" };
-                //root directory files
+                //This part of the function copies all of the files in the root directory. 
                 foreach (var ext in extensions)
                 {
                     foreach (var file in sourceDir.GetFiles(ext, System.IO.SearchOption.TopDirectoryOnly))
