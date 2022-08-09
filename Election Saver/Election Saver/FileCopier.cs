@@ -52,7 +52,7 @@ namespace Election_Saver
         }
 
         /// <summary>
-        /// 
+        /// Function to get the settings from the settings file.
         /// </summary>
         public void getSettings()
         {
@@ -77,7 +77,7 @@ namespace Election_Saver
         }
 
         /// <summary>
-        /// 
+        /// Funciton to change the bitlocker password in the settings file
         /// </summary>
         /// <param name="newBitLockerPassword"></param>
         public void setBitLockerPassword(string newBitLockerPassword)
@@ -89,7 +89,7 @@ namespace Election_Saver
         }
 
         /// <summary>
-        /// 
+        /// Function to unlock the bitlocker encrypted drive
         /// </summary>
         public void unlockBitLocker()
         {
@@ -98,7 +98,7 @@ namespace Election_Saver
         }
 
         /// <summary>
-        /// 
+        /// Function to set the local file path on the computer
         /// </summary>
         /// <param name="newLocalDestinationInput"></param>
         public void setLocalDestinationPath(string newLocalDestinationInput)
@@ -107,7 +107,7 @@ namespace Election_Saver
         }
 
         /// <summary>
-        /// 
+        /// Function to set the network file path to save files to
         /// </summary>
         /// <param name="newNetworkDestinationPath"></param>
         public void setNetworkDestinationPath(string newNetworkDestinationPath)
@@ -116,7 +116,11 @@ namespace Election_Saver
         }
 
         /// <summary>
+        /// Function to update the drives list based on what is available on the computer.
         /// 
+        /// Currenlty we exclude a number of drive letters to prevent users from copying data from a network drive or the C drive on accident.
+        /// Excluded  drive letters:
+        /// G, C, U, S
         /// </summary>
         public void updateDrives()
         {
@@ -131,12 +135,13 @@ namespace Election_Saver
         }
 
         /// <summary>
-        /// 
+        /// Funciton to set he source path of the drive the files will be copied from
         /// </summary>
         /// <param name="labelInputName"></param>
         public void setSourcePath(object labelInputName)
         {
             //update drive to copy from
+            //This look updaes the list to display to the user
             foreach (var drive in allDrives)
             {
                 if (drive == labelInputName)
@@ -146,6 +151,7 @@ namespace Election_Saver
                 }
             }
             //update bitlocker
+            //Nathan: what is this loop doing exactly?
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
@@ -157,7 +163,7 @@ namespace Election_Saver
         }
 
         /// <summary>
-        /// 
+        /// Function to return the sourcePath variable since this is a private variable.
         /// </summary>
         /// <returns></returns>
         public string getSourcePath()
@@ -169,6 +175,12 @@ namespace Election_Saver
         /// <summary>
         /// copy files from flash drive to network, locally
         /// files need to be in a folder based on preceint name
+        /// 
+        /// Currenlty only copies the following file types:
+        /// .pdf, .accdb, and .csv
+        /// 
+        /// Does not keep file structure of the source drive. It pulss all files of the specified file types, creates a folder based on the precinct, and
+        /// copies them to the root of that folder it created
         /// </summary>
         /// <param name="precinct"></param>
         /// <param name="allowFileOverwrite"></param>
@@ -276,9 +288,14 @@ namespace Election_Saver
 
             
         }
-       
+
         /// <summary>
+        /// Funciton to print all .pdf files.
         /// 
+        /// Currenlty prints from the local file path on the computer based on the precinct in the text box. This is to increase print speed and reliability.
+        /// 
+        /// The waitTimeInSeconds is an integer variable used to wait between each print to prevent overloading the printer queue.
+        /// If documents enter the queue too fast for the printer to process it can get missed or fail.
         /// </summary>
         /// <param name="waitTimeInSeconds"></param>
         /// <param name="precinct"></param>
