@@ -83,7 +83,10 @@ namespace Election_Saver
             progressBarLabel.Visibility = Visibility.Hidden;
 
 
-
+            //Pupulating the files available to copy text block
+            string currentPrecinct = PreceintTextBox.Text;
+            currentPrecinct = fileCopier.getAvailableFiles(currentPrecinct);
+            localFilesTextBlock.Text = currentPrecinct;
         }
 
         private void PreceintTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -96,6 +99,12 @@ namespace Election_Saver
                 CopyFilesButton.IsEnabled = false;
                 printButton.IsEnabled = false;
             }
+
+
+            //Pupulating the files available to copy text block
+            string currentPrecinct = PreceintTextBox.Text;
+            currentPrecinct = fileCopier.getAvailableFiles(currentPrecinct);
+            localFilesTextBlock.Text = currentPrecinct;
         }
 
         

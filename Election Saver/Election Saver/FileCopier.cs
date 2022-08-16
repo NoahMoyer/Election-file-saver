@@ -425,5 +425,81 @@ namespace Election_Saver
             
         }
 
+        public string getAvailableFiles(string precinct)
+        {
+            //This part of the function copies all files except those in the root directory.
+            
+            List<FileInfo> filesList = new List<FileInfo>();
+            //string pathToCopyTo;
+            string localPath;
+            localPath = Path.Combine(localDestinationPath, precinct);
+            DirectoryInfo localDirecory = new DirectoryInfo(localPath);
+            string fileString = "No files present in current directory.";
+
+
+            //check if C:\Election_Data exists
+            if (!Directory.Exists(localDestinationPath))
+            {
+                fileString = "Election data folder not detected. Have you copied from the flash drive?";
+                return fileString;
+            }
+            //if the local paths to copy to don't exist
+            //check C:\Election_Data\{precict}
+            else if (!Directory.Exists(localPath))
+            {
+                fileString = "Precint folder not detected. Have you copied from the flash drive?";
+                return fileString;
+            }
+            
+
+            try
+            {
+                DirectoryInfo[] directories = localDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
+
+                //create the directory if it doesn't exist
+                if (!Directory.Exists(Path.Combine(networkDestinationPath, precinct)))
+                {
+                    //To do: maybe throw an error or something if the file path doesn't exist?
+                    //Directory.CreateDirectory(Path.Combine(networkDestinationPath, precinct));
+                }
+
+                if(localPath == @"C:\Election_Data")
+                {
+                    fileString = "Please enter precinct number.";
+                    return fileString;
+                }
+                else
+                {
+                    //adding files into filesList
+                    foreach (var dir in directories)
+                    {
+                        //adding each file into the fileList from sub folders to filesList
+                        filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                        filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                        filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    }
+                    //adding files from root directory to filesList
+                    filesList.AddRange(localDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(localDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(localDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+
+                    fileString = string.Join(",", filesList);
+                }
+                
+            }
+            catch (DirectoryNotFoundException dirNotFound)
+            {
+                Console.WriteLine(dirNotFound.Message);
+            }
+
+            //format string to be more readable
+            //String should format in the following example:
+            //file1.pdf
+            //file2.pdf
+            string[] input = fileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
+            string output = string.Join("\n", input); //Join array with new line inbetween each element
+            return output;
+        }
+
     }
 }
