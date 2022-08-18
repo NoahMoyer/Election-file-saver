@@ -294,9 +294,10 @@ namespace Election_Saver
                 
     
             }
-            catch (DirectoryNotFoundException dirNotFound)
+            catch (Exception dirNotFound)
             {
                 Console.WriteLine(dirNotFound.Message);
+                MessageBox.Show("The below error was thrown by the program: \n \n" + dirNotFound.Message + "\n \nMake sure the drive is plugged in, you have the correct drive selected, and the drive is unlocked.", "Copy ERROR");
             }
 
             
