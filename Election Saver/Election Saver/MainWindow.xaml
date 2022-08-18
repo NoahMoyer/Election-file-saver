@@ -16,7 +16,7 @@
                         <ColumnDefinition Width="37*"/>
                         <ColumnDefinition Width="360*"/>
                     </Grid.ColumnDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,20,502,244"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,211,502,53"/>
                     <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Left" Margin="298,170,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False" Grid.Column="1"/>
                     <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="435,170,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="printButton_Click" IsEnabled="False" Grid.Column="1"/>
                     <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="40" Margin="313,280,0,0" VerticalAlignment="Top" Width="200" Visibility="Visible" Grid.Column="1"/>
@@ -30,15 +30,19 @@
                     <Button Content="Button" Margin="515,78,205,344" Grid.Column="1"/>
                     <Button x:Name="unlockBitlockerButton" Content="Unlock Drive" HorizontalAlignment="Left" Margin="493,69,0,0" VerticalAlignment="Top" Width="79" Click="unlockBitlockerButton_Click" Grid.Column="1"/>
                     <Label x:Name="progressBarLabel" Content="Processing please wait..." HorizontalAlignment="Left" Margin="345,254,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <ScrollViewer Margin="22,20,502,244" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                    <ScrollViewer Margin="22,211,502,53" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto">
                             <TextBlock x:Name="localFilesTextBlock" TextWrapping="Wrap" Text="Please enter precinct number." Height="132" Width="221" Grid.ColumnSpan="2"/>
                         </DockPanel>
                     </ScrollViewer>
-                    <Label x:Name="fileDataLabel" Content="Files available to copy:" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,205,502,59"/>
-                    <TextBlock x:Name="localFilesTextBlock_Copy" HorizontalAlignment="Left" Margin="29,205,0,0" TextWrapping="Wrap" Text="Please enter precinct number." VerticalAlignment="Top" Height="150" Width="244" Grid.ColumnSpan="2"/>
+                    <Label x:Name="fileDataLabel" Content="Files available to copy from flash drive:" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="263"/>
                     <Label x:Name="fileDataLabel_Copy" Content="Files available to print:" HorizontalAlignment="Left" Margin="22,185,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,27,502,237"/>
+                    <ScrollViewer Margin="22,26,502,238" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                        <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto">
+                            <TextBlock x:Name="flashFilesTextBlock" TextWrapping="Wrap" Text="Please enter precinct number." Height="132" Width="221" Grid.ColumnSpan="2"/>
+                        </DockPanel>
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
             <TabItem Header="Settings">

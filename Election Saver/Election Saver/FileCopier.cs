@@ -148,7 +148,7 @@ namespace Election_Saver
             {
                 if (drive == labelInputName)
                 {
-                    //sourcePath = drive.VolumeLabel;
+                    sourcePath = drive.Name;
                     sourceDir = drive.RootDirectory;
                 }
             }
@@ -431,12 +431,10 @@ namespace Election_Saver
             //This part of the function copies all files except those in the root directory.
             
             List<FileInfo> filesList = new List<FileInfo>();
-            //string pathToCopyTo;
             string localPath;
             localPath = Path.Combine(localDestinationPath, precinct);
             DirectoryInfo localDirecory = new DirectoryInfo(localPath);
             string fileString = "No files present in current directory.";
-
 
             //check if C:\Election_Data exists
             if (!Directory.Exists(localDestinationPath))
@@ -476,13 +474,13 @@ namespace Election_Saver
                     {
                         //adding each file into the fileList from sub folders to filesList
                         filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                        filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                        filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                        //filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                        //filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
                     }
                     //adding files from root directory to filesList
                     filesList.AddRange(localDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(localDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(localDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(localDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(localDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
 
                     fileString = string.Join(",", filesList);
                 }
@@ -500,6 +498,77 @@ namespace Election_Saver
             string[] input = fileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
             string output = string.Join("\n", input); //Join array with new line inbetween each element
             return output;
+        }
+
+        public string getFlashAvailableFiles()
+        {
+            List<FileInfo> filesList = new List<FileInfo>();
+            string flashPath;
+            flashPath = sourcePath;
+            DirectoryInfo flashDirecory = new DirectoryInfo(sourcePath);
+            string flashFileString = "No files present in current directory.";
+
+
+            //check if C:\Election_Data exists
+            if (!Directory.Exists(localDestinationPath))
+            {
+                flashFileString = "Election data folder not detected. Have you copied from the flash drive?";
+                return flashFileString;
+            }
+            //if the local paths to copy to don't exist
+            //check C:\Election_Data\{precict}
+            else if (!Directory.Exists(sourcePath))
+            {
+                flashFileString = "Flash drive not detected. Is the drive plugged in?";
+                return flashFileString;
+            }
+
+
+            try
+            {
+                DirectoryInfo[] directories = flashDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
+
+                
+
+                if (sourcePath == @"")
+                {
+                    flashFileString = "Please enter precinct number.";
+                    return flashFileString;
+                }
+                else
+                {
+                    //adding files into filesList
+                    foreach (var dir in directories)
+                    {
+                        //adding each file into the fileList from sub folders to filesList
+                        filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                        filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                        filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    }
+                    //adding files from root directory to filesList
+                    filesList.AddRange(flashDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(flashDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(flashDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+
+                    flashFileString = string.Join(",", filesList);
+                }
+
+            }
+            catch (DirectoryNotFoundException dirNotFound)
+            {
+                Console.WriteLine(dirNotFound.Message);
+            }
+
+            //format string to be more readable
+            //String should format in the following example:
+            //file1.pdf
+            //file2.pdf
+            string[] input = flashFileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
+            string output = string.Join("\n", input); //Join array with new line inbetween each element
+            return output;
+
+
+            //return flashFileString;
         }
 
     }
