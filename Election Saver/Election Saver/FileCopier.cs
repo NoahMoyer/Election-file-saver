@@ -99,6 +99,16 @@ namespace Election_Saver
             bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
         }
 
+        public string getDriveLockStatus()
+        {
+            BitlockerManager.Enums.LockStatus status;
+            bitManager.GetLockStatus(out status);
+
+            string stringStatus = Enum.GetName(status.GetType(), status);
+
+            return stringStatus;
+        }
+
         /// <summary>
         /// Function to set the local file path on the computer
         /// </summary>

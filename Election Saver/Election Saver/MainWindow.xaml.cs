@@ -63,6 +63,11 @@ namespace Election_Saver
             string currentPrecinctLocalFiles = PreceintTextBox.Text;
             currentPrecinctLocalFiles = fileCopier.getAvailableFiles(currentPrecinctLocalFiles);
             localFilesTextBlock.Text = currentPrecinctLocalFiles;
+
+            //Get drive lock status
+            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+
+            
         }
 
         /// <summary>
@@ -164,10 +169,20 @@ namespace Election_Saver
             fileCopier.setSourcePath(driveSelector.SelectedItem);
             unlockBitlockerButton.IsEnabled = true;
 
+            //Get drive lock status
+            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+
             //Poplulating the files available to copy text block
             string currentPrecinctFlashFiles = PreceintTextBox.Text;
             currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
             flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+
+            if (driveLockStatusLable.Content == "Locked")
+            {
+                CopyFilesButton.IsEnabled = false;
+                printButton.IsEnabled = false;
+            }
+            
         }
 
         private void refreshDrivesButton_Click(object sender, RoutedEventArgs e)
@@ -193,6 +208,15 @@ namespace Election_Saver
             string currentPrecinctFlashFiles = PreceintTextBox.Text;
             currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
             flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+
+            //Get drive lock status
+            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+
+            if (driveLockStatusLable.Content == "Locked")
+            {
+                CopyFilesButton.IsEnabled = false;
+                printButton.IsEnabled = false;
+            }
         }
 
         private void unlockBitlockerButton_Click(object sender, RoutedEventArgs e)
@@ -201,6 +225,9 @@ namespace Election_Saver
             {
                 fileCopier.unlockBitLocker();
             }
+
+            //Get drive lock status
+            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             //Poplulating the files available to copy text block
             string currentPrecinctFlashFiles = PreceintTextBox.Text;
