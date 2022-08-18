@@ -15,8 +15,8 @@ namespace Election_Saver
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
-        //static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
-        static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
+        static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
+        //static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
         static string localDestinationPath = @"C:\Election_Data";
         static string sourcePath = @"E:\";
         DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
@@ -37,12 +37,13 @@ namespace Election_Saver
             allDrives = new List<DriveInfo>(allDrivesArray);
             List<int> indexOfDrivesToRemove = new List<int>();
             allDrives.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
-            
+            allDrives.RemoveAll(p => !p.IsReady);
+
             //establish bitlocker
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive))
+                if (drive.Name.Contains(sourceDrive) && drive.IsReady)
                 {
                     bitManager = new BitLockerManager(drive);
                 }
@@ -101,7 +102,7 @@ namespace Election_Saver
             List<DriveInfo> allDrivesNew = new List<DriveInfo>(allDrivesArrayNew);
             allDrives.Clear();
             allDrivesNew.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
-
+            allDrivesNew.RemoveAll(p => !p.IsReady);
             allDrives = allDrivesNew;
             
             
@@ -112,7 +113,7 @@ namespace Election_Saver
             //update drive to copy from
             foreach (var drive in allDrives)
             {
-                if (drive == labelInputName)
+                if (drive == labelInputName && drive.IsReady)
                 {
                     //sourcePath = drive.VolumeLabel;
                     sourceDir = drive.RootDirectory;
@@ -122,7 +123,7 @@ namespace Election_Saver
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive))
+                if (drive.Name.Contains(sourceDrive) && drive.IsReady)
                 {
                     bitManager = new BitLockerManager(drive);
                 }
