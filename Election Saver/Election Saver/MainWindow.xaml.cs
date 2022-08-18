@@ -56,6 +56,13 @@ namespace Election_Saver
             progressBarLabel.Visibility = Visibility.Hidden;
 
             networkSaveLocationLabelDispalay.Content = fileCopier.getNetworkDestinationPath();
+            localSaveLocationLabelDispalay.Content = fileCopier.getLocalDestinationPath();
+            currentDefaultDriveLetterLabel1.Content = fileCopier.getSourcePath();
+
+            foreach(var letter in fileCopier.getDriveLettersToExclude())
+            {
+                listOfDriveLettersToExludeBox.Items.Add(letter);
+            }
         }
 
         private async void CopyFilesButton_Click(object sender, RoutedEventArgs e)
@@ -162,6 +169,8 @@ namespace Election_Saver
             {
                 unlockBitlockerButton.IsEnabled = true;
             }
+
+
         }
 
         private void unlockBitlockerButton_Click(object sender, RoutedEventArgs e)
@@ -183,6 +192,54 @@ namespace Election_Saver
             var dialog = new CommonOpenFileDialog();
             dialog.IsFolderPicker = true;
             CommonFileDialogResult result = dialog.ShowDialog();
+            if (result.ToString() == "Ok")
+            {
+                fileCopier.setNetworkDestinationPath(dialog.FileName);
+                networkSaveLocationLabelDispalay.Content = dialog.FileName;
+            }
+            
+
+        }
+
+        private void changeLocalLocationButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result.ToString() == "Ok")
+            {
+                fileCopier.setLocalDestinationPath(dialog.FileName);
+                localSaveLocationLabelDispalay.Content = dialog.FileName;
+            }
+        }
+
+        private void changeDefaultDriveLetterButtton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result.ToString() == "Ok")
+            {
+                fileCopier.setSourcePath(dialog.FileName);
+                currentDefaultDriveLetterLabel1.Content = dialog.FileName;
+            }
+        }
+
+        private void letterToAddToDrivesToExcludeButton_Click(object sender, RoutedEventArgs e)
+        {
+            listOfDriveLettersToExludeBox.Items.Add(letterToAddToDrivesToExcludeTextBox.Text);
+            List<string> listOfNewLettersToExclude = new List<string>();
+            foreach (var letter in listOfDriveLettersToExludeBox.Items)
+            {
+                listOfNewLettersToExclude.Add(letter.ToString());
+            }
+            fileCopier.setDriveLettersToExclude(listOfNewLettersToExclude);
+        }
+
+        private void removeSelectedDriveLetterButton_Click(object sender, RoutedEventArgs e)
+        {
+            fileCopier.removeSepcicDriveLetterToExclude(listOfDriveLettersToExludeBox.SelectedItem.ToString());
+            listOfDriveLettersToExludeBox.Items.Remove(listOfDriveLettersToExludeBox.SelectedItem);
         }
     }
 }

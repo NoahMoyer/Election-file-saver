@@ -17,13 +17,14 @@ namespace Election_Saver
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
         static string networkDestinationPath; //= @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
         //static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
-        static string localDestinationPath = @"C:\Election_Data";
-        static string sourcePath = @"E:\";
-        DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
-        DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);
+        static string localDestinationPath;
+        static string sourcePath;// = @"E:\";
+        DirectoryInfo localDir;
+        DirectoryInfo sourceDir;
         DirectoryInfo destinationDir;
         static private DriveInfo[] allDrivesArray;
         public List<DriveInfo> allDrives;
+        public List<string> listOfDriveLettersToExlude = new List<string>();
         public string settingsFileName = @"C:\Temp\settings.csv";
         public BitLockerManager bitManager;
         public string bitLockerPassword = "a2CityClerksOffice!";
@@ -32,12 +33,25 @@ namespace Election_Saver
         //default constructor
         public FileCopier()
         {
+            getSettings();
+
+            destinationDir = new DirectoryInfo(networkDestinationPath);
+            localDir = new DirectoryInfo(localDestinationPath);
+            sourceDir = new DirectoryInfo(sourcePath);
 
             allDrivesArray = DriveInfo.GetDrives();
             allDrives = new List<DriveInfo>(allDrivesArray);
             List<int> indexOfDrivesToRemove = new List<int>();
-            allDrives.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
+            foreach (string driveLetter in listOfDriveLettersToExlude)
+            {
+                allDrives.RemoveAll(p => p.Name.Contains(driveLetter));
+            }
             allDrives.RemoveAll(p => !p.IsReady);
+
+            
+
+            
+           
 
             //establish bitlocker
             foreach (DriveInfo drive in allDrives)
@@ -48,9 +62,6 @@ namespace Election_Saver
                     bitManager = new BitLockerManager(drive);
                 }
             }
-
-            getSettings();
-            destinationDir = new DirectoryInfo(networkDestinationPath);
         }
 
         public void getSettings()
@@ -69,6 +80,21 @@ namespace Election_Saver
                     bitLockerPassword = fields[1];
                     fields = csvParser.ReadFields(); //network destination
                     networkDestinationPath = fields[1];
+                    fields = csvParser.ReadFields(); //local destination
+                    localDestinationPath = fields[1];
+                    fields = csvParser.ReadFields(); //default drive letter
+                    sourcePath =  fields[1];
+                    fields = csvParser.ReadFields(); //drive letters to exlude
+                    listOfDriveLettersToExlude.Clear();//want to clear the list before we make it again
+                    foreach (var letter in fields)
+                    {
+                        if(letter.Length == 1)
+                        {
+                            listOfDriveLettersToExlude.Add(letter);
+                        }
+                        
+                    }
+
 
                 }
 
@@ -85,6 +111,16 @@ namespace Election_Saver
             //TODO: implement this to set all settings
             //need to write the new password to the file as well
             File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
+            File.AppendAllText(settingsFileName, "\nNetworkDestination," + networkDestinationPath);
+            File.AppendAllText(settingsFileName, "\nLocalDestination," + localDestinationPath);
+            //string sourceDriveLetter = sourcePath.Remove(0, 1);
+            File.AppendAllText(settingsFileName, "\ndefaultSourceDrive," + sourcePath);
+            File.AppendAllText(settingsFileName, "\ndriveLettersToExclude"); 
+            foreach(var letter in listOfDriveLettersToExlude)
+            {
+                File.AppendAllText(settingsFileName, "," + letter);
+            }
+
         }
         public void setBitLockerPassword(string newBitLockerPassword)
         {
@@ -97,7 +133,31 @@ namespace Election_Saver
 
             bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
         }
-
+        public List<string> getDriveLettersToExclude()
+        {
+            return listOfDriveLettersToExlude;
+        }
+        public void setDriveLettersToExclude(List<string> newListOfDriveLettersToExclude)
+        {
+            listOfDriveLettersToExlude.Clear();
+            listOfDriveLettersToExlude = newListOfDriveLettersToExclude;
+            setSettings();
+        }
+        public void removeSepcicDriveLetterToExclude(string driverLetterToRemoveFromExclusion)
+        {
+            listOfDriveLettersToExlude.Remove(driverLetterToRemoveFromExclusion);
+            setSettings();
+        }
+        public string getSourcePath()
+        {
+            return sourcePath;
+        }
+        public void setSourcePath(string newSourcePath)
+        {
+            sourcePath = newSourcePath;
+            sourceDir = new DirectoryInfo(sourcePath);
+            setSettings();
+        }
         public string getLocalDestinationPath()
         {
             return localDestinationPath;
@@ -106,6 +166,7 @@ namespace Election_Saver
         public void setLocalDestinationPath(string newLocalDestinationInput)
         {
             localDestinationPath = newLocalDestinationInput;
+            localDir = new DirectoryInfo(localDestinationPath);
             setSettings();
         }
 
@@ -117,6 +178,7 @@ namespace Election_Saver
         public void setNetworkDestinationPath(string newNetworkDestinationPath)
         {
             networkDestinationPath = newNetworkDestinationPath;
+            destinationDir = new DirectoryInfo(newNetworkDestinationPath);
             setSettings();
         }
 
@@ -125,7 +187,10 @@ namespace Election_Saver
             DriveInfo[] allDrivesArrayNew = DriveInfo.GetDrives();
             List<DriveInfo> allDrivesNew = new List<DriveInfo>(allDrivesArrayNew);
             allDrives.Clear();
-            allDrivesNew.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
+            foreach (string driveLetter in listOfDriveLettersToExlude)
+            {
+                allDrivesNew.RemoveAll(p => p.Name.Contains(driveLetter));
+            }
             allDrivesNew.RemoveAll(p => !p.IsReady);
             allDrives = allDrivesNew;
             
@@ -154,10 +219,6 @@ namespace Election_Saver
             }
         }
 
-        public string getSourcePath()
-        {
-            return sourcePath;
-        }
 
 
         //copy files from flash drive to network, locally

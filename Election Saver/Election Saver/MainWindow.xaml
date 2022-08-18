@@ -35,6 +35,18 @@
                     <Label x:Name="networkSaveLocation" Content="Current networksave location" HorizontalAlignment="Left" Margin="39,48,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="networkSaveLocationLabelDispalay" Content="Network location should show here" HorizontalAlignment="Left" Margin="39,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568"/>
                     <Button x:Name="changeNetworkLocationButton" Content="Change network location" HorizontalAlignment="Left" Margin="39,105,0,0" VerticalAlignment="Top" Click="changeNetworkLocationButton_Click"/>
+                    <Label x:Name="localSaveLocation" Content="Current local save location" HorizontalAlignment="Left" Margin="39,130,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="localSaveLocationLabelDispalay" Content="Local location should show here" HorizontalAlignment="Left" Margin="39,156,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="changeLocalLocationButton" Content="Change local save location" HorizontalAlignment="Left" Margin="39,187,0,0" VerticalAlignment="Top" Click="changeLocalLocationButton_Click_1"/>
+                    <Label x:Name="currentDefaultDriveLetterLabel" Content="Current default drive letter" HorizontalAlignment="Left" Margin="39,212,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="currentDefaultDriveLetterLabel1" Content="Current default drive letter should display here" HorizontalAlignment="Left" Margin="39,238,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="changeDefaultDriveLetterButtton" Content="Change default drive letter" HorizontalAlignment="Left" Margin="39,269,0,0" VerticalAlignment="Top" Click="changeDefaultDriveLetterButtton_Click"/>
+                    <ListBox x:Name="listOfDriveLettersToExludeBox"  Margin="504,43,71,266"/>
+                    <TextBox x:Name="letterToAddToDrivesToExcludeTextBox" HorizontalAlignment="Left" Margin="504,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="letterToAddToDrivesToExcludeButton" Content="Add drive letter" HorizontalAlignment="Left" Margin="638,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="letterToAddToDrivesToExcludeButton_Click"/>
+                    <Label x:Name="driveLettersToExcludeLabel" Content="List of drive letters to exclude" HorizontalAlignment="Left" Margin="517,12,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="removeSelectedDriveLetterButton" Content="Remove selected" HorizontalAlignment="Left" Margin="638,215,0,0" VerticalAlignment="Top" Click="removeSelectedDriveLetterButton_Click"/>
+                    <Label x:Name="driveLetterExxclusionInfo" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="504,164,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>
