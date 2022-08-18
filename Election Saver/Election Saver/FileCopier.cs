@@ -508,18 +508,11 @@ namespace Election_Saver
             DirectoryInfo flashDirecory = new DirectoryInfo(sourcePath);
             string flashFileString = "No files present in current directory.";
 
-
-            //check if C:\Election_Data exists
-            if (!Directory.Exists(localDestinationPath))
-            {
-                flashFileString = "Election data folder not detected. Have you copied from the flash drive?";
-                return flashFileString;
-            }
             //if the local paths to copy to don't exist
             //check C:\Election_Data\{precict}
-            else if (!Directory.Exists(sourcePath))
+            if (!Directory.Exists(sourcePath))
             {
-                flashFileString = "Flash drive not detected. Is the drive plugged in?";
+                flashFileString = "Flash drive not detected. Is the drive plugged in or still locked?";
                 return flashFileString;
             }
 
