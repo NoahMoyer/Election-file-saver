@@ -426,10 +426,13 @@ namespace Election_Saver
             
         }
 
+        /// <summary>
+        /// Function that checks what files are currently in the local computer directory the program copies to.
+        /// </summary>
+        /// <param name="precinct"></param>
+        /// <returns></returns>
         public string getAvailableFiles(string precinct)
-        {
-            //This part of the function copies all files except those in the root directory.
-            
+        {            
             List<FileInfo> filesList = new List<FileInfo>();
             string localPath;
             localPath = Path.Combine(localDestinationPath, precinct);
@@ -453,16 +456,11 @@ namespace Election_Saver
 
             try
             {
+                //Creating DirectoryInfo based on the localPath folder.
                 DirectoryInfo[] directories = localDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
 
-                //create the directory if it doesn't exist
-                if (!Directory.Exists(Path.Combine(networkDestinationPath, precinct)))
-                {
-                    //To do: maybe throw an error or something if the file path doesn't exist?
-                    //Directory.CreateDirectory(Path.Combine(networkDestinationPath, precinct));
-                }
-
-                if(localPath == @"C:\Election_Data")
+                //Check if the localDesitnationPath is the localPath. This tells us if the precint text box is empty. If it's empty we don't want to populate the filesList.
+                if(localPath == localDestinationPath)
                 {
                     fileString = "Please enter precinct number.";
                     return fileString;
@@ -470,6 +468,7 @@ namespace Election_Saver
                 else
                 {
                     //adding files into filesList
+                    //.accdb and .csv are currently commented out since we don't print them anyway.
                     foreach (var dir in directories)
                     {
                         //adding each file into the fileList from sub folders to filesList
@@ -500,6 +499,10 @@ namespace Election_Saver
             return output;
         }
 
+        /// <summary>
+        /// Function that checks what files are on the flash drive and returns them as a string.
+        /// </summary>
+        /// <returns></returns>
         public string getFlashAvailableFiles()
         {
             List<FileInfo> filesList = new List<FileInfo>();
@@ -508,8 +511,7 @@ namespace Election_Saver
             DirectoryInfo flashDirecory = new DirectoryInfo(sourcePath);
             string flashFileString = "No files present in current directory.";
 
-            //if the local paths to copy to don't exist
-            //check C:\Election_Data\{precict}
+            //Checking if the flash drive is detected.If not we don't want to pupulcate the filesList
             if (!Directory.Exists(sourcePath))
             {
                 flashFileString = "Flash drive not detected. Is the drive plugged in or still locked?";
@@ -519,10 +521,11 @@ namespace Election_Saver
 
             try
             {
+                //Creating DirectoryInfo based on the localPath folder
                 DirectoryInfo[] directories = flashDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
 
-                
-
+                // Check if the sourcePath is the flashPath. This tells us if the flash drive is not selected.If it's empty we don't want to populate the filesList.
+                //I'm not sure if this first if fucntion works or even makes sense to have since we are checking if the drive is connected before this.
                 if (sourcePath == @"")
                 {
                     flashFileString = "Please enter precinct number.";
@@ -543,6 +546,7 @@ namespace Election_Saver
                     filesList.AddRange(flashDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
                     filesList.AddRange(flashDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
 
+                    //convert the fileList to a string
                     flashFileString = string.Join(",", filesList);
                 }
 
@@ -559,9 +563,6 @@ namespace Election_Saver
             string[] input = flashFileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
             string output = string.Join("\n", input); //Join array with new line inbetween each element
             return output;
-
-
-            //return flashFileString;
         }
 
     }
