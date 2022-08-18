@@ -53,6 +53,16 @@ namespace Election_Saver
             }
             progressBar.Visibility = Visibility.Hidden;
             progressBarLabel.Visibility = Visibility.Hidden;
+
+            //Poplulating the files available to copy text block
+            string currentPrecinctFlashFiles = PreceintTextBox.Text;
+            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+
+            //Pupulating the files available to print text block
+            string currentPrecinctLocalFiles = PreceintTextBox.Text;
+            currentPrecinctLocalFiles = fileCopier.getAvailableFiles(currentPrecinctLocalFiles);
+            localFilesTextBlock.Text = currentPrecinctLocalFiles;
         }
 
         /// <summary>
@@ -83,7 +93,10 @@ namespace Election_Saver
             progressBarLabel.Visibility = Visibility.Hidden;
 
 
-
+            //Pupulating the files available to copy text block
+            string currentPrecinct = PreceintTextBox.Text;
+            currentPrecinct = fileCopier.getAvailableFiles(currentPrecinct);
+            localFilesTextBlock.Text = currentPrecinct;
         }
 
         private void PreceintTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -96,6 +109,12 @@ namespace Election_Saver
                 CopyFilesButton.IsEnabled = false;
                 printButton.IsEnabled = false;
             }
+
+
+            //Pupulating the files available to print text block
+            string currentPrecinctLocalFiles = PreceintTextBox.Text;
+            currentPrecinctLocalFiles = fileCopier.getAvailableFiles(currentPrecinctLocalFiles);
+            localFilesTextBlock.Text = currentPrecinctLocalFiles;
         }
 
         
@@ -144,6 +163,11 @@ namespace Election_Saver
         {
             fileCopier.setSourcePath(driveSelector.SelectedItem);
             unlockBitlockerButton.IsEnabled = true;
+
+            //Poplulating the files available to copy text block
+            string currentPrecinctFlashFiles = PreceintTextBox.Text;
+            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
         }
 
         private void refreshDrivesButton_Click(object sender, RoutedEventArgs e)
@@ -164,6 +188,11 @@ namespace Election_Saver
             {
                 unlockBitlockerButton.IsEnabled = true;
             }
+
+            //Poplulating the files available to copy text block
+            string currentPrecinctFlashFiles = PreceintTextBox.Text;
+            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
         }
 
         private void unlockBitlockerButton_Click(object sender, RoutedEventArgs e)
@@ -172,6 +201,11 @@ namespace Election_Saver
             {
                 fileCopier.unlockBitLocker();
             }
+
+            //Poplulating the files available to copy text block
+            string currentPrecinctFlashFiles = PreceintTextBox.Text;
+            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
         }
 
         private void updateBitLockerPassword_Click(object sender, RoutedEventArgs e)

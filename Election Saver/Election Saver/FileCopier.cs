@@ -16,8 +16,9 @@ namespace Election_Saver
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
-        static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
+        //static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
         //static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
+        static string networkDestinationPath = @"\\nathans2\4tb share\electionTest";
         static string localDestinationPath = @"C:\Election_Data";
         static string sourcePath = @"E:\";
         DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
@@ -147,7 +148,7 @@ namespace Election_Saver
             {
                 if (drive == labelInputName)
                 {
-                    //sourcePath = drive.VolumeLabel;
+                    sourcePath = drive.Name;
                     sourceDir = drive.RootDirectory;
                 }
             }
@@ -423,6 +424,145 @@ namespace Election_Saver
             }
 
             
+        }
+
+        /// <summary>
+        /// Function that checks what files are currently in the local computer directory the program copies to.
+        /// </summary>
+        /// <param name="precinct"></param>
+        /// <returns></returns>
+        public string getAvailableFiles(string precinct)
+        {            
+            List<FileInfo> filesList = new List<FileInfo>();
+            string localPath;
+            localPath = Path.Combine(localDestinationPath, precinct);
+            DirectoryInfo localDirecory = new DirectoryInfo(localPath);
+            string fileString = "No files present in current directory.";
+
+            //check if C:\Election_Data exists
+            if (!Directory.Exists(localDestinationPath))
+            {
+                fileString = "Election data folder not detected. Have you copied from the flash drive?";
+                return fileString;
+            }
+            //if the local paths to copy to don't exist
+            //check C:\Election_Data\{precict}
+            else if (!Directory.Exists(localPath))
+            {
+                fileString = "Precint folder not detected. Have you copied from the flash drive?";
+                return fileString;
+            }
+            
+
+            try
+            {
+                //Creating DirectoryInfo based on the localPath folder.
+                DirectoryInfo[] directories = localDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
+
+                //Check if the localDesitnationPath is the localPath. This tells us if the precint text box is empty. If it's empty we don't want to populate the filesList.
+                if(localPath == localDestinationPath)
+                {
+                    fileString = "Please enter precinct number.";
+                    return fileString;
+                }
+                else
+                {
+                    //adding files into filesList
+                    //.accdb and .csv are currently commented out since we don't print them anyway.
+                    foreach (var dir in directories)
+                    {
+                        //adding each file into the fileList from sub folders to filesList
+                        filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                        //filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                        //filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    }
+                    //adding files from root directory to filesList
+                    filesList.AddRange(localDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(localDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(localDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+
+                    fileString = string.Join(",", filesList);
+                }
+                
+            }
+            catch (DirectoryNotFoundException dirNotFound)
+            {
+                Console.WriteLine(dirNotFound.Message);
+            }
+
+            //format string to be more readable
+            //String should format in the following example:
+            //file1.pdf
+            //file2.pdf
+            string[] input = fileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
+            string output = string.Join("\n", input); //Join array with new line inbetween each element
+            return output;
+        }
+
+        /// <summary>
+        /// Function that checks what files are on the flash drive and returns them as a string.
+        /// </summary>
+        /// <returns></returns>
+        public string getFlashAvailableFiles()
+        {
+            List<FileInfo> filesList = new List<FileInfo>();
+            string flashPath;
+            flashPath = sourcePath;
+            DirectoryInfo flashDirecory = new DirectoryInfo(sourcePath);
+            string flashFileString = "No files present in current directory.";
+
+            //Checking if the flash drive is detected.If not we don't want to pupulcate the filesList
+            if (!Directory.Exists(sourcePath))
+            {
+                flashFileString = "Flash drive not detected. Is the drive plugged in or still locked?";
+                return flashFileString;
+            }
+
+
+            try
+            {
+                //Creating DirectoryInfo based on the localPath folder
+                DirectoryInfo[] directories = flashDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
+
+                // Check if the sourcePath is the flashPath. This tells us if the flash drive is not selected.If it's empty we don't want to populate the filesList.
+                //I'm not sure if this first if fucntion works or even makes sense to have since we are checking if the drive is connected before this.
+                if (sourcePath == @"")
+                {
+                    flashFileString = "Please enter precinct number.";
+                    return flashFileString;
+                }
+                else
+                {
+                    //adding files into filesList
+                    foreach (var dir in directories)
+                    {
+                        //adding each file into the fileList from sub folders to filesList
+                        filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                        filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                        filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    }
+                    //adding files from root directory to filesList
+                    filesList.AddRange(flashDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(flashDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    filesList.AddRange(flashDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+
+                    //convert the fileList to a string
+                    flashFileString = string.Join(",", filesList);
+                }
+
+            }
+            catch (DirectoryNotFoundException dirNotFound)
+            {
+                Console.WriteLine(dirNotFound.Message);
+            }
+
+            //format string to be more readable
+            //String should format in the following example:
+            //file1.pdf
+            //file2.pdf
+            string[] input = flashFileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
+            string output = string.Join("\n", input); //Join array with new line inbetween each element
+            return output;
         }
 
     }
