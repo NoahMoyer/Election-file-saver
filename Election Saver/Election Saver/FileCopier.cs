@@ -15,13 +15,13 @@ namespace Election_Saver
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
-        static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
+        static string networkDestinationPath; //= @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
         //static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
         static string localDestinationPath = @"C:\Election_Data";
         static string sourcePath = @"E:\";
         DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
         DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);
-        DirectoryInfo destinationDir = new DirectoryInfo(networkDestinationPath);
+        DirectoryInfo destinationDir;
         static private DriveInfo[] allDrivesArray;
         public List<DriveInfo> allDrives;
         public string settingsFileName = @"C:\Temp\settings.csv";
@@ -50,6 +50,7 @@ namespace Election_Saver
             }
 
             getSettings();
+            destinationDir = new DirectoryInfo(networkDestinationPath);
         }
 
         public void getSettings()
@@ -66,6 +67,8 @@ namespace Election_Saver
                     //read line and add each field to a entry in the array
                     fields = csvParser.ReadFields();//bitlocker password
                     bitLockerPassword = fields[1];
+                    fields = csvParser.ReadFields(); //network destination
+                    networkDestinationPath = fields[1];
 
                 }
 
@@ -73,12 +76,21 @@ namespace Election_Saver
 
             //TODO: make sure to create a settings file if it doesn't exist
         }
+        /// <summary>
+        /// This function is desinged to set the current settings so that they are saved and can be referenced when needed. 
+        /// This function should be called any time a setting is changed so that we are keeping the settings up to date
+        /// </summary>
+        public void setSettings()
+        {
+            //TODO: implement this to set all settings
+            //need to write the new password to the file as well
+            File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
+        }
         public void setBitLockerPassword(string newBitLockerPassword)
         {
             bitLockerPassword = newBitLockerPassword;
-
-            //need to write the new password to the file as well
-            File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
+            setSettings();
+            
         }
         public void unlockBitLocker()
         {
@@ -86,14 +98,26 @@ namespace Election_Saver
             bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
         }
 
+        public string getLocalDestinationPath()
+        {
+            return localDestinationPath;
+        }
+
         public void setLocalDestinationPath(string newLocalDestinationInput)
         {
             localDestinationPath = newLocalDestinationInput;
+            setSettings();
+        }
+
+        public string getNetworkDestinationPath()
+        {
+            return networkDestinationPath;
         }
 
         public void setNetworkDestinationPath(string newNetworkDestinationPath)
         {
             networkDestinationPath = newNetworkDestinationPath;
+            setSettings();
         }
 
         public void updateDrives()

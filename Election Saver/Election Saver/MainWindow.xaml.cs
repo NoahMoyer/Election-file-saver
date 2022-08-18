@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Threading;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Election_Saver
 {
@@ -53,6 +54,8 @@ namespace Election_Saver
             }
             progressBar.Visibility = Visibility.Hidden;
             progressBarLabel.Visibility = Visibility.Hidden;
+
+            networkSaveLocationLabelDispalay.Content = fileCopier.getNetworkDestinationPath();
         }
 
         private async void CopyFilesButton_Click(object sender, RoutedEventArgs e)
@@ -172,6 +175,14 @@ namespace Election_Saver
         private void updateBitLockerPassword_Click(object sender, RoutedEventArgs e)
         {
             fileCopier.setBitLockerPassword(bitLockerPasswordTextBox.Password.ToString());
+        }
+
+        private void changeNetworkLocationButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
         }
     }
 }

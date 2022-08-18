@@ -34,3 +34,7 @@ C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-save
 C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CopyComplete
 C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe
 C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.pdb
+C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml

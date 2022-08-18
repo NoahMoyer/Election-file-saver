@@ -29,8 +29,12 @@
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FFE5E5E5">
-                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="84,70,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="updateBitLockerPassword" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="224,69,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click"/>
+                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="39,25,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="updateBitLockerPassword" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="174,24,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click"/>
+                    <Label x:Name="BitlockerLabel" Content="Enter new BitLocker password below" HorizontalAlignment="Left" Margin="39,-1,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="networkSaveLocation" Content="Current networksave location" HorizontalAlignment="Left" Margin="39,48,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="networkSaveLocationLabelDispalay" Content="Network location should show here" HorizontalAlignment="Left" Margin="39,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568"/>
+                    <Button x:Name="changeNetworkLocationButton" Content="Change network location" HorizontalAlignment="Left" Margin="39,105,0,0" VerticalAlignment="Top" Click="changeNetworkLocationButton_Click"/>
 
                 </Grid>
             </TabItem>
