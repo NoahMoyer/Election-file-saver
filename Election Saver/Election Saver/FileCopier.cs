@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
-
+using System.Text.RegularExpressions;
 
 
 namespace Election_Saver
 {
     using BitLockerManager;
+    using System.Windows;
+    
+
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
@@ -25,6 +28,8 @@ namespace Election_Saver
         static private DriveInfo[] allDrivesArray;
         public List<DriveInfo> allDrives;
         public List<string> listOfDriveLettersToExlude = new List<string>();
+        public List<string> listOfFileExtensionsToCopy = new List<string>();
+        string extensionPrefix = "*.";
         public string settingsFileName = @"C:\Temp\settings.csv";
         public BitLockerManager bitManager;
         public string bitLockerPassword = "a2CityClerksOffice!";
@@ -94,10 +99,30 @@ namespace Election_Saver
                         }
                         
                     }
+                    fields = csvParser.ReadFields(); //files extentions to copy
+                    for (int i = 1; i < fields.Length; i++)
+                    {
+                            listOfFileExtensionsToCopy.Add(extensionPrefix + fields[i]);
+                    }
 
 
                 }
 
+            }
+            else
+            {
+                MessageBox.Show("No settings file found at C:\\Temp\\settings.csv" +
+                    "\nSettings file with format like this needs to be created:" +
+                    "\n\nbitlockerPassword,a2CityClerksOffice!" +
+                    "\nNetworkDestination,S:\\Helpdesk\\Scripts\\Election files" +
+                    "\nLocalDestination,C:\\Election_Data" +
+                    "\ndefaultSourceDrive,D:\\" +
+                    "\ndriveLettersToExclude,G,C,U,S" +
+                    "\nfileExtensionsToCopy,accdb,csv,pdf" +
+                    "\n\nfirst column is just the name/description of which setting it is. Needs to be in this order. " +
+                    "\nSecond columnis the actual setting." +
+                    "\nCrate this file then you can use the application.", "No settings file");
+                System.Environment.Exit(1);
             }
 
             //TODO: make sure to create a settings file if it doesn't exist
@@ -108,17 +133,27 @@ namespace Election_Saver
         /// </summary>
         public void setSettings()
         {
-            //TODO: implement this to set all settings
-            //need to write the new password to the file as well
             File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
             File.AppendAllText(settingsFileName, "\nNetworkDestination," + networkDestinationPath);
             File.AppendAllText(settingsFileName, "\nLocalDestination," + localDestinationPath);
-            //string sourceDriveLetter = sourcePath.Remove(0, 1);
             File.AppendAllText(settingsFileName, "\ndefaultSourceDrive," + sourcePath);
             File.AppendAllText(settingsFileName, "\ndriveLettersToExclude"); 
             foreach(var letter in listOfDriveLettersToExlude)
             {
                 File.AppendAllText(settingsFileName, "," + letter);
+            }
+            File.AppendAllText(settingsFileName, "\nfileExtensionsToCopy");
+            foreach(var extension in listOfFileExtensionsToCopy)
+            {
+                if (extension.StartsWith(extensionPrefix))
+                {
+                    File.AppendAllText(settingsFileName, "," + extension.Substring(extensionPrefix.Length));
+                }
+                else if (Regex.IsMatch(extension, "[a-z]"))
+                {
+                    File.AppendAllText(settingsFileName, "," + extension);
+                }
+                
             }
 
         }
@@ -132,6 +167,26 @@ namespace Election_Saver
         {
 
             bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+        }
+        public List<string> getListOfFileExtensionsToCopy()
+        {
+            return listOfFileExtensionsToCopy;
+        }
+        public void removeSpecificFileExtensionToCopy(string fileExtenstionToRemoveFromCopy)
+        {
+            listOfFileExtensionsToCopy.Remove(fileExtenstionToRemoveFromCopy);
+            setSettings();
+        }
+        public void setFileExtensionsToCopy(List<string> newListOfFileExtensionsToCopy)
+        {
+            listOfFileExtensionsToCopy.Clear();
+            listOfFileExtensionsToCopy = newListOfFileExtensionsToCopy;
+            setSettings();
+        }
+        public void addFileExtensionToCopy(string newFileExtensionToCopy)
+        {
+            listOfFileExtensionsToCopy.Add(newFileExtensionToCopy);
+            setSettings();
         }
         public List<string> getDriveLettersToExclude()
         {
@@ -255,9 +310,13 @@ namespace Election_Saver
 
                 foreach (var dir in directories)
                 {
-                    filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    foreach(var ext in listOfFileExtensionsToCopy)
+                    {
+                        filesList.AddRange(dir.GetFiles(ext, System.IO.SearchOption.TopDirectoryOnly));
+                    }
+                    //filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
                 }
 
                 foreach(var file in filesList)
@@ -286,9 +345,9 @@ namespace Election_Saver
 
                 }
 
-                var extensions = new string[] { "*.pdf", "*.accdb", "*.csv" };
+                //var extensions = new string[] { "*.pdf", "*.accdb", "*.csv" };
                 //root directory files
-                foreach (var ext in extensions)
+                foreach (var ext in listOfFileExtensionsToCopy)
                 {
                     foreach (var file in sourceDir.GetFiles(ext, System.IO.SearchOption.TopDirectoryOnly))
                     {

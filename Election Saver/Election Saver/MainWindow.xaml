@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Election_Saver"
         mc:Ignorable="d"
-        Title="Election Saver" MinHeight="450" MinWidth="800"
-        MaxHeight="450" MaxWidth="800">
+        Title="Election Saver" MinHeight="500" MinWidth="800"
+        MaxHeight="500" MaxWidth="800">
     <Grid x:Name="Election_Saver" Margin="0,0,0,-16" >
 
         <TabControl>
             <TabItem Header="Main">
                 <Grid Background="#FFE5E5E5">
                     <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Left" Margin="278,0,0,148" VerticalAlignment="Bottom" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False"/>
-                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Height="52" Margin="0,316,0,0" VerticalAlignment="Top" Width="454" Visibility="Hidden"/>
+                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Height="52" Margin="0,360,0,0" VerticalAlignment="Top" Width="454" Visibility="Hidden"/>
                     <ComboBox x:Name="driveSelector" HorizontalAlignment="Left" Margin="342,74,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="18934.85,111261.719" SelectionChanged="driveSelector_SelectionChanged"/>
                     <TextBox x:Name="PreceintTextBox" HorizontalAlignment="Center" Margin="0,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged"/>
                     <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,166,105,0" VerticalAlignment="Top"/>
@@ -24,13 +24,13 @@
                     <Label x:Name="precinctBoxLabel" Content="Enter precinct below" HorizontalAlignment="Center" Margin="0,135,0,0" VerticalAlignment="Top" Cursor="" Width="120"/>
                     <Button Content="Button" Margin="488,116,306,306"/>
                     <Button x:Name="unlockBitlockerButton" Content="Unlock Drive" HorizontalAlignment="Left" Margin="479,100,0,0" VerticalAlignment="Top" Width="79" Click="unlockBitlockerButton_Click"/>
-                    <Label x:Name="progressBarLabel" Content="Processing please wait..." HorizontalAlignment="Center" Margin="0,290,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="progressBarLabel" Content="Processing please wait..." HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FFE5E5E5">
-                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="39,25,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="updateBitLockerPassword" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="174,24,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click"/>
+                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="39,25,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="bitlockerPasswordChanged"/>
+                    <Button x:Name="updateBitLockerPasswordButton" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="174,24,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click"/>
                     <Label x:Name="BitlockerLabel" Content="Enter new BitLocker password below" HorizontalAlignment="Left" Margin="39,-1,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="networkSaveLocation" Content="Current networksave location" HorizontalAlignment="Left" Margin="39,48,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="networkSaveLocationLabelDispalay" Content="Network location should show here" HorizontalAlignment="Left" Margin="39,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568"/>
@@ -41,12 +41,18 @@
                     <Label x:Name="currentDefaultDriveLetterLabel" Content="Current default drive letter" HorizontalAlignment="Left" Margin="39,212,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="currentDefaultDriveLetterLabel1" Content="Current default drive letter should display here" HorizontalAlignment="Left" Margin="39,238,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="changeDefaultDriveLetterButtton" Content="Change default drive letter" HorizontalAlignment="Left" Margin="39,269,0,0" VerticalAlignment="Top" Click="changeDefaultDriveLetterButtton_Click"/>
-                    <ListBox x:Name="listOfDriveLettersToExludeBox"  Margin="504,43,71,266"/>
-                    <TextBox x:Name="letterToAddToDrivesToExcludeTextBox" HorizontalAlignment="Left" Margin="504,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="letterToAddToDrivesToExcludeButton" Content="Add drive letter" HorizontalAlignment="Left" Margin="638,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="letterToAddToDrivesToExcludeButton_Click"/>
-                    <Label x:Name="driveLettersToExcludeLabel" Content="List of drive letters to exclude" HorizontalAlignment="Left" Margin="517,12,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="removeSelectedDriveLetterButton" Content="Remove selected" HorizontalAlignment="Left" Margin="638,215,0,0" VerticalAlignment="Top" Click="removeSelectedDriveLetterButton_Click"/>
-                    <Label x:Name="driveLetterExxclusionInfo" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="504,164,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="listOfDriveLettersToExludeBox"  Margin="540,30,35,347" SelectionChanged="listOfDriveLettersToExludeBox_SelectionChanged"/>
+                    <TextBox x:Name="letterToAddToDrivesToExcludeTextBox" HorizontalAlignment="Left" Margin="538,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="letterToAddToDrivesToExcludeTextBox_TextChanged"/>
+                    <Button x:Name="letterToAddToDrivesToExcludeButton" Content="Add drive letter" HorizontalAlignment="Left" Margin="672,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="letterToAddToDrivesToExcludeButton_Click"/>
+                    <Label x:Name="driveLettersToExcludeLabel" Content="List of drive letters to exclude" HorizontalAlignment="Left" Margin="553,-1,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="removeSelectedDriveLetterButton" Content="Remove selected" HorizontalAlignment="Left" Margin="672,177,0,0" VerticalAlignment="Top" Click="removeSelectedDriveLetterButton_Click"/>
+                    <Label x:Name="driveLetterExxclusionInfo" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="538,127,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="listOfFileExtensionsToCopyBox"  Margin="540,238,35,139" SelectionChanged="listOfFileExtensionsToCopyBox_SelectionChanged"/>
+                    <TextBox x:Name="fileExtensionToAddTextBox" HorizontalAlignment="Left" Margin="532,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="fileExtensionToAddTextBox_TextChanged"/>
+                    <Button x:Name="fileExtensionToAddButton" Content="Add file extension" HorizontalAlignment="Left" Margin="666,359,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="fileExtensionToAddButton_Click"/>
+                    <Label x:Name="fileExtensionsToCopyLabel" Content="List of file extensions to copy" HorizontalAlignment="Left" Margin="553,207,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="removeSelectedFileExtensionButton" Content="Remove selected" HorizontalAlignment="Left" Margin="666,384,0,0" VerticalAlignment="Top" Click="removeSelectedFileExtension_Click"/>
+                    <Label x:Name="fileExtensionInfoLabel" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="532,333,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>
