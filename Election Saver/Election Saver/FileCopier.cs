@@ -645,8 +645,8 @@ namespace Election_Saver
                     {
                         //adding each file into the fileList from sub folders to filesList
                         filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                        //filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                        //filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                        ////filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                        ////filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
                     }
                     //adding files from root directory to filesList
                     filesList.AddRange(localDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
