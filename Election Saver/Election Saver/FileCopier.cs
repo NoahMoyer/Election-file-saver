@@ -121,7 +121,7 @@ namespace Election_Saver
                     "\nfileExtensionsToCopy,accdb,csv,pdf" +
                     "\n\nfirst column is just the name/description of which setting it is. Needs to be in this order. " +
                     "\nSecond columnis the actual setting." +
-                    "\nCrate this file then you can use the application.", "No settings file");
+                    "\nCreate this file then you can use the application.", "No settings file");
                 System.Environment.Exit(1);
             }
 
