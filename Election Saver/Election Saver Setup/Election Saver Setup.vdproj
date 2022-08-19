@@ -33,7 +33,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4BA5743DA21140E3AC33E2AF257B156F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4D48E24B06F3468696126F7EB42617B8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_50BACC8E68D8E3B82B1707371F39ED4F"
+        "OwnerKey" = "8:_4D48E24B06F3468696126F7EB42617B8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_58AC22E18EAC4F539AD96A535BF36900"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,8 +75,32 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BEF18BE7869041E59C6F8F5B99DCFA2D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BFAAA97CD48AA03EBDEF0CC6FBD14D7C"
+        "OwnerKey" = "8:_50BACC8E68D8E3B82B1707371F39ED4F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4D48E24B06F3468696126F7EB42617B8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_50BACC8E68D8E3B82B1707371F39ED4F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BFAAA97CD48AA03EBDEF0CC6FBD14D7C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -233,6 +275,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BA5743DA21140E3AC33E2AF257B156F"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Microsoft.WindowsAPICodePack.Shell.xml"
+            "TargetName" = "8:Microsoft.WindowsAPICodePack.Shell.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D48E24B06F3468696126F7EB42617B8"
             {
             "AssemblyRegister" = "3:1"
@@ -250,6 +312,57 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_50BACC8E68D8E3B82B1707371F39ED4F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_50BACC8E68D8E3B82B1707371F39ED4F"
+                    {
+                    "Name" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_58AC22E18EAC4F539AD96A535BF36900"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\settings.csv"
+            "TargetName" = "8:settings.csv"
+            "Tag" = "8:"
+            "Folder" = "8:_182CF86260C745D18D9911717CD0A051"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -324,12 +437,75 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BEF18BE7869041E59C6F8F5B99DCFA2D"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Microsoft.WindowsAPICodePack.xml"
+            "TargetName" = "8:Microsoft.WindowsAPICodePack.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BFAAA97CD48AA03EBDEF0CC6FBD14D7C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_BFAAA97CD48AA03EBDEF0CC6FBD14D7C"
+                    {
+                    "Name" = "8:Microsoft.WindowsAPICodePack.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.WindowsAPICodePack.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
         }
         "Folder"
         {
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_182CF86260C745D18D9911717CD0A051"
+            {
+            "DefaultLocation" = "8:[TARGETDIR]"
+            "Name" = "8:Settings folder"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:NEWPROPERTY1"
+                "Folders"
+                {
+                }
+            }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_1C448994047F43C4AD3F1E6C8AF4D865"
             {
             "DefaultLocation" = "8:C:\\Program Files\\[ProductName]"
@@ -380,15 +556,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Election Saver"
-        "ProductCode" = "8:{AFF21846-19EA-4636-B9A6-DB70BE9FFA22}"
-        "PackageCode" = "8:{9844F25F-06E1-4915-9B4A-E60255F977F9}"
+        "ProductCode" = "8:{285EBF70-AC5B-4CFD-A95C-87ABEE7CDBA9}"
+        "PackageCode" = "8:{5DC6A545-F319-41B6-8A81-CF4A10C70400}"
         "UpgradeCode" = "8:{F1995517-5FBF-43A1-805C-2C0AC52195D5}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.0.0"
         "Manufacturer" = "8:Moyer"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
