@@ -5,50 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Election_Saver"
         mc:Ignorable="d"
-        Title="Election Saver" MinHeight="450" MinWidth="800"
-        MaxHeight="450" MaxWidth="800">
+        Title="Election Saver" MinHeight="500" MinWidth="800"
+        MaxHeight="500" MaxWidth="800">
     <Grid x:Name="Election_Saver" Margin="0,0,0,-16" >
 
         <TabControl>
             <TabItem Header="Main">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="37*"/>
-                        <ColumnDefinition Width="360*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,211,502,53"/>
-                    <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Left" Margin="292,170,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False" Grid.Column="1"/>
-                    <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="435,170,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="printButton_Click" IsEnabled="False" Grid.Column="1"/>
-                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="40" Margin="323,280,0,0" VerticalAlignment="Top" Width="200" Visibility="Visible" Grid.Column="1"/>
-                    <ComboBox x:Name="driveSelector" HorizontalAlignment="Left" Margin="363,68,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="18934.85,111261.719" SelectionChanged="driveSelector_SelectionChanged" Grid.Column="1"/>
-                    <TextBox x:Name="PreceintTextBox" HorizontalAlignment="Left" Margin="365,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged" Grid.Column="1"/>
-                    <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,119,7,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <TextBox x:Name="timeBox" HorizontalAlignment="Left" Margin="154,52,0,0" TextWrapping="Wrap" Text="Enter time between prints here" VerticalAlignment="Top" Width="127" Height="36" Visibility="Hidden" IsEnabled="False" Grid.Column="1"/>
-                    <Label x:Name="driveSelectorLabel" Content="Drive selection" HorizontalAlignment="Left" Margin="379,37,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Button x:Name="refreshDrivesButton" Content="Refresh Drives" HorizontalAlignment="Left" Margin="493,44,0,0" VerticalAlignment="Top" Click="refreshDrivesButton_Click" Grid.Column="1"/>
-                    <Label x:Name="precinctBoxLabel" Content="Enter precinct below" HorizontalAlignment="Left" Margin="363,95,0,0" VerticalAlignment="Top" Cursor="" Width="120" Grid.Column="1"/>
-                    <Button Content="Button" Margin="515,78,205,344" Grid.Column="1"/>
-                    <Button x:Name="unlockBitlockerButton" Content="Unlock Drive" HorizontalAlignment="Left" Margin="493,69,0,0" VerticalAlignment="Top" Width="79" Click="unlockBitlockerButton_Click" Grid.Column="1"/>
-                    <Label x:Name="progressBarLabel" Content="Processing please wait..." HorizontalAlignment="Left" Margin="355,254,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <ScrollViewer Margin="22,211,502,53" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-                        <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto">
-                            <TextBlock x:Name="localFilesTextBlock" TextWrapping="Wrap" Text="Please enter precinct number." Height="132" Width="221" Grid.ColumnSpan="2"/>
-                        </DockPanel>
-                    </ScrollViewer>
-                    <Label x:Name="fileDataLabel" Content="Files available to copy from flash drive:" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="263"/>
-                    <Label x:Name="fileDataLabel_Copy" Content="Files available to print:" HorizontalAlignment="Left" Margin="22,185,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,27,502,237"/>
-                    <ScrollViewer Margin="22,26,502,238" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-                        <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto">
-                            <TextBlock x:Name="flashFilesTextBlock" TextWrapping="Wrap" Text="Please enter precinct number." Height="132" Width="221" Grid.ColumnSpan="2"/>
-                        </DockPanel>
-                    </ScrollViewer>
+                    <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Left" Margin="278,0,0,148" VerticalAlignment="Bottom" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False"/>
+                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Height="52" Margin="0,360,0,0" VerticalAlignment="Top" Width="454" Visibility="Hidden"/>
+                    <ComboBox x:Name="driveSelector" HorizontalAlignment="Left" Margin="342,74,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="18934.85,111261.719" SelectionChanged="driveSelector_SelectionChanged"/>
+                    <TextBox x:Name="PreceintTextBox" HorizontalAlignment="Center" Margin="0,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged"/>
+                    <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,166,105,0" VerticalAlignment="Top"/>
+                    <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="400,0,0,148" VerticalAlignment="Bottom" Height="56" Width="116" Click="printButton_Click" IsEnabled="False"/>
+                    <TextBox x:Name="timeBox" HorizontalAlignment="Left" Margin="127,90,0,0" TextWrapping="Wrap" Text="Enter time between prints here" VerticalAlignment="Top" Width="127" Height="36" Visibility="Hidden" IsEnabled="False"/>
+                    <Label x:Name="driveSelectorLabel" Content="Drive selection" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="refreshDrivesButton" Content="Refresh Drives" HorizontalAlignment="Left" Margin="479,75,0,0" VerticalAlignment="Top" Click="refreshDrivesButton_Click"/>
+                    <Label x:Name="precinctBoxLabel" Content="Enter precinct below" HorizontalAlignment="Center" Margin="0,135,0,0" VerticalAlignment="Top" Cursor="" Width="120"/>
+                    <Button Content="Button" Margin="488,116,306,306"/>
+                    <Button x:Name="unlockBitlockerButton" Content="Unlock Drive" HorizontalAlignment="Left" Margin="479,100,0,0" VerticalAlignment="Top" Width="79" Click="unlockBitlockerButton_Click"/>
+                    <Label x:Name="progressBarLabel" Content="Processing please wait..." HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FFE5E5E5">
-                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="84,70,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="updateBitLockerPassword" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="224,69,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click"/>
+                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="39,25,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="bitlockerPasswordChanged"/>
+                    <Button x:Name="updateBitLockerPasswordButton" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="174,24,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click"/>
+                    <Label x:Name="BitlockerLabel" Content="Enter new BitLocker password below" HorizontalAlignment="Left" Margin="39,-1,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="networkSaveLocation" Content="Current networksave location" HorizontalAlignment="Left" Margin="39,48,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="networkSaveLocationLabelDispalay" Content="Network location should show here" HorizontalAlignment="Left" Margin="39,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568"/>
+                    <Button x:Name="changeNetworkLocationButton" Content="Change network location" HorizontalAlignment="Left" Margin="39,105,0,0" VerticalAlignment="Top" Click="changeNetworkLocationButton_Click"/>
+                    <Label x:Name="localSaveLocation" Content="Current local save location" HorizontalAlignment="Left" Margin="39,130,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="localSaveLocationLabelDispalay" Content="Local location should show here" HorizontalAlignment="Left" Margin="39,156,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="changeLocalLocationButton" Content="Change local save location" HorizontalAlignment="Left" Margin="39,187,0,0" VerticalAlignment="Top" Click="changeLocalLocationButton_Click_1"/>
+                    <Label x:Name="currentDefaultDriveLetterLabel" Content="Current default drive letter" HorizontalAlignment="Left" Margin="39,212,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="currentDefaultDriveLetterLabel1" Content="Current default drive letter should display here" HorizontalAlignment="Left" Margin="39,238,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="changeDefaultDriveLetterButtton" Content="Change default drive letter" HorizontalAlignment="Left" Margin="39,269,0,0" VerticalAlignment="Top" Click="changeDefaultDriveLetterButtton_Click"/>
+                    <ListBox x:Name="listOfDriveLettersToExludeBox"  Margin="540,30,35,347" SelectionChanged="listOfDriveLettersToExludeBox_SelectionChanged"/>
+                    <TextBox x:Name="letterToAddToDrivesToExcludeTextBox" HorizontalAlignment="Left" Margin="538,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="letterToAddToDrivesToExcludeTextBox_TextChanged"/>
+                    <Button x:Name="letterToAddToDrivesToExcludeButton" Content="Add drive letter" HorizontalAlignment="Left" Margin="672,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="letterToAddToDrivesToExcludeButton_Click"/>
+                    <Label x:Name="driveLettersToExcludeLabel" Content="List of drive letters to exclude" HorizontalAlignment="Left" Margin="553,-1,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="removeSelectedDriveLetterButton" Content="Remove selected" HorizontalAlignment="Left" Margin="672,177,0,0" VerticalAlignment="Top" Click="removeSelectedDriveLetterButton_Click"/>
+                    <Label x:Name="driveLetterExxclusionInfo" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="538,127,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="listOfFileExtensionsToCopyBox"  Margin="540,238,35,139" SelectionChanged="listOfFileExtensionsToCopyBox_SelectionChanged"/>
+                    <TextBox x:Name="fileExtensionToAddTextBox" HorizontalAlignment="Left" Margin="532,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="fileExtensionToAddTextBox_TextChanged"/>
+                    <Button x:Name="fileExtensionToAddButton" Content="Add file extension" HorizontalAlignment="Left" Margin="666,359,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="fileExtensionToAddButton_Click"/>
+                    <Label x:Name="fileExtensionsToCopyLabel" Content="List of file extensions to copy" HorizontalAlignment="Left" Margin="553,207,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="removeSelectedFileExtensionButton" Content="Remove selected" HorizontalAlignment="Left" Margin="666,384,0,0" VerticalAlignment="Top" Click="removeSelectedFileExtension_Click"/>
+                    <Label x:Name="fileExtensionInfoLabel" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="532,333,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>

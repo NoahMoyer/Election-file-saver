@@ -6,26 +6,30 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
+using System.Text.RegularExpressions;
 
 
 namespace Election_Saver
 {
     using BitLockerManager;
     using System.Windows;
+    
 
     internal class FileCopier
     {
         //Destination will need to be \\city.a2\Shared\S01Usr\CLERK\Elections\$electionYear Election Information\Voter History\$electionDate\$precinctNumber
-        //static string networkDestinationPath = @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
+        static string networkDestinationPath; //= @"\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\";
         //static string networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\Voter History\2022-08-02\";
-        static string networkDestinationPath = @"\\nathans2\4tb share\electionTest";
-        static string localDestinationPath = @"C:\Election_Data";
-        static string sourcePath = @"E:\";
-        DirectoryInfo localDir = new DirectoryInfo(localDestinationPath);
-        DirectoryInfo sourceDir = new DirectoryInfo(sourcePath);
-        DirectoryInfo destinationDir = new DirectoryInfo(networkDestinationPath);
+        static string localDestinationPath;
+        static string sourcePath;// = @"E:\";
+        DirectoryInfo localDir;
+        DirectoryInfo sourceDir;
+        DirectoryInfo destinationDir;
         static private DriveInfo[] allDrivesArray;
         public List<DriveInfo> allDrives;
+        public List<string> listOfDriveLettersToExlude = new List<string>();
+        public List<string> listOfFileExtensionsToCopy = new List<string>();
+        string extensionPrefix = "*.";
         public string settingsFileName = @"C:\Temp\settings.csv";
         public BitLockerManager bitManager;
         public string bitLockerPassword = "a2CityClerksOffice!";
@@ -34,28 +38,37 @@ namespace Election_Saver
         //default constructor
         public FileCopier()
         {
+            getSettings();
+
+            destinationDir = new DirectoryInfo(networkDestinationPath);
+            localDir = new DirectoryInfo(localDestinationPath);
+            sourceDir = new DirectoryInfo(sourcePath);
 
             allDrivesArray = DriveInfo.GetDrives();
             allDrives = new List<DriveInfo>(allDrivesArray);
             List<int> indexOfDrivesToRemove = new List<int>();
-            allDrives.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
+            foreach (string driveLetter in listOfDriveLettersToExlude)
+            {
+                allDrives.RemoveAll(p => p.Name.Contains(driveLetter));
+            }
+            allDrives.RemoveAll(p => !p.IsReady);
+
             
+
+            
+           
+
             //establish bitlocker
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive))
+                if (drive.Name.Contains(sourceDrive) && drive.IsReady)
                 {
                     bitManager = new BitLockerManager(drive);
                 }
             }
-
-            getSettings();
         }
 
-        /// <summary>
-        /// Function to get the settings from the settings file.
-        /// </summary>
         public void getSettings()
         {
             if (File.Exists(settingsFileName))
@@ -70,130 +83,201 @@ namespace Election_Saver
                     //read line and add each field to a entry in the array
                     fields = csvParser.ReadFields();//bitlocker password
                     bitLockerPassword = fields[1];
+                    fields = csvParser.ReadFields(); //network destination
+                    networkDestinationPath = fields[1];
+                    fields = csvParser.ReadFields(); //local destination
+                    localDestinationPath = fields[1];
+                    fields = csvParser.ReadFields(); //default drive letter
+                    sourcePath =  fields[1];
+                    fields = csvParser.ReadFields(); //drive letters to exlude
+                    listOfDriveLettersToExlude.Clear();//want to clear the list before we make it again
+                    foreach (var letter in fields)
+                    {
+                        if(letter.Length == 1)
+                        {
+                            listOfDriveLettersToExlude.Add(letter);
+                        }
+                        
+                    }
+                    fields = csvParser.ReadFields(); //files extentions to copy
+                    for (int i = 1; i < fields.Length; i++)
+                    {
+                            listOfFileExtensionsToCopy.Add(extensionPrefix + fields[i]);
+                    }
+
 
                 }
 
             }
+            else
+            {
+                MessageBox.Show("No settings file found at C:\\Temp\\settings.csv" +
+                    "\nSettings file with format like this needs to be created:" +
+                    "\n\nbitlockerPassword,a2CityClerksOffice!" +
+                    "\nNetworkDestination,S:\\Helpdesk\\Scripts\\Election files" +
+                    "\nLocalDestination,C:\\Election_Data" +
+                    "\ndefaultSourceDrive,D:\\" +
+                    "\ndriveLettersToExclude,G,C,U,S" +
+                    "\nfileExtensionsToCopy,accdb,csv,pdf" +
+                    "\n\nfirst column is just the name/description of which setting it is. Needs to be in this order. " +
+                    "\nSecond columnis the actual setting." +
+                    "\nCrate this file then you can use the application.", "No settings file");
+                System.Environment.Exit(1);
+            }
 
             //TODO: make sure to create a settings file if it doesn't exist
         }
-
         /// <summary>
-        /// Funciton to change the bitlocker password in the settings file
+        /// This function is desinged to set the current settings so that they are saved and can be referenced when needed. 
+        /// This function should be called any time a setting is changed so that we are keeping the settings up to date
         /// </summary>
-        /// <param name="newBitLockerPassword"></param>
+        public void setSettings()
+        {
+            File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
+            File.AppendAllText(settingsFileName, "\nNetworkDestination," + networkDestinationPath);
+            File.AppendAllText(settingsFileName, "\nLocalDestination," + localDestinationPath);
+            File.AppendAllText(settingsFileName, "\ndefaultSourceDrive," + sourcePath);
+            File.AppendAllText(settingsFileName, "\ndriveLettersToExclude"); 
+            foreach(var letter in listOfDriveLettersToExlude)
+            {
+                File.AppendAllText(settingsFileName, "," + letter);
+            }
+            File.AppendAllText(settingsFileName, "\nfileExtensionsToCopy");
+            foreach(var extension in listOfFileExtensionsToCopy)
+            {
+                if (extension.StartsWith(extensionPrefix))
+                {
+                    File.AppendAllText(settingsFileName, "," + extension.Substring(extensionPrefix.Length));
+                }
+                else if (Regex.IsMatch(extension, "[a-z]"))
+                {
+                    File.AppendAllText(settingsFileName, "," + extension);
+                }
+                
+            }
+
+        }
         public void setBitLockerPassword(string newBitLockerPassword)
         {
             bitLockerPassword = newBitLockerPassword;
-
-            //need to write the new password to the file as well
-            File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
+            setSettings();
+            
         }
-
-        /// <summary>
-        /// Function to unlock the bitlocker encrypted drive
-        /// </summary>
         public void unlockBitLocker()
         {
 
             bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
         }
+        public List<string> getListOfFileExtensionsToCopy()
+        {
+            return listOfFileExtensionsToCopy;
+        }
+        public void removeSpecificFileExtensionToCopy(string fileExtenstionToRemoveFromCopy)
+        {
+            listOfFileExtensionsToCopy.Remove(fileExtenstionToRemoveFromCopy);
+            setSettings();
+        }
+        public void setFileExtensionsToCopy(List<string> newListOfFileExtensionsToCopy)
+        {
+            listOfFileExtensionsToCopy.Clear();
+            listOfFileExtensionsToCopy = newListOfFileExtensionsToCopy;
+            setSettings();
+        }
+        public void addFileExtensionToCopy(string newFileExtensionToCopy)
+        {
+            listOfFileExtensionsToCopy.Add(newFileExtensionToCopy);
+            setSettings();
+        }
+        public List<string> getDriveLettersToExclude()
+        {
+            return listOfDriveLettersToExlude;
+        }
+        public void setDriveLettersToExclude(List<string> newListOfDriveLettersToExclude)
+        {
+            listOfDriveLettersToExlude.Clear();
+            listOfDriveLettersToExlude = newListOfDriveLettersToExclude;
+            setSettings();
+        }
+        public void removeSepcicDriveLetterToExclude(string driverLetterToRemoveFromExclusion)
+        {
+            listOfDriveLettersToExlude.Remove(driverLetterToRemoveFromExclusion);
+            setSettings();
+        }
+        public string getSourcePath()
+        {
+            return sourcePath;
+        }
+        public void setSourcePath(string newSourcePath)
+        {
+            sourcePath = newSourcePath;
+            sourceDir = new DirectoryInfo(sourcePath);
+            setSettings();
+        }
+        public string getLocalDestinationPath()
+        {
+            return localDestinationPath;
+        }
 
-        /// <summary>
-        /// Function to set the local file path on the computer
-        /// </summary>
-        /// <param name="newLocalDestinationInput"></param>
         public void setLocalDestinationPath(string newLocalDestinationInput)
         {
             localDestinationPath = newLocalDestinationInput;
+            localDir = new DirectoryInfo(localDestinationPath);
+            setSettings();
         }
 
-        /// <summary>
-        /// Function to set the network file path to save files to
-        /// </summary>
-        /// <param name="newNetworkDestinationPath"></param>
+        public string getNetworkDestinationPath()
+        {
+            return networkDestinationPath;
+        }
+
         public void setNetworkDestinationPath(string newNetworkDestinationPath)
         {
             networkDestinationPath = newNetworkDestinationPath;
+            destinationDir = new DirectoryInfo(newNetworkDestinationPath);
+            setSettings();
         }
 
-        /// <summary>
-        /// Function to update the drives list based on what is available on the computer.
-        /// 
-        /// Currenlty we exclude a number of drive letters to prevent users from copying data from a network drive or the C drive on accident.
-        /// Excluded  drive letters:
-        /// G, C, U, S
-        /// </summary>
         public void updateDrives()
         {
             DriveInfo[] allDrivesArrayNew = DriveInfo.GetDrives();
             List<DriveInfo> allDrivesNew = new List<DriveInfo>(allDrivesArrayNew);
             allDrives.Clear();
-            allDrivesNew.RemoveAll(p => p.Name.Contains("G") || p.Name.Contains("C") || p.Name.Contains("U") || p.Name.Contains("S"));
-
+            foreach (string driveLetter in listOfDriveLettersToExlude)
+            {
+                allDrivesNew.RemoveAll(p => p.Name.Contains(driveLetter));
+            }
+            allDrivesNew.RemoveAll(p => !p.IsReady);
             allDrives = allDrivesNew;
             
             
         }
 
-        /// <summary>
-        /// Funciton to set he source path of the drive the files will be copied from
-        /// </summary>
-        /// <param name="labelInputName"></param>
         public void setSourcePath(object labelInputName)
         {
             //update drive to copy from
-            //This look updaes the list to display to the user
             foreach (var drive in allDrives)
             {
-                if (drive == labelInputName)
+                if (drive == labelInputName && drive.IsReady)
                 {
-                    sourcePath = drive.Name;
+                    //sourcePath = drive.VolumeLabel;
                     sourceDir = drive.RootDirectory;
                 }
             }
             //update bitlocker
-            //This updates the bitManager to tell it what drive we want to unlock
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive))
+                if (drive.Name.Contains(sourceDrive) && drive.IsReady)
                 {
-                    try
-                    {
-                        bitManager = new BitLockerManager(drive);
-                    }
-                    catch (Exception copyError)
-                    {
-                        MessageBox.Show("Do you have permission to unlock BitLocker encrypted drives from the command line?", copyError.Message);
-                    }
+                    bitManager = new BitLockerManager(drive);
                 }
             }
         }
 
-        /// <summary>
-        /// Function to return the sourcePath variable since this is a private variable.
-        /// </summary>
-        /// <returns></returns>
-        public string getSourcePath()
-        {
-            return sourcePath;
-        }
 
 
-        /// <summary>
-        /// copy files from flash drive to network, locally
-        /// files need to be in a folder based on preceint name
-        /// 
-        /// Currenlty only copies the following file types:
-        /// .pdf, .accdb, and .csv
-        /// 
-        /// Does not keep file structure of the source drive. It pulss all files of the specified file types, creates a folder based on the precinct, and
-        /// copies them to the root of that folder it created
-        /// </summary>
-        /// <param name="precinct"></param>
-        /// <param name="allowFileOverwrite"></param>
-
+        //copy files from flash drive to network, locally
+        //files need to be in a folder based on preceint name
         public void CopyFiles(string precinct, bool allowFileOverwrite)
         {
             //if allowFileOverwrite is true it will allow files to be overwritten. If not it won't overwrite anything
@@ -201,7 +285,7 @@ namespace Election_Saver
             try
             {
 
-                //This part of the function copies all files except those in the root directory.
+                //all files except root files
                 DirectoryInfo[] directories = sourceDir.GetDirectories("*", System.IO.SearchOption.AllDirectories);
                 List<FileInfo> filesList = new List<FileInfo>();
                 string pathToCopyTo;
@@ -211,35 +295,35 @@ namespace Election_Saver
                 {
                     Directory.CreateDirectory(Path.Combine(networkDestinationPath, precinct));
                 }
+                
 
-
-                //if the local paths to copy to don't exist
-                //create C:\Election_Data\{precict}
+                //if local paths don't exist
                 if (!Directory.Exists(Path.Combine(localDestinationPath, precinct)))
                 {
                     Directory.CreateDirectory(Path.Combine(localDestinationPath, precinct));
                 }
-                //create C:\Election_Data
+                
                 if (!Directory.Exists(localDestinationPath))
                 {
                     Directory.CreateDirectory(localDestinationPath);
                 }
 
-                //adding each file into the fileList
                 foreach (var dir in directories)
                 {
-                    filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    foreach(var ext in listOfFileExtensionsToCopy)
+                    {
+                        filesList.AddRange(dir.GetFiles(ext, System.IO.SearchOption.TopDirectoryOnly));
+                    }
+                    //filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
                 }
 
-                //call copy function for each file in the fileList
                 foreach(var file in filesList)
                 {
                     pathToCopyTo = Path.Combine(Path.Combine(networkDestinationPath, precinct), file.Name);
                     localPathToCopyTo = Path.Combine(Path.Combine(localDestinationPath, precinct), file.Name);
 
-                    //copying to network path
                     try
                     {
                         File.Copy(file.FullName, pathToCopyTo, allowFileOverwrite);
@@ -249,7 +333,7 @@ namespace Election_Saver
                         Console.WriteLine(copyError.Message);
                     }
 
-                    //copying to local file path
+
                     try
                     {
                         File.Copy(file.FullName, localPathToCopyTo, allowFileOverwrite);
@@ -261,9 +345,9 @@ namespace Election_Saver
 
                 }
 
-                var extensions = new string[] { "*.pdf", "*.accdb", "*.csv" };
-                //This part of the function copies all of the files in the root directory. 
-                foreach (var ext in extensions)
+                //var extensions = new string[] { "*.pdf", "*.accdb", "*.csv" };
+                //root directory files
+                foreach (var ext in listOfFileExtensionsToCopy)
                 {
                     foreach (var file in sourceDir.GetFiles(ext, System.IO.SearchOption.TopDirectoryOnly))
                     {
@@ -301,17 +385,8 @@ namespace Election_Saver
 
             
         }
-
-        /// <summary>
-        /// Funciton to print all .pdf files.
-        /// 
-        /// Currenlty prints from the local file path on the computer based on the precinct in the text box. This is to increase print speed and reliability.
-        /// 
-        /// The waitTimeInSeconds is an integer variable used to wait between each print to prevent overloading the printer queue.
-        /// If documents enter the queue too fast for the printer to process it can get missed or fail.
-        /// </summary>
-        /// <param name="waitTimeInSeconds"></param>
-        /// <param name="precinct"></param>
+       
+        //print files
         public async void PrintFiles(int waitTimeInSeconds, string precinct)
         {
             
@@ -424,145 +499,6 @@ namespace Election_Saver
             }
 
             
-        }
-
-        /// <summary>
-        /// Function that checks what files are currently in the local computer directory the program copies to.
-        /// </summary>
-        /// <param name="precinct"></param>
-        /// <returns></returns>
-        public string getAvailableFiles(string precinct)
-        {            
-            List<FileInfo> filesList = new List<FileInfo>();
-            string localPath;
-            localPath = Path.Combine(localDestinationPath, precinct);
-            DirectoryInfo localDirecory = new DirectoryInfo(localPath);
-            string fileString = "No files present in current directory.";
-
-            //check if C:\Election_Data exists
-            if (!Directory.Exists(localDestinationPath))
-            {
-                fileString = "Election data folder not detected. Have you copied from the flash drive?";
-                return fileString;
-            }
-            //if the local paths to copy to don't exist
-            //check C:\Election_Data\{precict}
-            else if (!Directory.Exists(localPath))
-            {
-                fileString = "Precint folder not detected. Have you copied from the flash drive?";
-                return fileString;
-            }
-            
-
-            try
-            {
-                //Creating DirectoryInfo based on the localPath folder.
-                DirectoryInfo[] directories = localDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
-
-                //Check if the localDesitnationPath is the localPath. This tells us if the precint text box is empty. If it's empty we don't want to populate the filesList.
-                if(localPath == localDestinationPath)
-                {
-                    fileString = "Please enter precinct number.";
-                    return fileString;
-                }
-                else
-                {
-                    //adding files into filesList
-                    //.accdb and .csv are currently commented out since we don't print them anyway.
-                    foreach (var dir in directories)
-                    {
-                        //adding each file into the fileList from sub folders to filesList
-                        filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                        //filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                        //filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
-                    }
-                    //adding files from root directory to filesList
-                    filesList.AddRange(localDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                    //filesList.AddRange(localDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                    //filesList.AddRange(localDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
-
-                    fileString = string.Join(",", filesList);
-                }
-                
-            }
-            catch (DirectoryNotFoundException dirNotFound)
-            {
-                Console.WriteLine(dirNotFound.Message);
-            }
-
-            //format string to be more readable
-            //String should format in the following example:
-            //file1.pdf
-            //file2.pdf
-            string[] input = fileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
-            string output = string.Join("\n", input); //Join array with new line inbetween each element
-            return output;
-        }
-
-        /// <summary>
-        /// Function that checks what files are on the flash drive and returns them as a string.
-        /// </summary>
-        /// <returns></returns>
-        public string getFlashAvailableFiles()
-        {
-            List<FileInfo> filesList = new List<FileInfo>();
-            string flashPath;
-            flashPath = sourcePath;
-            DirectoryInfo flashDirecory = new DirectoryInfo(sourcePath);
-            string flashFileString = "No files present in current directory.";
-
-            //Checking if the flash drive is detected.If not we don't want to pupulcate the filesList
-            if (!Directory.Exists(sourcePath))
-            {
-                flashFileString = "Flash drive not detected. Is the drive plugged in or still locked?";
-                return flashFileString;
-            }
-
-
-            try
-            {
-                //Creating DirectoryInfo based on the localPath folder
-                DirectoryInfo[] directories = flashDirecory.GetDirectories("*", System.IO.SearchOption.TopDirectoryOnly);
-
-                // Check if the sourcePath is the flashPath. This tells us if the flash drive is not selected.If it's empty we don't want to populate the filesList.
-                //I'm not sure if this first if fucntion works or even makes sense to have since we are checking if the drive is connected before this.
-                if (sourcePath == @"")
-                {
-                    flashFileString = "Please enter precinct number.";
-                    return flashFileString;
-                }
-                else
-                {
-                    //adding files into filesList
-                    foreach (var dir in directories)
-                    {
-                        //adding each file into the fileList from sub folders to filesList
-                        filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                        filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                        filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
-                    }
-                    //adding files from root directory to filesList
-                    filesList.AddRange(flashDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(flashDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(flashDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
-
-                    //convert the fileList to a string
-                    flashFileString = string.Join(",", filesList);
-                }
-
-            }
-            catch (DirectoryNotFoundException dirNotFound)
-            {
-                Console.WriteLine(dirNotFound.Message);
-            }
-
-            //format string to be more readable
-            //String should format in the following example:
-            //file1.pdf
-            //file2.pdf
-            string[] input = flashFileString.Split(new string[] { "," }, StringSplitOptions.None); //delimite string by commas
-            string output = string.Join("\n", input); //Join array with new line inbetween each element
-            return output;
         }
 
     }
