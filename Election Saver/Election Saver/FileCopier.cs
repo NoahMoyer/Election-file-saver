@@ -487,7 +487,7 @@ namespace Election_Saver
         public async void PrintFiles(int waitTimeInSeconds, string precinct)
         {
             
-            int fileCount = 0; //using so we know how many times to run the counter for the progress bar
+            //int fileCount = 0; //using so we know how many times to run the counter for the progress bar
             string precintPath = Path.Combine(localDestinationPath, precinct);
             try
             {

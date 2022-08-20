@@ -25,7 +25,7 @@ namespace Election_Saver
     public partial class MainWindow : Window
     {
 
-        int fileCount;
+        //int fileCount;
         int waitTimeINSecondsBetweenPrints;
         int copyProgressBarWaitTime;
         double waitPeriodToPercentageInterval;

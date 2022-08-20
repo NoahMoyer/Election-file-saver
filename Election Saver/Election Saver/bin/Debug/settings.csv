@@ -1,2 +1,6 @@
 bitlockerPassword,a2CityClerksOffice!
-NetworkDestination,\\city.a2\Shared\IT_Services\Helpdesk\Scripts\Election files\
+NetworkDestination,S:\Helpdesk\Scripts\Election files
+LocalDestination,C:\Election_Data
+defaultSourceDrive,D:\
+driveLettersToExclude,G,C,U,S
+fileExtensionsToCopy,accdb,csv,pdf,docx
