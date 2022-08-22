@@ -698,11 +698,11 @@ namespace Election_Saver
             List<FileInfo> filesList = new List<FileInfo>();
             string flashPath;
             flashPath = sourcePath;
-            DirectoryInfo flashDirecory = new DirectoryInfo(sourcePath);
+            DirectoryInfo flashDirecory = new DirectoryInfo(sourceDir.Root.ToString());
             string flashFileString = "No files present in current directory.";
 
             //Checking if the flash drive is detected.If not we don't want to pupulcate the filesList
-            if (!Directory.Exists(sourcePath))
+            if (!Directory.Exists(sourceDir.Root.ToString()))
             {
                 flashFileString = "Flash drive not detected. Is the drive plugged in or still locked?";
                 return flashFileString;
