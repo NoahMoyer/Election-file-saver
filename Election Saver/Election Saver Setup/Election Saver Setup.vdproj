@@ -76,12 +76,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7C80010F3C5E2B143922EB959308E151"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -95,6 +89,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F6F0F1227E0F8879C2873EF3204761B7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7C80010F3C5E2B143922EB959308E151"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -504,15 +504,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Election Saver"
-        "ProductCode" = "8:{F1FE2AB7-634E-4144-BFF5-5C0F742F4F22}"
-        "PackageCode" = "8:{29125B4D-DEDA-49F9-9068-251CDBF10FBA}"
+        "ProductCode" = "8:{28B9F0BE-1762-4F93-8A28-6F0A1EA54457}"
+        "PackageCode" = "8:{FAAE78D1-4AB2-42FD-8F55-A371F4DC4D3D}"
         "UpgradeCode" = "8:{F1995517-5FBF-43A1-805C-2C0AC52195D5}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.1"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:2.0.2"
         "Manufacturer" = "8:Moyer"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
