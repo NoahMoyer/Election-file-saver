@@ -42,3 +42,25 @@ C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-save
 C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
 C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.xml
 C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Temp\Election Saver\Election Saver\bin\Debug\Election Saver.exe.config
+C:\Temp\Election Saver\Election Saver\bin\Debug\Election Saver.exe
+C:\Temp\Election Saver\Election Saver\bin\Debug\Election Saver.pdb
+C:\Temp\Election Saver\Election Saver\bin\Debug\BitlockerManager.dll
+C:\Temp\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Temp\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Temp\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Temp\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.AssemblyReference.cache
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.SuggestedBindingRedirects.cache
+C:\Temp\Election Saver\Election Saver\obj\Debug\MainWindow.g.cs
+C:\Temp\Election Saver\Election Saver\obj\Debug\App.g.cs
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver_MarkupCompile.cache
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver_MarkupCompile.lref
+C:\Temp\Election Saver\Election Saver\obj\Debug\MainWindow.baml
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.g.resources
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election_Saver.Properties.Resources.resources
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.GenerateResource.cache
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CoreCompileInputs.cache
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CopyComplete
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.exe
+C:\Temp\Election Saver\Election Saver\obj\Debug\Election Saver.pdb

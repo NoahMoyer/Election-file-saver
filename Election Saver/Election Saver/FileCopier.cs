@@ -61,7 +61,7 @@ namespace Election_Saver
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive) && /*drive.IsReady ||*/ getDriveLockStatus(drive) == "Locked")
+                if (drive.Name.Contains(sourceDrive)/* && drive.IsReady || getDriveLockStatus(drive) == "Locked"*/)
                 {
                     bitManager = new BitLockerManager(drive);
                 }
@@ -343,7 +343,7 @@ namespace Election_Saver
             //This look updaes the list to display to the user
             foreach (var drive in allDrives)
             {
-                if (drive == labelInputName && drive.IsReady)
+                if (drive == labelInputName/* && drive.IsReady*/)
                 {
                     //sourcePath = drive.VolumeLabel; //this line was not commented out in Nathan's version. If there are issue will need to take a look at this
                     sourceDir = drive.RootDirectory;
@@ -354,7 +354,7 @@ namespace Election_Saver
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive) && drive.IsReady)
+                if (drive.Name.Contains(sourceDrive)/* && drive.IsReady*/)
                 {
                     try
                     {
