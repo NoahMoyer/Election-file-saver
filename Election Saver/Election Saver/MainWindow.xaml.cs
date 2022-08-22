@@ -80,7 +80,9 @@ namespace Election_Saver
             localFilesTextBlock.Text = currentPrecinctLocalFiles;
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+
+            
         }
         /// <summary>
         /// 
@@ -181,7 +183,7 @@ namespace Election_Saver
             unlockBitlockerButton.IsEnabled = true;
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             //Poplulating the files available to copy text block
             string currentPrecinctFlashFiles = PreceintTextBox.Text;
@@ -220,7 +222,7 @@ namespace Election_Saver
             flashFilesTextBlock.Text = currentPrecinctFlashFiles;
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             if (driveLockStatusLable.Content == "Locked")
             {
@@ -241,7 +243,7 @@ namespace Election_Saver
             }
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             //Poplulating the files available to copy text block
             string currentPrecinctFlashFiles = PreceintTextBox.Text;

@@ -50,7 +50,7 @@ namespace Election_Saver
             {
                 allDrives.RemoveAll(p => p.Name.Contains(driveLetter));
             }
-            allDrives.RemoveAll(p => !p.IsReady);
+            //allDrives.RemoveAll(p => !p.IsReady); Edge case that isn't working as expected. TODO fix exclusion of drives that are not useable.
 
             
 
@@ -61,7 +61,7 @@ namespace Election_Saver
             foreach (DriveInfo drive in allDrives)
             {
                 string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive) && drive.IsReady)
+                if (drive.Name.Contains(sourceDrive) && /*drive.IsReady ||*/ getDriveLockStatus(drive) == "Locked")
                 {
                     bitManager = new BitLockerManager(drive);
                 }
@@ -178,12 +178,30 @@ namespace Election_Saver
         /// Needs summary from Nathan
         /// </summary>
         /// <returns></returns>
-        public string getDriveLockStatus()
+        public string getDriveLockStatus(DriveInfo currentDrive)
         {
             BitlockerManager.Enums.LockStatus status;
-            bitManager.GetLockStatus(out status);
+            string stringStatus = "YES";
 
-            string stringStatus = Enum.GetName(status.GetType(), status);
+            ////establish bitlocker
+            //foreach (DriveInfo drive in allDrives)
+            //{
+            //    string sourceDrive = sourceDir.Root.ToString();
+            //    if (drive.Name.Contains(sourceDrive) && drive.IsReady)
+            //    {
+
+            //    }
+            //    else
+            //    {
+            //        stringStatus = "No drive detected";
+            //    }
+            //}
+            BitLockerManager currentBitManager = new BitLockerManager(currentDrive);
+            currentBitManager.GetLockStatus(out status);
+            stringStatus = Enum.GetName(status.GetType(), status);
+
+
+
 
             return stringStatus;
         }
@@ -310,7 +328,7 @@ namespace Election_Saver
             {
                 allDrivesNew.RemoveAll(p => p.Name.Contains(driveLetter));
             }
-            allDrivesNew.RemoveAll(p => !p.IsReady);
+            //allDrives.RemoveAll(p => !p.IsReady); Edge case that isn't working as expected. TODO fix exclusion of drives that are not useable.
             allDrives = allDrivesNew;
             
             
