@@ -15,56 +15,86 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_138ED38DA2114BDDAD02935DF3F3AF3D"
+        "MsmKey" = "8:_2291D9936AE74773BE6A9EA95026EAD4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_19B1E75CA1984EFCAFDDFE0A6DDA73D6"
+        "MsmKey" = "8:_47FB4C05C27D40588512CD2901908F5B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3BF30C1B7C6314B6CEAD4ECBF6DEFBB8"
-        "OwnerKey" = "8:_4D48E24B06F3468696126F7EB42617B8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4D48E24B06F3468696126F7EB42617B8"
+        "MsmKey" = "8:_5B5533E8790640EAA7C8394AA81DD2EF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5AA9A6FBD7F940C99832A8D8322901BA"
+        "MsmKey" = "8:_7C80010F3C5E2B143922EB959308E151"
+        "OwnerKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_896B61EC6057729E4416E26AF5F2332E"
+        "OwnerKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B09220B606224FF698B637EE47824EB2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_63698E806EA146BA93ACE93896BC5ED4"
+        "MsmKey" = "8:_C677D4B2C73B433AA28A57F1DC7A2685"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6CF23C401CB0426682C8D4FAA079899A"
+        "MsmKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F6F0F1227E0F8879C2873EF3204761B7"
+        "OwnerKey" = "8:_896B61EC6057729E4416E26AF5F2332E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F92FF6553ACC44D1B7BE39855E40A991"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4D48E24B06F3468696126F7EB42617B8"
+        "OwnerKey" = "8:_7C80010F3C5E2B143922EB959308E151"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3BF30C1B7C6314B6CEAD4ECBF6DEFBB8"
+        "OwnerKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_896B61EC6057729E4416E26AF5F2332E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F6F0F1227E0F8879C2873EF3204761B7"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -162,27 +192,7 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_138ED38DA2114BDDAD02935DF3F3AF3D"
-            {
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\PDF-XChange Viewer Settings.dat"
-            "TargetName" = "8:PDF-XChange Viewer Settings.dat"
-            "Tag" = "8:"
-            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_19B1E75CA1984EFCAFDDFE0A6DDA73D6"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2291D9936AE74773BE6A9EA95026EAD4"
             {
             "SourcePath" = "8:..\\Election Saver\\a2logo.ico"
             "TargetName" = "8:a2logo.ico"
@@ -202,14 +212,54 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3BF30C1B7C6314B6CEAD4ECBF6DEFBB8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_47FB4C05C27D40588512CD2901908F5B"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\PDFtoPrinter.exe"
+            "TargetName" = "8:PDFtoPrinter.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B5533E8790640EAA7C8394AA81DD2EF"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Microsoft.WindowsAPICodePack.xml"
+            "TargetName" = "8:Microsoft.WindowsAPICodePack.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7C80010F3C5E2B143922EB959308E151"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:BitlockerManager, Version=1.0.1.0, Culture=neutral, PublicKeyToken=6c5c42dda1395a58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_3BF30C1B7C6314B6CEAD4ECBF6DEFBB8"
+                    "_7C80010F3C5E2B143922EB959308E151"
                     {
                     "Name" = "8:BitlockerManager.dll"
                     "Attributes" = "3:512"
@@ -233,14 +283,85 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D48E24B06F3468696126F7EB42617B8"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_896B61EC6057729E4416E26AF5F2332E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_896B61EC6057729E4416E26AF5F2332E"
+                    {
+                    "Name" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B09220B606224FF698B637EE47824EB2"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\settings.csv"
+            "TargetName" = "8:settings.csv"
+            "Tag" = "8:"
+            "Folder" = "8:_182CF86260C745D18D9911717CD0A051"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C677D4B2C73B433AA28A57F1DC7A2685"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\PDF-XChange Viewer Settings.dat"
+            "TargetName" = "8:PDF-XChange Viewer Settings.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DF63C71EE9CD427EBB8826D58D31B523"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Election Saver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_4D48E24B06F3468696126F7EB42617B8"
+                    "_DF63C71EE9CD427EBB8826D58D31B523"
                     {
                     "Name" = "8:Election Saver.exe"
                     "Attributes" = "3:512"
@@ -264,10 +385,21 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5AA9A6FBD7F940C99832A8D8322901BA"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F6F0F1227E0F8879C2873EF3204761B7"
             {
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Election Saver.exe.config"
-            "TargetName" = "8:Election Saver.exe.config"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F6F0F1227E0F8879C2873EF3204761B7"
+                    {
+                    "Name" = "8:Microsoft.WindowsAPICodePack.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.WindowsAPICodePack.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Condition" = "8:"
@@ -281,33 +413,13 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63698E806EA146BA93ACE93896BC5ED4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F92FF6553ACC44D1B7BE39855E40A991"
             {
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\PDFtoPrinter.exe"
-            "TargetName" = "8:PDFtoPrinter.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6CF23C401CB0426682C8D4FAA079899A"
-            {
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Election Saver.pdb"
-            "TargetName" = "8:Election Saver.pdb"
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Microsoft.WindowsAPICodePack.Shell.xml"
+            "TargetName" = "8:Microsoft.WindowsAPICodePack.Shell.xml"
             "Tag" = "8:"
             "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Condition" = "8:"
@@ -330,6 +442,18 @@
         }
         "Folder"
         {
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_182CF86260C745D18D9911717CD0A051"
+            {
+            "DefaultLocation" = "8:C:\\Temp"
+            "Name" = "8:Settings folder"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:NEWPROPERTY1"
+                "Folders"
+                {
+                }
+            }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_1C448994047F43C4AD3F1E6C8AF4D865"
             {
             "DefaultLocation" = "8:C:\\Program Files\\[ProductName]"
@@ -380,15 +504,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Election Saver"
-        "ProductCode" = "8:{AFF21846-19EA-4636-B9A6-DB70BE9FFA22}"
-        "PackageCode" = "8:{9844F25F-06E1-4915-9B4A-E60255F977F9}"
+        "ProductCode" = "8:{F1FE2AB7-634E-4144-BFF5-5C0F742F4F22}"
+        "PackageCode" = "8:{29125B4D-DEDA-49F9-9068-251CDBF10FBA}"
         "UpgradeCode" = "8:{F1995517-5FBF-43A1-805C-2C0AC52195D5}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.0.1"
         "Manufacturer" = "8:Moyer"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -398,7 +522,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:npmoyer.com"
-        "ARPPRODUCTICON" = "8:_19B1E75CA1984EFCAFDDFE0A6DDA73D6"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -501,7 +625,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6F2BA3C0539A422C9E88029778A10AEF"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7BEB5AB64371446BA8573917B8E5AD4E"
             {
             "Name" = "8:Election Saver"
             "Arguments" = "8:"
@@ -509,13 +633,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_4D48E24B06F3468696126F7EB42617B8"
+            "Target" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
             "Folder" = "8:_2392A678B79546ACA7B8CDD045AA4702"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Icon" = "8:_19B1E75CA1984EFCAFDDFE0A6DDA73D6"
+            "Icon" = "8:_2291D9936AE74773BE6A9EA95026EAD4"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EAB01088699F440A92CAA095DA88BBC3"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B67A71E7908D47069C3548B8AED92AB3"
             {
             "Name" = "8:Election Saver"
             "Arguments" = "8:"
@@ -523,10 +647,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_4D48E24B06F3468696126F7EB42617B8"
+            "Target" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
             "Folder" = "8:_FBF283B6A5EE48DDA02E6F9CDB4D4128"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Icon" = "8:_19B1E75CA1984EFCAFDDFE0A6DDA73D6"
+            "Icon" = "8:_2291D9936AE74773BE6A9EA95026EAD4"
             "Feature" = "8:"
             }
         }

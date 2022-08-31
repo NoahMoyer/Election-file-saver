@@ -2,6 +2,6 @@ NetworkDestination,\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Informa
 LocalDestination,C:\Election_Data
 defaultSourceDrive,E
 bitlockerPassword,a2CityClerksOffice!
-driveLettersToExclude,G,C,U,S01Usr
+driveLettersToExclude,G,C,U,S
 fileExtensionsToCopy,pdf,accdb,csv
 waitTimeBetweenPrints,10

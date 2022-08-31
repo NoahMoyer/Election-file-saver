@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Threading;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Text.RegularExpressions;
 
 namespace Election_Saver
 {
@@ -23,13 +25,12 @@ namespace Election_Saver
     public partial class MainWindow : Window
     {
 
-        int fileCount;
+        //int fileCount;
         int waitTimeINSecondsBetweenPrints;
         int copyProgressBarWaitTime;
         double waitPeriodToPercentageInterval;
         FileCopier fileCopier; 
         string currentPrecintWhenButtonPressed;
-        //string bitLockerPassword = "a2CityClerksOffice!";
         public MainWindow()
         {
             InitializeComponent();
@@ -53,6 +54,20 @@ namespace Election_Saver
             }
             progressBar.Visibility = Visibility.Hidden;
             progressBarLabel.Visibility = Visibility.Hidden;
+            //Noah: comment what we are doing here
+            networkSaveLocationLabelDispalay.Content = fileCopier.getNetworkDestinationPath();
+            localSaveLocationLabelDispalay.Content = fileCopier.getLocalDestinationPath();
+            currentDefaultDriveLetterLabel1.Content = fileCopier.getSourcePath();
+            //Noah: comment what we are doing here
+            foreach(var letter in fileCopier.getDriveLettersToExclude())
+            {
+                listOfDriveLettersToExludeBox.Items.Add(letter);
+            }
+            //Noah: comment what we are doing here
+            foreach (var extension in fileCopier.getListOfFileExtensionsToCopy())
+            {
+                listOfFileExtensionsToCopyBox.Items.Add(extension);
+            }
 
             //Poplulating the files available to copy text block
             string currentPrecinctFlashFiles = PreceintTextBox.Text;
@@ -65,11 +80,10 @@ namespace Election_Saver
             localFilesTextBlock.Text = currentPrecinctLocalFiles;
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -97,11 +111,11 @@ namespace Election_Saver
             progressBar.Visibility = Visibility.Hidden;
             progressBarLabel.Visibility = Visibility.Hidden;
 
-
             //Pupulating the files available to copy text block
             string currentPrecinct = PreceintTextBox.Text;
             currentPrecinct = fileCopier.getAvailableFiles(currentPrecinct);
             localFilesTextBlock.Text = currentPrecinct;
+
         }
 
         private void PreceintTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -114,7 +128,6 @@ namespace Election_Saver
                 CopyFilesButton.IsEnabled = false;
                 printButton.IsEnabled = false;
             }
-
 
             //Pupulating the files available to print text block
             string currentPrecinctLocalFiles = PreceintTextBox.Text;
@@ -170,7 +183,7 @@ namespace Election_Saver
             unlockBitlockerButton.IsEnabled = true;
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             //Poplulating the files available to copy text block
             string currentPrecinctFlashFiles = PreceintTextBox.Text;
@@ -182,7 +195,6 @@ namespace Election_Saver
                 CopyFilesButton.IsEnabled = false;
                 printButton.IsEnabled = false;
             }
-            
         }
 
         private void refreshDrivesButton_Click(object sender, RoutedEventArgs e)
@@ -210,7 +222,7 @@ namespace Election_Saver
             flashFilesTextBlock.Text = currentPrecinctFlashFiles;
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             if (driveLockStatusLable.Content == "Locked")
             {
@@ -225,9 +237,13 @@ namespace Election_Saver
             {
                 fileCopier.unlockBitLocker();
             }
+            else
+            {
+                MessageBox.Show("Please select a drive to unlock", "Input Error");
+            }
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
             //Poplulating the files available to copy text block
             string currentPrecinctFlashFiles = PreceintTextBox.Text;
@@ -237,7 +253,194 @@ namespace Election_Saver
 
         private void updateBitLockerPassword_Click(object sender, RoutedEventArgs e)
         {
-            fileCopier.setBitLockerPassword(bitLockerPasswordTextBox.Password.ToString());
+            if(bitLockerPasswordTextBox.Password != null)
+            {
+                fileCopier.setBitLockerPassword(bitLockerPasswordTextBox.Password.ToString());
+            }
+            else
+            {
+                MessageBox.Show("No text entered, please input something", "Input Error");
+            }
+            updateBitLockerPasswordButton.IsDefault = false;
+        }
+
+        private void changeNetworkLocationButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result.ToString() == "Ok")
+            {
+                fileCopier.setNetworkDestinationPath(dialog.FileName);
+                networkSaveLocationLabelDispalay.Content = dialog.FileName;
+            }
+            
+
+        }
+
+        private void changeLocalLocationButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result.ToString() == "Ok")
+            {
+                fileCopier.setLocalDestinationPath(dialog.FileName);
+                localSaveLocationLabelDispalay.Content = dialog.FileName;
+            }
+        }
+
+        private void changeDefaultDriveLetterButtton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result.ToString() == "Ok")
+            {
+                fileCopier.setSourcePath(dialog.FileName);
+                currentDefaultDriveLetterLabel1.Content = dialog.FileName;
+            }
+        }
+
+        private void letterToAddToDrivesToExcludeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(letterToAddToDrivesToExcludeTextBox.Text != null && letterToAddToDrivesToExcludeTextBox.Text != "")
+            {
+                if (!listOfDriveLettersToExludeBox.Items.Contains(letterToAddToDrivesToExcludeTextBox.Text))
+                {
+                    string text = letterToAddToDrivesToExcludeTextBox.Text.ToString();
+                    if (Regex.IsMatch(text, "^[A-Z]{1}$"))
+                    {
+                        listOfDriveLettersToExludeBox.Items.Add(letterToAddToDrivesToExcludeTextBox.Text);
+                        List<string> listOfNewLettersToExclude = new List<string>();
+                        foreach (var letter in listOfDriveLettersToExludeBox.Items)
+                        {
+                            listOfNewLettersToExclude.Add(letter.ToString());
+                        }
+                        fileCopier.setDriveLettersToExclude(listOfNewLettersToExclude);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please only enter a single uppercase letter", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Drive is already excluded", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("No text entered, please input something", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            letterToAddToDrivesToExcludeButton.IsDefault = false;
+        }
+
+        private void removeSelectedDriveLetterButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(listOfDriveLettersToExludeBox.SelectedItem != null)
+            {
+                fileCopier.removeSepcicDriveLetterToExclude(listOfDriveLettersToExludeBox.SelectedItem.ToString());
+                listOfDriveLettersToExludeBox.Items.Remove(listOfDriveLettersToExludeBox.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to remove", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            removeSelectedDriveLetterButton.IsDefault = false;
+
+        }
+
+        private void removeSelectedFileExtension_Click(object sender, RoutedEventArgs e)
+        {
+            if(listOfFileExtensionsToCopyBox.SelectedItem != null)
+            {
+                fileCopier.removeSpecificFileExtensionToCopy(listOfFileExtensionsToCopyBox.SelectedItem.ToString());
+                listOfFileExtensionsToCopyBox.Items.Remove(listOfFileExtensionsToCopyBox.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to remove", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            removeSelectedFileExtensionButton.IsDefault = false;
+        }
+
+        private void fileExtensionToAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(fileExtensionToAddTextBox.Text != null && fileExtensionToAddTextBox.Text != "")
+            {
+                if (!listOfFileExtensionsToCopyBox.Items.Contains("*." + fileExtensionToAddTextBox.Text))
+                {
+                    //TODO: make sure regular expression only allows lower case letters
+                    if (Regex.IsMatch(fileExtensionToAddTextBox.Text.ToString(), "^[a-z]+$"))
+                    {
+                        listOfFileExtensionsToCopyBox.Items.Add("*." + fileExtensionToAddTextBox.Text);
+                        fileCopier.addFileExtensionToCopy("*." + fileExtensionToAddTextBox.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter lowercase letters only", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("File extension is already included", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
+                
+            }
+            else
+            {
+                MessageBox.Show("No text entered, please input something", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            fileExtensionToAddButton.IsDefault = false;
+        }
+
+        private void listOfDriveLettersToExludeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            updateBitLockerPasswordButton.IsDefault = false;
+            letterToAddToDrivesToExcludeButton.IsDefault = false;
+            removeSelectedFileExtensionButton.IsDefault = false;
+            fileExtensionToAddButton.IsDefault = false;
+            removeSelectedDriveLetterButton.IsDefault = true;
+        }
+
+        private void letterToAddToDrivesToExcludeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            updateBitLockerPasswordButton.IsDefault = false;
+            removeSelectedDriveLetterButton.IsDefault = false;
+            removeSelectedFileExtensionButton.IsDefault = false;
+            fileExtensionToAddButton.IsDefault = false;
+            letterToAddToDrivesToExcludeButton.IsDefault = true;
+        }
+
+        private void listOfFileExtensionsToCopyBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            updateBitLockerPasswordButton.IsDefault = false;
+            letterToAddToDrivesToExcludeButton.IsDefault = false;
+            removeSelectedDriveLetterButton.IsDefault = false;
+            fileExtensionToAddButton.IsDefault = false;
+            removeSelectedFileExtensionButton.IsDefault = true;
+        }
+
+        private void fileExtensionToAddTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            updateBitLockerPasswordButton.IsDefault = false;
+            letterToAddToDrivesToExcludeButton.IsDefault = false;
+            removeSelectedDriveLetterButton.IsDefault = false;
+            removeSelectedFileExtensionButton.IsDefault = false;
+            fileExtensionToAddButton.IsDefault = true;
+        }
+
+        private void bitlockerPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            letterToAddToDrivesToExcludeButton.IsDefault = false;
+            removeSelectedDriveLetterButton.IsDefault = false;
+            removeSelectedFileExtensionButton.IsDefault = false;
+            fileExtensionToAddButton.IsDefault = false;
+            updateBitLockerPasswordButton.IsDefault = true;
         }
     }
 }
