@@ -172,7 +172,14 @@ namespace Election_Saver
         /// </summary>
         public void unlockBitLocker()
         {
-            bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+            try
+            {
+                bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+            }
+            catch(Exception Error)
+            {
+                MessageBox.Show("Drive unlock error. Is the password correct?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         /// <summary>
         /// Needs summary from Nathan
