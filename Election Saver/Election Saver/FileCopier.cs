@@ -32,7 +32,7 @@ namespace Election_Saver
         public string settingsFileName = @"C:\Temp\settings.csv";
         public BitLockerManager bitManager;
         public string bitLockerPassword = "a2CityClerksOffice!";
-
+        Encryption encryptor = new Encryption();
 
         //default constructor
         public FileCopier()
@@ -52,6 +52,7 @@ namespace Election_Saver
             }
             //allDrives.RemoveAll(p => !p.IsReady); Edge case that isn't working as expected. TODO fix exclusion of drives that are not useable.
 
+            
             
 
             
@@ -83,7 +84,8 @@ namespace Election_Saver
 
                     //read line and add each field to a entry in the array
                     fields = csvParser.ReadFields();//bitlocker password
-                    bitLockerPassword = fields[1];
+                    bitLockerPassword = encryptor.Decrypt(fields[1]);
+                    string temp = bitLockerPassword;
                     fields = csvParser.ReadFields(); //network destination
                     networkDestinationPath = fields[1];
                     fields = csvParser.ReadFields(); //local destination
@@ -134,7 +136,8 @@ namespace Election_Saver
         /// </summary>
         public void setSettings()
         {
-            File.WriteAllText(settingsFileName, "bitlockerPassword," + bitLockerPassword);
+            string encryptedPassword = encryptor.encrypt(bitLockerPassword);
+            File.WriteAllText(settingsFileName, "bitlockerPassword," + encryptedPassword);
             File.AppendAllText(settingsFileName, "\nNetworkDestination," + networkDestinationPath);
             File.AppendAllText(settingsFileName, "\nLocalDestination," + localDestinationPath);
             File.AppendAllText(settingsFileName, "\ndefaultSourceDrive," + sourcePath);
