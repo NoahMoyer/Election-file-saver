@@ -221,6 +221,11 @@ namespace Election_Saver
             currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
             flashFilesTextBlock.Text = currentPrecinctFlashFiles;
 
+            if(driveSelector.Text == "")
+            {
+                flashFilesTextBlock.Text = "No drive selected.";
+            }
+
             //Get drive lock status
             //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
@@ -322,18 +327,18 @@ namespace Election_Saver
                     }
                     else
                     {
-                        MessageBox.Show("Please only enter a single uppercase letter", "Input Error");
+                        MessageBox.Show("Please only enter a single uppercase letter", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Drive is already excluded", "Input Error");
+                    MessageBox.Show("Drive is already excluded", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 
             }
             else
             {
-                MessageBox.Show("No text entered, please input something", "Input Error");
+                MessageBox.Show("No text entered, please input something", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             letterToAddToDrivesToExcludeButton.IsDefault = false;
         }
@@ -347,7 +352,7 @@ namespace Election_Saver
             }
             else
             {
-                MessageBox.Show("Please select an item to remove", "Input Error");
+                MessageBox.Show("Please select an item to remove", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             removeSelectedDriveLetterButton.IsDefault = false;
 
@@ -362,7 +367,7 @@ namespace Election_Saver
             }
             else
             {
-                MessageBox.Show("Please select an item to remove", "Input Error");
+                MessageBox.Show("Please select an item to remove", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             removeSelectedFileExtensionButton.IsDefault = false;
         }
@@ -381,19 +386,19 @@ namespace Election_Saver
                     }
                     else
                     {
-                        MessageBox.Show("Please enter lowercase letters only", "Input Error");
+                        MessageBox.Show("Please enter lowercase letters only", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("File extension is already included", "Input Error");
+                    MessageBox.Show("File extension is already included", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 
                 
             }
             else
             {
-                MessageBox.Show("No text entered, please input something", "Input Error");
+                MessageBox.Show("No text entered, please input something", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             fileExtensionToAddButton.IsDefault = false;
         }
