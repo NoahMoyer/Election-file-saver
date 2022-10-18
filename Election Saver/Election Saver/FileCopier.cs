@@ -85,7 +85,6 @@ namespace Election_Saver
                     //read line and add each field to a entry in the array
                     fields = csvParser.ReadFields();//bitlocker password
                     bitLockerPassword = encryptor.Decrypt(fields[1]);
-                    string temp = bitLockerPassword;
                     fields = csvParser.ReadFields(); //network destination
                     networkDestinationPath = fields[1];
                     fields = csvParser.ReadFields(); //local destination
