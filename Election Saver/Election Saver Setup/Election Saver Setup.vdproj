@@ -34,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_7C80010F3C5E2B143922EB959308E151"
-        "OwnerKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "OwnerKey" = "8:_D5421319772E46B7BCB8441DB979AD85"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_896B61EC6057729E4416E26AF5F2332E"
-        "OwnerKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "OwnerKey" = "8:_D5421319772E46B7BCB8441DB979AD85"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,7 +57,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "MsmKey" = "8:_D5421319772E46B7BCB8441DB979AD85"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -82,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+        "OwnerKey" = "8:_D5421319772E46B7BCB8441DB979AD85"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -354,14 +354,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DF63C71EE9CD427EBB8826D58D31B523"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D5421319772E46B7BCB8441DB979AD85"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Election Saver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DF63C71EE9CD427EBB8826D58D31B523"
+                    "_D5421319772E46B7BCB8441DB979AD85"
                     {
                     "Name" = "8:Election Saver.exe"
                     "Attributes" = "3:512"
@@ -504,15 +504,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Election Saver"
-        "ProductCode" = "8:{F1FE2AB7-634E-4144-BFF5-5C0F742F4F22}"
-        "PackageCode" = "8:{29125B4D-DEDA-49F9-9068-251CDBF10FBA}"
+        "ProductCode" = "8:{C31E5448-19A8-4EBF-BA3D-FB03D502F2AF}"
+        "PackageCode" = "8:{3E9F9753-362E-4A0B-8D75-66884ECF1318}"
         "UpgradeCode" = "8:{F1995517-5FBF-43A1-805C-2C0AC52195D5}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.1"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:2.0.3"
         "Manufacturer" = "8:Moyer"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -522,7 +522,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:npmoyer.com"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_2291D9936AE74773BE6A9EA95026EAD4"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -633,7 +633,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+            "Target" = "8:_D5421319772E46B7BCB8441DB979AD85"
             "Folder" = "8:_2392A678B79546ACA7B8CDD045AA4702"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Icon" = "8:_2291D9936AE74773BE6A9EA95026EAD4"
@@ -647,7 +647,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DF63C71EE9CD427EBB8826D58D31B523"
+            "Target" = "8:_D5421319772E46B7BCB8441DB979AD85"
             "Folder" = "8:_FBF283B6A5EE48DDA02E6F9CDB4D4128"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Icon" = "8:_2291D9936AE74773BE6A9EA95026EAD4"

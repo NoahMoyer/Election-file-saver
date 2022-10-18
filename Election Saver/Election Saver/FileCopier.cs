@@ -174,7 +174,14 @@ namespace Election_Saver
         /// </summary>
         public void unlockBitLocker()
         {
-            bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+            try
+            {
+                bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+            }
+            catch(Exception Error)
+            {
+                MessageBox.Show("Drive unlock error. Is the password correct?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         /// <summary>
         /// Needs summary from Nathan
@@ -364,7 +371,7 @@ namespace Election_Saver
                     }
                     catch (Exception copyError)
                     {
-                        MessageBox.Show("Do you have permission to unlock BitLocker encrypted drives from the command line?", copyError.Message);
+                        MessageBox.Show("Do you have permission to unlock BitLocker encrypted drives from the command line?", copyError.Message, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -488,7 +495,7 @@ namespace Election_Saver
             catch (DirectoryNotFoundException dirNotFound)
             {
                 Console.WriteLine(dirNotFound.Message);
-                MessageBox.Show("The below error was thrown by the program: \n \n" + dirNotFound.Message + "\n \nMake sure the drive is plugged in, you have the correct drive selected, and the drive is unlocked.", "Copy ERROR");
+                MessageBox.Show("The below error was thrown by the program: \n \n" + dirNotFound.Message + "\n \nMake sure the drive is plugged in, you have the correct drive selected, and the drive is unlocked.", "Copy ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             

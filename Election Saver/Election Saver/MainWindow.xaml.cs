@@ -221,6 +221,11 @@ namespace Election_Saver
             currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
             flashFilesTextBlock.Text = currentPrecinctFlashFiles;
 
+            if(driveSelector.Text == "")
+            {
+                flashFilesTextBlock.Text = "No drive selected.";
+            }
+
             //Get drive lock status
             //driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
