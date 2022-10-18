@@ -10,6 +10,7 @@ namespace Election_Saver
 {
     internal class Encryption
     {
+        string EncryptionKey = "CBhLdAJgxUz3c7p2JtQ1zErkGVQYFUmGgsNvVjPx5Q8DB6VPBW";
         public Encryption()
         {
 
@@ -17,7 +18,6 @@ namespace Election_Saver
 
         public string encrypt(string encryptString)
         {
-            string EncryptionKey = "CBhLdAJgxUz3c7p2JtQ1zErkGVQYFUmGgsNvVjPx5Q8DB6VPBW";
             byte[] clearBytes = Encoding.Unicode.GetBytes(encryptString);
             using (Aes encryptor = Aes.Create())
             {
@@ -41,7 +41,6 @@ namespace Election_Saver
 
         public string Decrypt(string cipherText)
         {
-            string EncryptionKey = "CBhLdAJgxUz3c7p2JtQ1zErkGVQYFUmGgsNvVjPx5Q8DB6VPBW";
             cipherText = cipherText.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())
