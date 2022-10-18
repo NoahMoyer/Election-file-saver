@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0A53F23FBEE4C2CF6A612F265769DE16"
-        "OwnerKey" = "8:_9782921376F84AF28596AB8FD2501A12"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2291D9936AE74773BE6A9EA95026EAD4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -39,14 +33,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9782921376F84AF28596AB8FD2501A12"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_7C80010F3C5E2B143922EB959308E151"
+        "OwnerKey" = "8:_9782921376F84AF28596AB8FD2501A12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A87BCF6E307609783B9A867BF59F4554"
+        "MsmKey" = "8:_896B61EC6057729E4416E26AF5F2332E"
         "OwnerKey" = "8:_9782921376F84AF28596AB8FD2501A12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9782921376F84AF28596AB8FD2501A12"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,14 +57,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B44E807A48499608759F74AE49612B71"
-        "OwnerKey" = "8:_A87BCF6E307609783B9A867BF59F4554"
+        "MsmKey" = "8:_C677D4B2C73B433AA28A57F1DC7A2685"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C677D4B2C73B433AA28A57F1DC7A2685"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_F6F0F1227E0F8879C2873EF3204761B7"
+        "OwnerKey" = "8:_896B61EC6057729E4416E26AF5F2332E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,25 +76,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0A53F23FBEE4C2CF6A612F265769DE16"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9782921376F84AF28596AB8FD2501A12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A87BCF6E307609783B9A867BF59F4554"
+        "OwnerKey" = "8:_896B61EC6057729E4416E26AF5F2332E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B44E807A48499608759F74AE49612B71"
+        "OwnerKey" = "8:_F6F0F1227E0F8879C2873EF3204761B7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7C80010F3C5E2B143922EB959308E151"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -192,37 +192,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0A53F23FBEE4C2CF6A612F265769DE16"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:BitlockerManager, Version=1.0.1.0, Culture=neutral, PublicKeyToken=6c5c42dda1395a58, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0A53F23FBEE4C2CF6A612F265769DE16"
-                    {
-                    "Name" = "8:BitlockerManager.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:BitlockerManager.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2291D9936AE74773BE6A9EA95026EAD4"
             {
             "SourcePath" = "8:..\\Election Saver\\a2logo.ico"
@@ -283,6 +252,68 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7C80010F3C5E2B143922EB959308E151"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:BitlockerManager, Version=1.0.1.0, Culture=neutral, PublicKeyToken=6c5c42dda1395a58, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_7C80010F3C5E2B143922EB959308E151"
+                    {
+                    "Name" = "8:BitlockerManager.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:BitlockerManager.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_896B61EC6057729E4416E26AF5F2332E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_896B61EC6057729E4416E26AF5F2332E"
+                    {
+                    "Name" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9782921376F84AF28596AB8FD2501A12"
             {
             "AssemblyRegister" = "3:1"
@@ -314,37 +345,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A87BCF6E307609783B9A867BF59F4554"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_A87BCF6E307609783B9A867BF59F4554"
-                    {
-                    "Name" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B09220B606224FF698B637EE47824EB2"
             {
             "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\settings.csv"
@@ -365,14 +365,34 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B44E807A48499608759F74AE49612B71"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C677D4B2C73B433AA28A57F1DC7A2685"
+            {
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\PDF-XChange Viewer Settings.dat"
+            "TargetName" = "8:PDF-XChange Viewer Settings.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F6F0F1227E0F8879C2873EF3204761B7"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B44E807A48499608759F74AE49612B71"
+                    "_F6F0F1227E0F8879C2873EF3204761B7"
                     {
                     "Name" = "8:Microsoft.WindowsAPICodePack.dll"
                     "Attributes" = "3:512"
@@ -394,26 +414,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C677D4B2C73B433AA28A57F1DC7A2685"
-            {
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\PDF-XChange Viewer Settings.dat"
-            "TargetName" = "8:PDF-XChange Viewer Settings.dat"
-            "Tag" = "8:"
-            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F92FF6553ACC44D1B7BE39855E40A991"
@@ -522,7 +522,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:npmoyer.com"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_2291D9936AE74773BE6A9EA95026EAD4"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
