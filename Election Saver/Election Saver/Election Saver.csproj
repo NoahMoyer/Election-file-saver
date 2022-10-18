@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>a2logo.ico</ApplicationIcon>
+    <ApplicationIcon>vote.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BitlockerManager, Version=1.0.1.0, Culture=neutral, PublicKeyToken=6c5c42dda1395a58, processorArchitecture=MSIL">
@@ -116,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="a2logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="vote.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
