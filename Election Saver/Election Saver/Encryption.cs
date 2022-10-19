@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Election_Saver
 {
@@ -41,8 +42,12 @@ namespace Election_Saver
 
         public string Decrypt(string cipherText)
         {
-            cipherText = cipherText.Replace(" ", "+");
-            byte[] cipherBytes = Convert.FromBase64String(cipherText);
+            try
+            {
+                cipherText = cipherText.Replace(" ", "+");
+            
+                byte[] cipherBytes = Convert.FromBase64String(cipherText);
+            
             using (Aes encryptor = Aes.Create())
             {
                 Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] {
@@ -61,6 +66,13 @@ namespace Election_Saver
                 }
             }
             return cipherText;
+
+            }
+            catch (Exception Error)
+            {
+                MessageBox.Show("Password encryption failed from settings file. Please update password in settings before attempting to unlock drive.", "Password Encryption Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
         }
     }
 }
