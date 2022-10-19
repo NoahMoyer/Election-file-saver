@@ -21,7 +21,7 @@
                     <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="414,169,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="printButton_Click" IsEnabled="False" Grid.Column="1"/>
                     <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="40" Margin="302,279,0,0" VerticalAlignment="Top" Width="200" Visibility="Visible" Grid.Column="1"/>
                     <ComboBox x:Name="driveSelector" HorizontalAlignment="Left" Margin="342,67,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="18934.85,111261.719" SelectionChanged="driveSelector_SelectionChanged" Grid.Column="1"/>
-                    <TextBox x:Name="PreceintTextBox" HorizontalAlignment="Left" Margin="344,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged" Grid.Column="1"/>
+                    <TextBox x:Name="PrecinctTextBox" HorizontalAlignment="Left" Margin="344,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged" Grid.Column="1"/>
                     <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,119,29,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <TextBox x:Name="timeBox" HorizontalAlignment="Left" Margin="154,52,0,0" TextWrapping="Wrap" Text="Enter time between prints here" VerticalAlignment="Top" Width="127" Height="36" Visibility="Hidden" IsEnabled="False" Grid.Column="1"/>
                     <Label x:Name="driveSelectorLabel" Content="Drive selection" HorizontalAlignment="Left" Margin="358,36,0,0" VerticalAlignment="Top" Grid.Column="1"/>

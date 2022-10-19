@@ -30,7 +30,8 @@ namespace Election_Saver
         int copyProgressBarWaitTime;
         double waitPeriodToPercentageInterval;
         FileCopier fileCopier; 
-        string currentPrecintWhenButtonPressed;
+        string currentPrecinctWhenButtonPressed;
+        string regexExpressionForPrecinctTextBox = "^(([1-9]+[-][1-9]+){1}|([1-9]+){1}){1}$";
         public MainWindow()
         {
             InitializeComponent();
@@ -69,15 +70,23 @@ namespace Election_Saver
                 listOfFileExtensionsToCopyBox.Items.Add(extension);
             }
 
-            //Poplulating the files available to copy text block
-            string currentPrecinctFlashFiles = PreceintTextBox.Text;
-            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
-            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+            if(Regex.IsMatch(PrecinctTextBox.Text, "^(([1-9]+[-][1-9]){1}|([1-9]+){1}|()){1}$")) //this will allow the preceinct to be nothing initailly. Only use this condition here.
+            {
+                //Poplulating the files available to copy text block
+                string currentPrecinctFlashFiles = PrecinctTextBox.Text;
+                currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+                flashFilesTextBlock.Text = currentPrecinctFlashFiles;
 
-            //Pupulating the files available to print text block
-            string currentPrecinctLocalFiles = PreceintTextBox.Text;
-            currentPrecinctLocalFiles = fileCopier.getAvailableFiles(currentPrecinctLocalFiles);
-            localFilesTextBlock.Text = currentPrecinctLocalFiles;
+                //Pupulating the files available to print text block
+                string currentPrecinctLocalFiles = PrecinctTextBox.Text;
+                currentPrecinctLocalFiles = fileCopier.getAvailableFiles(currentPrecinctLocalFiles);
+                localFilesTextBlock.Text = currentPrecinctLocalFiles;
+            }
+            else
+            {
+                MessageBox.Show("Precint must either be a number or dash encased by numbers. /n Examples: 1-1 or 2", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
 
             //Get drive lock status
             driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
@@ -94,45 +103,70 @@ namespace Election_Saver
             progressBarLabel.Visibility = Visibility.Visible;
             progressBar.Visibility = Visibility.Visible;
             progressBar.Value = 0;
-            currentPrecintWhenButtonPressed = PreceintTextBox.Text;
-
-
-            for (int i = 0; i < copyProgressBarWaitTime; i++)
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
             {
-                await Task.Delay(1000);
-                progressBar.Value = (i + 1) * waitPeriodToPercentageInterval;
+                currentPrecinctWhenButtonPressed = PrecinctTextBox.Text;
+                for (int i = 0; i < copyProgressBarWaitTime; i++)
+                {
+                    await Task.Delay(1000);
+                    progressBar.Value = (i + 1) * waitPeriodToPercentageInterval;
+                }
+
+                progressBar.Value = 100;
+                fileCopier.CopyFiles(currentPrecinctWhenButtonPressed, allowOverwriteCheckBox.IsChecked == true);
+                await Task.Delay(copyProgressBarWaitTime * 1000);
+
+
+                progressBar.Visibility = Visibility.Hidden;
+                progressBarLabel.Visibility = Visibility.Hidden;
+
+                //Pupulating the files available to copy text block
+                string currentPrecinct = PrecinctTextBox.Text;
+                currentPrecinct = fileCopier.getAvailableFiles(currentPrecinct);
+                localFilesTextBlock.Text = currentPrecinct;
+            }
+            else
+            {
+                MessageBox.Show("Precinct must either be a number or dash encased by numbers. \nExamples: 1-1 or 2", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                progressBar.Value = 100;
+                await Task.Delay(1 * 1000);
+                progressBar.Visibility = Visibility.Hidden;
+                progressBarLabel.Visibility = Visibility.Hidden;
             }
 
-            progressBar.Value = 100;
-            fileCopier.CopyFiles(currentPrecintWhenButtonPressed, allowOverwriteCheckBox.IsChecked == true);
-            await Task.Delay(copyProgressBarWaitTime * 1000);
 
             
-            progressBar.Visibility = Visibility.Hidden;
-            progressBarLabel.Visibility = Visibility.Hidden;
-
-            //Pupulating the files available to copy text block
-            string currentPrecinct = PreceintTextBox.Text;
-            currentPrecinct = fileCopier.getAvailableFiles(currentPrecinct);
-            localFilesTextBlock.Text = currentPrecinct;
 
         }
 
         private void PreceintTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CopyFilesButton.IsEnabled = true;
-            printButton.IsEnabled = true;  
-
-            if (PreceintTextBox.Text == "")
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
             {
-                CopyFilesButton.IsEnabled = false;
-                printButton.IsEnabled = false;
-            }
+                CopyFilesButton.IsEnabled = true;
+                printButton.IsEnabled = true;
 
-            //Pupulating the files available to print text block
-            string currentPrecinctLocalFiles = PreceintTextBox.Text;
-            currentPrecinctLocalFiles = fileCopier.getAvailableFiles(currentPrecinctLocalFiles);
-            localFilesTextBlock.Text = currentPrecinctLocalFiles;
+                if (PrecinctTextBox.Text == "")
+                {
+                    CopyFilesButton.IsEnabled = false;
+                    printButton.IsEnabled = false;
+                }
+
+                //Pupulating the files available to print text block
+                string currentPrecinctLocalFiles = PrecinctTextBox.Text;
+                currentPrecinctLocalFiles = fileCopier.getAvailableFiles(currentPrecinctLocalFiles);
+                localFilesTextBlock.Text = currentPrecinctLocalFiles;
+            }
+            else if(Regex.IsMatch(PrecinctTextBox.Text, "^()$"))
+            {
+                localFilesTextBlock.Text = "Please enter a precinct to get information about available files to print.";
+            }
+            else
+            {
+                localFilesTextBlock.Text = "Precinct incorrect format. Must either be a number or dash encased by numbers. \nExamples: 1-1 or 2";
+                //TODO: decide if we want to show an error or just wait until user clicks copy or print.
+            }
+            
         }
 
         
@@ -141,20 +175,32 @@ namespace Election_Saver
             progressBarLabel.Visibility = Visibility.Visible;
             progressBar.Visibility = Visibility.Visible;
             progressBar.Value = 0;
-            
-            currentPrecintWhenButtonPressed = PreceintTextBox.Text;
-            fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints, currentPrecintWhenButtonPressed);
-            await Task.Delay(2000);
-            progressBar.Value = 25;
-            await Task.Delay(2000);
-            progressBar.Value = 50;
-            await Task.Delay(2000);
-            progressBar.Value = 75;
-            await Task.Delay(2000);
-            progressBar.Value = 100;
-            await Task.Delay(5000);
-            progressBar.Visibility = Visibility.Hidden;
-            progressBarLabel.Visibility = Visibility.Hidden;
+
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
+            {
+                currentPrecinctWhenButtonPressed = PrecinctTextBox.Text;
+                fileCopier.PrintFiles(waitTimeINSecondsBetweenPrints, currentPrecinctWhenButtonPressed);
+                await Task.Delay(2000);
+                progressBar.Value = 25;
+                await Task.Delay(2000);
+                progressBar.Value = 50;
+                await Task.Delay(2000);
+                progressBar.Value = 75;
+                await Task.Delay(2000);
+                progressBar.Value = 100;
+                await Task.Delay(5000);
+                progressBar.Visibility = Visibility.Hidden;
+                progressBarLabel.Visibility = Visibility.Hidden;
+            }
+            else 
+            {
+                MessageBox.Show("Precinct must either be a number or dash encased by numbers. \nExamples: 1-1 or 2", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                progressBar.Value = 100;
+                await Task.Delay(1 * 1000);
+                progressBar.Visibility = Visibility.Hidden;
+                progressBarLabel.Visibility = Visibility.Hidden;
+            }
+
 
             //for (int i = 0; i < fileCount; i++)
             //{
@@ -185,10 +231,17 @@ namespace Election_Saver
             //Get drive lock status
             driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
-            //Poplulating the files available to copy text block
-            string currentPrecinctFlashFiles = PreceintTextBox.Text;
-            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
-            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
+            {
+                //Poplulating the files available to copy text block
+                string currentPrecinctFlashFiles = PrecinctTextBox.Text;
+                currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+                flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+            }
+            else
+            {
+                //TODO: decide if we need to do anything in this case
+            }
 
             if (driveLockStatusLable.Content == "Locked")
             {
@@ -216,12 +269,19 @@ namespace Election_Saver
                 unlockBitlockerButton.IsEnabled = true;
             }
 
-            //Poplulating the files available to copy text block
-            string currentPrecinctFlashFiles = PreceintTextBox.Text;
-            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
-            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
+            {
+                //Poplulating the files available to copy text block
+                string currentPrecinctFlashFiles = PrecinctTextBox.Text;
+                currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+                flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+            }
+            else
+            {
+                //TODO: decide if we need to do anything in this case
+            }
 
-            if(driveSelector.Text == "")
+            if (driveSelector.Text == "")
             {
                 flashFilesTextBlock.Text = "No drive selected.";
             }
@@ -244,16 +304,23 @@ namespace Election_Saver
             }
             else
             {
-                MessageBox.Show("Please select a drive to unlock", "Input Error");
+                MessageBox.Show("Please select a drive to unlock", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             //Get drive lock status
             driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
-            //Poplulating the files available to copy text block
-            string currentPrecinctFlashFiles = PreceintTextBox.Text;
-            currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
-            flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
+            {
+                //Poplulating the files available to copy text block
+                string currentPrecinctFlashFiles = PrecinctTextBox.Text;
+                currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+                flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+            }
+            else
+            {
+                //TODO: decide if we need to do anything in this case
+            }
         }
 
         private void updateBitLockerPassword_Click(object sender, RoutedEventArgs e)
@@ -264,7 +331,7 @@ namespace Election_Saver
             }
             else
             {
-                MessageBox.Show("No text entered, please input something", "Input Error");
+                MessageBox.Show("No text entered, please input something", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             updateBitLockerPasswordButton.IsDefault = false;
         }
