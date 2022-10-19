@@ -735,15 +735,28 @@ namespace Election_Saver
                     //adding files into filesList
                     foreach (var dir in directories)
                     {
-                        //adding each file into the fileList from sub folders to filesList
-                        filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                        filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                        filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                        foreach (string fileExtension in listOfFileExtensionsToCopy)
+                        {
+                            filesList.AddRange(dir.GetFiles(fileExtension, System.IO.SearchOption.TopDirectoryOnly));
+                        }
                     }
-                    //adding files from root directory to filesList
-                    filesList.AddRange(flashDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(flashDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
-                    filesList.AddRange(flashDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    foreach (string fileExtension in listOfFileExtensionsToCopy)
+                    {
+                        filesList.AddRange(flashDirecory.GetFiles(fileExtension, System.IO.SearchOption.TopDirectoryOnly));
+                    }
+
+
+                    //foreach (var dir in directories)
+                    //{
+                    //    //adding each file into the fileList from sub folders to filesList
+                    //    filesList.AddRange(dir.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    //    filesList.AddRange(dir.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    //    filesList.AddRange(dir.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
+                    //}
+                    ////adding files from root directory to filesList
+                    //filesList.AddRange(flashDirecory.GetFiles("*.pdf", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(flashDirecory.GetFiles("*.accdb", System.IO.SearchOption.TopDirectoryOnly));
+                    //filesList.AddRange(flashDirecory.GetFiles("*.csv", System.IO.SearchOption.TopDirectoryOnly));
 
                     //convert the fileList to a string
                     flashFileString = string.Join(",", filesList);
