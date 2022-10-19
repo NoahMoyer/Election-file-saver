@@ -187,26 +187,11 @@ namespace Election_Saver
         /// Needs summary from Nathan
         /// </summary>
         /// <returns></returns>
-        public string getDriveLockStatus(DriveInfo currentDrive)
+        public string getDriveLockStatus()
         {
             BitlockerManager.Enums.LockStatus status;
             string stringStatus = "YES";
-
-            ////establish bitlocker
-            //foreach (DriveInfo drive in allDrives)
-            //{
-            //    string sourceDrive = sourceDir.Root.ToString();
-            //    if (drive.Name.Contains(sourceDrive) && drive.IsReady)
-            //    {
-
-            //    }
-            //    else
-            //    {
-            //        stringStatus = "No drive detected";
-            //    }
-            //}
-            BitLockerManager currentBitManager = new BitLockerManager(currentDrive);
-            currentBitManager.GetLockStatus(out status);
+            bitManager.GetLockStatus(out status);
             stringStatus = Enum.GetName(status.GetType(), status);
 
 

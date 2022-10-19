@@ -43,8 +43,8 @@
                             <TextBlock x:Name="flashFilesTextBlock" TextWrapping="Wrap" Text="Please enter precinct number." Height="132" Width="221" Grid.ColumnSpan="2"/>
                         </DockPanel>
                     </ScrollViewer>
-                    <Label x:Name="driveLockStatusLable" Grid.Column="1" Content="Drive status" HorizontalAlignment="Left" Margin="578,65,0,0" VerticalAlignment="Top" Width="73"/>
                     <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="570,62,41,337"/>
+                    <Label x:Name="driveLockStatusLable" Grid.Column="1" Content="Drive status" HorizontalAlignment="Left" Margin="578,65,0,0" VerticalAlignment="Top" Width="73"/>
                     <Label Grid.Column="1" Content="Drive lock status" HorizontalAlignment="Left" Margin="566,31,0,0" VerticalAlignment="Top" Width="99"/>
                 </Grid>
             </TabItem>
