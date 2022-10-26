@@ -16,7 +16,7 @@
         "Entry"
         {
         "MsmKey" = "8:_0A53F23FBEE4C2CF6A612F265769DE16"
-        "OwnerKey" = "8:_C95C645200994712A97C8632E078DA36"
+        "OwnerKey" = "8:_62FE05F3CACE4D21B5E07F41AA3F983B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -33,8 +33,14 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_62FE05F3CACE4D21B5E07F41AA3F983B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A87BCF6E307609783B9A867BF59F4554"
-        "OwnerKey" = "8:_C95C645200994712A97C8632E078DA36"
+        "OwnerKey" = "8:_62FE05F3CACE4D21B5E07F41AA3F983B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,12 +52,6 @@
         "Entry"
         {
         "MsmKey" = "8:_C677D4B2C73B433AA28A57F1DC7A2685"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C95C645200994712A97C8632E078DA36"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -82,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C95C645200994712A97C8632E078DA36"
+        "OwnerKey" = "8:_62FE05F3CACE4D21B5E07F41AA3F983B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -263,6 +263,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_62FE05F3CACE4D21B5E07F41AA3F983B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Election Saver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_62FE05F3CACE4D21B5E07F41AA3F983B"
+                    {
+                    "Name" = "8:Election Saver.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Election Saver.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A87BCF6E307609783B9A867BF59F4554"
             {
             "AssemblyRegister" = "3:1"
@@ -329,37 +360,6 @@
             {
             "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\PDF-XChange Viewer Settings.dat"
             "TargetName" = "8:PDF-XChange Viewer Settings.dat"
-            "Tag" = "8:"
-            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C95C645200994712A97C8632E078DA36"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Election Saver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C95C645200994712A97C8632E078DA36"
-                    {
-                    "Name" = "8:Election Saver.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Election Saver.exe"
-            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Condition" = "8:"
@@ -633,7 +633,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_C95C645200994712A97C8632E078DA36"
+            "Target" = "8:_62FE05F3CACE4D21B5E07F41AA3F983B"
             "Folder" = "8:_2392A678B79546ACA7B8CDD045AA4702"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Icon" = "8:_D92672F0686647309E937C23185743D8"
@@ -647,7 +647,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_C95C645200994712A97C8632E078DA36"
+            "Target" = "8:_62FE05F3CACE4D21B5E07F41AA3F983B"
             "Folder" = "8:_FBF283B6A5EE48DDA02E6F9CDB4D4128"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Icon" = "8:_D92672F0686647309E937C23185743D8"
