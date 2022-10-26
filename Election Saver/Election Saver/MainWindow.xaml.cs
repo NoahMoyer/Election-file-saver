@@ -55,6 +55,7 @@ namespace Election_Saver
             }
             progressBar.Visibility = Visibility.Hidden;
             progressBarLabel.Visibility = Visibility.Hidden;
+            precintExistStatusLabel.Visibility = Visibility.Hidden;
             //Noah: comment what we are doing here
             networkSaveLocationLabelDispalay.Content = fileCopier.getNetworkDestinationPath();
             localSaveLocationLabelDispalay.Content = fileCopier.getLocalDestinationPath();
@@ -135,7 +136,19 @@ namespace Election_Saver
             }
 
 
-            
+            //Check if precint file exists
+            if (PrecinctTextBox.Text == "")
+            {
+                precintExistStatusLabel.Visibility = Visibility.Hidden;
+            }
+            else if (fileCopier.precintFolderExists(PrecinctTextBox.Text))
+            {
+                precintExistStatusLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                precintExistStatusLabel.Visibility = Visibility.Hidden;
+            }
 
         }
 
@@ -166,7 +179,21 @@ namespace Election_Saver
                 localFilesTextBlock.Text = "Precinct incorrect format. Must either be a number or dash encased by numbers. \nExamples: 1-1 or 2";
                 //TODO: decide if we want to show an error or just wait until user clicks copy or print.
             }
-            
+
+            //Check if precint file exists
+            if (PrecinctTextBox.Text == "")
+            {
+                precintExistStatusLabel.Visibility = Visibility.Hidden;
+            }
+            else if (fileCopier.precintFolderExists(PrecinctTextBox.Text))
+            {
+                precintExistStatusLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                precintExistStatusLabel.Visibility = Visibility.Hidden;
+            }
+
         }
 
         

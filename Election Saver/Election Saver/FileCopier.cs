@@ -612,6 +612,21 @@ namespace Election_Saver
             
         }
 
+
+        /// <summary>
+        /// Function to check if the precint file exists already.
+        /// </summary>
+        /// <param name="precinct"></param>
+        /// <returns></returns>
+        public bool precintFolderExists(string precinct)
+        {
+            if (Directory.Exists(Path.Combine(networkDestinationPath, precinct)))
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Function that checks what files are currently in the local computer directory the program copies to.
         /// </summary>

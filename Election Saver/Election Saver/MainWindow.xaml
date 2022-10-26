@@ -21,8 +21,8 @@
                     <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="414,169,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="printButton_Click" IsEnabled="False" Grid.Column="1"/>
                     <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="40" Margin="302,279,0,0" VerticalAlignment="Top" Width="200" Visibility="Visible" Grid.Column="1"/>
                     <ComboBox x:Name="driveSelector" HorizontalAlignment="Left" Margin="342,67,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="18934.85,111261.719" SelectionChanged="driveSelector_SelectionChanged" Grid.Column="1"/>
-                    <TextBox x:Name="PrecinctTextBox" HorizontalAlignment="Left" Margin="344,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" TextChanged="PreceintTextBox_TextChanged" Grid.Column="1"/>
-                    <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,119,29,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="PrecinctTextBox" HorizontalAlignment="Left" Margin="343,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" TextChanged="PreceintTextBox_TextChanged" Grid.Column="1"/>
+                    <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,118,20,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <TextBox x:Name="timeBox" HorizontalAlignment="Left" Margin="154,52,0,0" TextWrapping="Wrap" Text="Enter time between prints here" VerticalAlignment="Top" Width="127" Height="36" Visibility="Hidden" IsEnabled="False" Grid.Column="1"/>
                     <Label x:Name="driveSelectorLabel" Content="Drive selection" HorizontalAlignment="Left" Margin="358,36,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Button x:Name="refreshDrivesButton" Content="Refresh Drives" HorizontalAlignment="Left" Margin="475,42,0,0" VerticalAlignment="Top" Click="refreshDrivesButton_Click" Grid.Column="1"/>
@@ -46,35 +46,39 @@
                     <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="570,62,41,337"/>
                     <Label x:Name="driveLockStatusLable" Grid.Column="1" Content="Drive status" HorizontalAlignment="Left" Margin="578,65,0,0" VerticalAlignment="Top" Width="73"/>
                     <Label Grid.Column="1" Content="Drive lock status" HorizontalAlignment="Left" Margin="566,31,0,0" VerticalAlignment="Top" Width="99"/>
-                    <Label x:Name="precintExistsLabel" Grid.Column="1" Content="Precint already exists" HorizontalAlignment="Left" Margin="344,135,0,0" VerticalAlignment="Top" Width="116"/>
+                    <Label x:Name="precintExistStatusLabel" Grid.Column="1" Content="Precint already exists" HorizontalAlignment="Left" Margin="340,135,0,0" VerticalAlignment="Top" Width="124"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FFE5E5E5">
-                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="39,25,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="bitlockerPasswordChanged"/>
-                    <Button x:Name="updateBitLockerPasswordButton" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="174,24,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click"/>
-                    <Label x:Name="BitlockerLabel" Content="Enter new BitLocker password below" HorizontalAlignment="Left" Margin="39,-1,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="networkSaveLocation" Content="Current networksave location" HorizontalAlignment="Left" Margin="39,48,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="networkSaveLocationLabelDispalay" Content="Network location should show here" HorizontalAlignment="Left" Margin="39,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568"/>
-                    <Button x:Name="changeNetworkLocationButton" Content="Change network location" HorizontalAlignment="Left" Margin="39,105,0,0" VerticalAlignment="Top" Click="changeNetworkLocationButton_Click"/>
-                    <Label x:Name="localSaveLocation" Content="Current local save location" HorizontalAlignment="Left" Margin="39,130,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="localSaveLocationLabelDispalay" Content="Local location should show here" HorizontalAlignment="Left" Margin="39,156,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="changeLocalLocationButton" Content="Change local save location" HorizontalAlignment="Left" Margin="39,187,0,0" VerticalAlignment="Top" Click="changeLocalLocationButton_Click_1"/>
-                    <Label x:Name="currentDefaultDriveLetterLabel" Content="Current default drive letter" HorizontalAlignment="Left" Margin="39,212,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="currentDefaultDriveLetterLabel1" Content="Current default drive letter should display here" HorizontalAlignment="Left" Margin="39,238,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="changeDefaultDriveLetterButtton" Content="Change default drive letter" HorizontalAlignment="Left" Margin="39,269,0,0" VerticalAlignment="Top" Click="changeDefaultDriveLetterButtton_Click"/>
-                    <ListBox x:Name="listOfDriveLettersToExludeBox"  Margin="540,30,35,347" SelectionChanged="listOfDriveLettersToExludeBox_SelectionChanged"/>
-                    <TextBox x:Name="letterToAddToDrivesToExcludeTextBox" HorizontalAlignment="Left" Margin="538,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="letterToAddToDrivesToExcludeTextBox_TextChanged"/>
-                    <Button x:Name="letterToAddToDrivesToExcludeButton" Content="Add drive letter" HorizontalAlignment="Left" Margin="672,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="letterToAddToDrivesToExcludeButton_Click"/>
-                    <Label x:Name="driveLettersToExcludeLabel" Content="List of drive letters to exclude" HorizontalAlignment="Left" Margin="553,-1,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="removeSelectedDriveLetterButton" Content="Remove selected" HorizontalAlignment="Left" Margin="672,177,0,0" VerticalAlignment="Top" Click="removeSelectedDriveLetterButton_Click"/>
-                    <Label x:Name="driveLetterExxclusionInfo" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="538,127,0,0" VerticalAlignment="Top"/>
-                    <ListBox x:Name="listOfFileExtensionsToCopyBox"  Margin="540,238,35,139" SelectionChanged="listOfFileExtensionsToCopyBox_SelectionChanged"/>
-                    <TextBox x:Name="fileExtensionToAddTextBox" HorizontalAlignment="Left" Margin="532,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="fileExtensionToAddTextBox_TextChanged"/>
-                    <Button x:Name="fileExtensionToAddButton" Content="Add file extension" HorizontalAlignment="Left" Margin="666,359,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="fileExtensionToAddButton_Click"/>
-                    <Label x:Name="fileExtensionsToCopyLabel" Content="List of file extensions to copy" HorizontalAlignment="Left" Margin="553,207,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="removeSelectedFileExtensionButton" Content="Remove selected" HorizontalAlignment="Left" Margin="666,384,0,0" VerticalAlignment="Top" Click="removeSelectedFileExtension_Click"/>
-                    <Label x:Name="fileExtensionInfoLabel" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="532,333,0,0" VerticalAlignment="Top"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="781*"/>
+                    </Grid.ColumnDefinitions>
+                    <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="26,25,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="bitlockerPasswordChanged" Grid.Column="1"/>
+                    <Button x:Name="updateBitLockerPasswordButton" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="161,24,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click" Grid.Column="1"/>
+                    <Label x:Name="BitlockerLabel" Content="Enter new BitLocker password below" HorizontalAlignment="Left" Margin="26,-1,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="networkSaveLocation" Content="Current networksave location" HorizontalAlignment="Left" Margin="26,48,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="networkSaveLocationLabelDispalay" Content="Network location should show here" HorizontalAlignment="Left" Margin="26,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568" Grid.Column="1"/>
+                    <Button x:Name="changeNetworkLocationButton" Content="Change network location" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top" Click="changeNetworkLocationButton_Click" Grid.Column="1"/>
+                    <Label x:Name="localSaveLocation" Content="Current local save location" HorizontalAlignment="Left" Margin="26,130,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="localSaveLocationLabelDispalay" Content="Local location should show here" HorizontalAlignment="Left" Margin="26,156,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="changeLocalLocationButton" Content="Change local save location" HorizontalAlignment="Left" Margin="26,187,0,0" VerticalAlignment="Top" Click="changeLocalLocationButton_Click_1" Grid.Column="1"/>
+                    <Label x:Name="currentDefaultDriveLetterLabel" Content="Current default drive letter" HorizontalAlignment="Left" Margin="26,212,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="currentDefaultDriveLetterLabel1" Content="Current default drive letter should display here" HorizontalAlignment="Left" Margin="26,238,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="changeDefaultDriveLetterButtton" Content="Change default drive letter" HorizontalAlignment="Left" Margin="26,269,0,0" VerticalAlignment="Top" Click="changeDefaultDriveLetterButtton_Click" Grid.Column="1"/>
+                    <ListBox x:Name="listOfDriveLettersToExludeBox"  Margin="527,30,35,347" SelectionChanged="listOfDriveLettersToExludeBox_SelectionChanged" Grid.Column="1"/>
+                    <TextBox x:Name="letterToAddToDrivesToExcludeTextBox" HorizontalAlignment="Left" Margin="525,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="letterToAddToDrivesToExcludeTextBox_TextChanged" Grid.Column="1"/>
+                    <Button x:Name="letterToAddToDrivesToExcludeButton" Content="Add drive letter" HorizontalAlignment="Left" Margin="659,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="letterToAddToDrivesToExcludeButton_Click" Grid.Column="1"/>
+                    <Label x:Name="driveLettersToExcludeLabel" Content="List of drive letters to exclude" HorizontalAlignment="Left" Margin="540,-1,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="removeSelectedDriveLetterButton" Content="Remove selected" HorizontalAlignment="Left" Margin="659,177,0,0" VerticalAlignment="Top" Click="removeSelectedDriveLetterButton_Click" Grid.Column="1"/>
+                    <Label x:Name="driveLetterExxclusionInfo" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="525,127,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ListBox x:Name="listOfFileExtensionsToCopyBox"  Margin="527,238,35,139" SelectionChanged="listOfFileExtensionsToCopyBox_SelectionChanged" Grid.Column="1"/>
+                    <TextBox x:Name="fileExtensionToAddTextBox" HorizontalAlignment="Left" Margin="519,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="fileExtensionToAddTextBox_TextChanged" Grid.Column="1"/>
+                    <Button x:Name="fileExtensionToAddButton" Content="Add file extension" HorizontalAlignment="Left" Margin="653,359,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.354" Click="fileExtensionToAddButton_Click" Grid.Column="1"/>
+                    <Label x:Name="fileExtensionsToCopyLabel" Content="List of file extensions to copy" HorizontalAlignment="Left" Margin="540,207,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="removeSelectedFileExtensionButton" Content="Remove selected" HorizontalAlignment="Left" Margin="653,384,0,0" VerticalAlignment="Top" Click="removeSelectedFileExtension_Click" Grid.Column="1"/>
+                    <Label x:Name="fileExtensionInfoLabel" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="519,333,0,0" VerticalAlignment="Top" Grid.Column="1"/>
 
                 </Grid>
             </TabItem>
