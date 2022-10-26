@@ -184,19 +184,21 @@ namespace Election_Saver
             }
         }
         /// <summary>
-        /// Needs summary from Nathan
+        /// Function to check the lock status of the current selected drive. 
         /// </summary>
         /// <returns></returns>
         public string getDriveLockStatus()
         {
             BitlockerManager.Enums.LockStatus status;
             string stringStatus = "YES";
+            if (bitManager == null) //If not drive is selected
+            {
+                stringStatus = "Select Drive";
+                return stringStatus;
+            }
+
             bitManager.GetLockStatus(out status);
             stringStatus = Enum.GetName(status.GetType(), status);
-
-
-
-
             return stringStatus;
         }
         /// <summary>

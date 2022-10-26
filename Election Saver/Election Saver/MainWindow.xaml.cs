@@ -231,7 +231,7 @@ namespace Election_Saver
             //Get drive lock status
             driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
-            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox) || PrecinctTextBox.Text == "")
             {
                 //Poplulating the files available to copy text block
                 string currentPrecinctFlashFiles = PrecinctTextBox.Text;
@@ -294,6 +294,13 @@ namespace Election_Saver
                 CopyFilesButton.IsEnabled = false;
                 printButton.IsEnabled = false;
             }
+
+            if (driveSelector.Text == "")
+            {
+                driveLockStatusLable.Content = "Select Drive";
+            }
+
+
         }
 
         private void unlockBitlockerButton_Click(object sender, RoutedEventArgs e)
@@ -310,7 +317,7 @@ namespace Election_Saver
             //Get drive lock status
             driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
 
-            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
+            if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox) || PrecinctTextBox.Text == "")
             {
                 //Poplulating the files available to copy text block
                 string currentPrecinctFlashFiles = PrecinctTextBox.Text;
