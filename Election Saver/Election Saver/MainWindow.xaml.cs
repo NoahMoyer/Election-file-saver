@@ -31,7 +31,7 @@ namespace Election_Saver
         double waitPeriodToPercentageInterval;
         FileCopier fileCopier; 
         string currentPrecinctWhenButtonPressed;
-        string regexExpressionForPrecinctTextBox = "^(([1-9]+[-][1-9]+){1}|([1-9]+){1}){1}$";
+        string regexExpressionForPrecinctTextBox = "^(([0-9]+[-][0-9]+){1}|([0-9]+){1}){1}$";
         public MainWindow()
         {
             InitializeComponent();
@@ -71,7 +71,7 @@ namespace Election_Saver
                 listOfFileExtensionsToCopyBox.Items.Add(extension);
             }
 
-            if(Regex.IsMatch(PrecinctTextBox.Text, "^(([1-9]+[-][1-9]){1}|([1-9]+){1}|()){1}$")) //this will allow the preceinct to be nothing initailly. Only use this condition here.
+            if(Regex.IsMatch(PrecinctTextBox.Text, "^(([0-9]+[-][0-9]){1}|([0-9]+){1}|()){1}$")) //this will allow the preceinct to be nothing initailly. Only use this condition here.
             {
                 //Poplulating the files available to copy text block
                 string currentPrecinctFlashFiles = PrecinctTextBox.Text;
