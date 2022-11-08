@@ -137,8 +137,8 @@ namespace Election_Saver
         {
             string encryptedPassword = encryptor.encrypt(bitLockerPassword);
             File.WriteAllText(settingsFileName, "bitlockerPassword," + encryptedPassword);
-            File.AppendAllText(settingsFileName, "\nNetworkDestination," + networkDestinationPath);
-            File.AppendAllText(settingsFileName, "\nLocalDestination," + localDestinationPath);
+            File.AppendAllText(settingsFileName, "\nNetworkDestination," + "\"" +networkDestinationPath + "\"");
+            File.AppendAllText(settingsFileName, "\nLocalDestination," + "\"" + localDestinationPath + "\"");
             File.AppendAllText(settingsFileName, "\ndefaultSourceDrive," + sourcePath);
             File.AppendAllText(settingsFileName, "\ndriveLettersToExclude"); 
             foreach(var letter in listOfDriveLettersToExlude)

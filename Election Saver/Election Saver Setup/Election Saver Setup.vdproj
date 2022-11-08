@@ -15,14 +15,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0DD0572EF13F48D3B5EBC61EAD1AC48A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_3BF30C1B7C6314B6CEAD4ECBF6DEFBB8"
-        "OwnerKey" = "8:_0DD0572EF13F48D3B5EBC61EAD1AC48A"
+        "OwnerKey" = "8:_F349BD57560D4AB0A7F54F872138089B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,7 +28,7 @@
         "Entry"
         {
         "MsmKey" = "8:_50BACC8E68D8E3B82B1707371F39ED4F"
-        "OwnerKey" = "8:_0DD0572EF13F48D3B5EBC61EAD1AC48A"
+        "OwnerKey" = "8:_F349BD57560D4AB0A7F54F872138089B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -63,7 +57,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DC8D2BB85D1E4BC7BD88C24BB1F49972"
+        "MsmKey" = "8:_EE47159502674125A735CC597372C62F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F349BD57560D4AB0A7F54F872138089B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -82,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0DD0572EF13F48D3B5EBC61EAD1AC48A"
+        "OwnerKey" = "8:_F349BD57560D4AB0A7F54F872138089B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -192,37 +192,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0DD0572EF13F48D3B5EBC61EAD1AC48A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Election Saver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0DD0572EF13F48D3B5EBC61EAD1AC48A"
-                    {
-                    "Name" = "8:Election Saver.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Election Saver.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3BF30C1B7C6314B6CEAD4ECBF6DEFBB8"
             {
             "AssemblyRegister" = "3:1"
@@ -396,12 +365,43 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DC8D2BB85D1E4BC7BD88C24BB1F49972"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE47159502674125A735CC597372C62F"
             {
-            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\settings.csv"
+            "SourcePath" = "8:C:\\Temp\\settings.csv"
             "TargetName" = "8:settings.csv"
             "Tag" = "8:"
             "Folder" = "8:_182CF86260C745D18D9911717CD0A051"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F349BD57560D4AB0A7F54F872138089B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Election Saver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F349BD57560D4AB0A7F54F872138089B"
+                    {
+                    "Name" = "8:Election Saver.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Election Saver\\bin\\Debug\\Election Saver.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -504,15 +504,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Election Saver"
-        "ProductCode" = "8:{2A3571F6-FF6A-4739-B1D7-25BA5611CA77}"
-        "PackageCode" = "8:{1359D796-7B9B-4425-931B-CA559AC7997E}"
+        "ProductCode" = "8:{0A8CC5BD-E6C5-409D-9C3B-6DA32EF04E14}"
+        "PackageCode" = "8:{BA020E65-FCA0-4B37-AAB6-ECA0B1DC2CE7}"
         "UpgradeCode" = "8:{F1995517-5FBF-43A1-805C-2C0AC52195D5}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.1"
+        "ProductVersion" = "8:2.1.01"
         "Manufacturer" = "8:Moyer"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -633,7 +633,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_0DD0572EF13F48D3B5EBC61EAD1AC48A"
+            "Target" = "8:_F349BD57560D4AB0A7F54F872138089B"
             "Folder" = "8:_2392A678B79546ACA7B8CDD045AA4702"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Icon" = "8:_D92672F0686647309E937C23185743D8"
@@ -647,7 +647,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_0DD0572EF13F48D3B5EBC61EAD1AC48A"
+            "Target" = "8:_F349BD57560D4AB0A7F54F872138089B"
             "Folder" = "8:_FBF283B6A5EE48DDA02E6F9CDB4D4128"
             "WorkingFolder" = "8:_1C448994047F43C4AD3F1E6C8AF4D865"
             "Icon" = "8:_D92672F0686647309E937C23185743D8"
