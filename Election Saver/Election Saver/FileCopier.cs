@@ -29,7 +29,8 @@ namespace Election_Saver
         public List<string> listOfDriveLettersToExlude = new List<string>();
         public List<string> listOfFileExtensionsToCopy = new List<string>();
         string extensionPrefix = "*.";
-        public string settingsFileName = @"C:\Temp\settings.csv";
+        public string settingsFileName = @"C:\ProgramData\Election Saver\settings.csv";
+        public string settingsFileLocaiton = @"C:\ProgramData\Election Saver\";
         public BitLockerManager bitManager;
         public string bitLockerPassword = "a2CityClerksOffice!";
         Encryption encryptor = new Encryption();
@@ -113,21 +114,38 @@ namespace Election_Saver
             }
             else
             {
-                MessageBox.Show("No settings file found at C:\\Temp\\settings.csv" +
-                    "\nSettings file with format like this needs to be created:" +
-                    "\n\nbitlockerPassword,a2CityClerksOffice!" +
-                    "\nNetworkDestination,S:\\Helpdesk\\Scripts\\Election files" +
-                    "\nLocalDestination,C:\\Election_Data" +
-                    "\ndefaultSourceDrive,D:\\" +
-                    "\ndriveLettersToExclude,G,C,U,S" +
-                    "\nfileExtensionsToCopy,accdb,csv,pdf" +
-                    "\n\nfirst column is just the name/description of which setting it is. Needs to be in this order. " +
-                    "\nSecond columnis the actual setting." +
-                    "\nCreate this file then you can use the application.", "No settings file");
-                System.Environment.Exit(1);
+
+                DirectoryInfo di = Directory.CreateDirectory(settingsFileLocaiton);
+                FileStream fs = File.Create(settingsFileName);
+                fs.Close();
+
+
+
+                networkDestinationPath = @"\\city.a2\Shared\S01Usr\CLERK\Elections\2022 Election Information\";
+
+                localDestinationPath = @"C:\Election_Data";
+
+                sourcePath = @"E:\";
+
+                listOfDriveLettersToExlude.Add("X");
+                listOfFileExtensionsToCopy.Add("pdf");
+                setSettings();
+
+                //MessageBox.Show("No settings file found at C:\\Temp\\settings.csv" +
+                //    "\nSettings file with format like this needs to be created:" +
+                //    "\n\nbitlockerPassword,a2CityClerksOffice!" +
+                //    "\nNetworkDestination,S:\\Helpdesk\\Scripts\\Election files" +
+                //    "\nLocalDestination,C:\\Election_Data" +
+                //    "\ndefaultSourceDrive,D:\\" +
+                //    "\ndriveLettersToExclude,G,C,U,S" +
+                //    "\nfileExtensionsToCopy,accdb,csv,pdf" +
+                //    "\n\nfirst column is just the name/description of which setting it is. Needs to be in this order. " +
+                //    "\nSecond columnis the actual setting." +
+                //    "\nCreate this file then you can use the application.", "No settings file");
+                //System.Environment.Exit(1);
             }
 
-            
+
         }
         /// <summary>
         /// This function is desinged to set the current settings so that they are saved and can be referenced when needed. 
