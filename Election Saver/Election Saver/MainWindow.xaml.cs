@@ -16,6 +16,8 @@ using System.IO;
 using System.Threading;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Text.RegularExpressions;
+using System.Timers;
+using System.Diagnostics;
 
 namespace Election_Saver
 {
@@ -32,6 +34,8 @@ namespace Election_Saver
         FileCopier fileCopier; 
         string currentPrecinctWhenButtonPressed;
         string regexExpressionForPrecinctTextBox = "^(([0-9]+[-][0-9]+){1}|([0-9]+){1}){1}$";
+
+        private static System.Timers.Timer aTimer;
         public MainWindow()
         {
             InitializeComponent();
@@ -90,9 +94,12 @@ namespace Election_Saver
             
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
 
-            
+
+            refreshDrivesPeriodically();
+
+
         }
         /// <summary>
         /// 
@@ -256,7 +263,7 @@ namespace Election_Saver
             unlockBitlockerButton.IsEnabled = true;
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
 
             if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox) || PrecinctTextBox.Text == "")
             {
@@ -270,15 +277,112 @@ namespace Election_Saver
                 //TODO: decide if we need to do anything in this case
             }
 
-            if (driveLockStatusLable.Content == "Locked")
+            if (driveLockStatusLable.Text == "Locked")
             {
                 CopyFilesButton.IsEnabled = false;
                 printButton.IsEnabled = false;
             }
         }
 
+        //main function should be called when windows opens
+        private void refreshDrivesPeriodically()
+        {
+            SetTimer();
+            Debug.WriteLine("Periodic calls started");
+            
+            //aTimer.Stop();
+            //aTimer.Dispose();
+            //Debug.WriteLine("Periodic calls ended");
+        }
+        //calls OnTimedEvent on a set time interval
+        private void SetTimer()
+        {
+            // Create a timer with a half second interval.
+            aTimer = new System.Timers.Timer(1000);
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += OnTimedEvent;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
+        }
+        //function called on set time interval by SetTimer()
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            Debug.WriteLine("Periodic call was raised at {0:HH:mm:ss.fff}",
+                              e.SignalTime);
+            refresh();
+
+        }
+        public void refresh()
+        {
+            fileCopier.updateDrivesPeriodically();
+            Object selectedItem;
+            this.Dispatcher.Invoke(() =>
+            {
+                selectedItem = driveSelector.SelectedItem;
+                driveSelector.Items.Clear();
+                foreach (var drive in fileCopier.allDrives)
+                {
+                    driveSelector.Items.Add(drive);
+                    if (selectedItem != null)
+                    {
+                        if (drive.Name == selectedItem.ToString())
+                        {
+                            driveSelector.SelectedItem = drive;
+                        }
+                    }
+                    
+                }
+
+                if (driveSelector.SelectedItem == null)
+                {
+                    unlockBitlockerButton.IsEnabled = false;
+                }
+                else if (driveSelector.SelectedItem != null)
+                {
+                    unlockBitlockerButton.IsEnabled = true;
+                }
+
+                if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
+                {
+                    //Poplulating the files available to copy text block
+                    string currentPrecinctFlashFiles = PrecinctTextBox.Text;
+                    currentPrecinctFlashFiles = fileCopier.getFlashAvailableFiles();
+                    flashFilesTextBlock.Text = currentPrecinctFlashFiles;
+                }
+                else
+                {
+                    //TODO: decide if we need to do anything in this case
+                }
+
+                if (driveSelector.Text == "")
+                {
+                    flashFilesTextBlock.Text = "No drive selected.";
+                }
+
+                //Get drive lock status
+                driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
+
+                if (driveLockStatusLable.Text == "Locked")
+                {
+                    CopyFilesButton.IsEnabled = false;
+                    printButton.IsEnabled = false;
+                }
+
+                if (driveSelector.Text == "" && fileCopier.allDrives.Count > 0)
+                {
+                    driveLockStatusLable.Text = "Select Drive";
+                }
+                else
+                {
+                    driveLockStatusLable.Text = "No drives available";
+                }
+            });
+
+        }
+
         private void refreshDrivesButton_Click(object sender, RoutedEventArgs e)
         {
+            //refresh();
             fileCopier.updateDrives();
             driveSelector.Items.Clear();
             foreach (var drive in fileCopier.allDrives)
@@ -314,9 +418,9 @@ namespace Election_Saver
             }
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
 
-            if (driveLockStatusLable.Content == "Locked")
+            if (driveLockStatusLable.Text == "Locked")
             {
                 CopyFilesButton.IsEnabled = false;
                 printButton.IsEnabled = false;
@@ -324,11 +428,11 @@ namespace Election_Saver
 
             if (driveSelector.Text == "" && fileCopier.allDrives.Count > 0)
             {
-                driveLockStatusLable.Content = "Select Drive";
+                driveLockStatusLable.Text = "Select Drive";
             }
             else
             {
-                driveLockStatusLable.Content = "No drives available";
+                driveLockStatusLable.Text = "No drives available";
             }
 
 
@@ -346,7 +450,7 @@ namespace Election_Saver
             }
 
             //Get drive lock status
-            driveLockStatusLable.Content = fileCopier.getDriveLockStatus();
+            driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
 
             if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox) || PrecinctTextBox.Text == "")
             {

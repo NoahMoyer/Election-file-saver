@@ -343,6 +343,27 @@ namespace Election_Saver
             
             
         }
+        private bool isNotSourceDirectory(DriveInfo input)
+        {
+            return input.RootDirectory != sourceDir;
+        }
+        /// <summary>
+        /// Function that is called preriodically to update available drives that are available
+        /// 
+        /// 
+        /// </summary>
+        public void updateDrivesPeriodically()
+        {
+            DriveInfo[] allDrivesArrayNew = DriveInfo.GetDrives();
+            List<DriveInfo> allDrivesNew = new List<DriveInfo>(allDrivesArrayNew);
+            allDrives.RemoveAll(isNotSourceDirectory);
+            foreach (string driveLetter in listOfDriveLettersToExlude)
+            {
+                allDrivesNew.RemoveAll(p => p.Name.Contains(driveLetter));
+            }
+            allDrives.AddRange(allDrivesNew);
+            
+        }
         /// <summary>
         /// Funciton to set he source path of the drive the files will be copied from
         /// </summary>
