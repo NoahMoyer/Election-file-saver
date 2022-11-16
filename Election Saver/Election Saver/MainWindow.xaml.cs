@@ -322,9 +322,13 @@ namespace Election_Saver
                 printButton.IsEnabled = false;
             }
 
-            if (driveSelector.Text == "")
+            if (driveSelector.Text == "" && fileCopier.allDrives.Count > 0)
             {
                 driveLockStatusLable.Content = "Select Drive";
+            }
+            else
+            {
+                driveLockStatusLable.Content = "No drives available";
             }
 
 

@@ -189,17 +189,31 @@ namespace Election_Saver
         /// <returns></returns>
         public string getDriveLockStatus()
         {
-            BitlockerManager.Enums.LockStatus status;
-            string stringStatus = "YES";
-            if (bitManager == null) //If not drive is selected
+            if (allDrives.Count > 0)
             {
-                stringStatus = "Select Drive";
+                BitlockerManager.Enums.LockStatus status;
+                string stringStatus = "YES";
+                if (bitManager == null) //If not drive is selected
+                {
+                    stringStatus = "Select Drive";
+                    return stringStatus;
+                }
+                try
+                {
+                    bitManager.GetLockStatus(out status);
+                }
+                catch (Exception Error)
+                {
+                    stringStatus = "ERROR";
+                    MessageBox.Show("Drive status error. Please make sure the drive is plugged in.\n\n" + Error, "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return stringStatus;
+                }
+
+
+                stringStatus = Enum.GetName(status.GetType(), status);
                 return stringStatus;
             }
-
-            bitManager.GetLockStatus(out status);
-            stringStatus = Enum.GetName(status.GetType(), status);
-            return stringStatus;
+            return "No drive";
         }
         /// <summary>
         /// Needs summary from Noah
