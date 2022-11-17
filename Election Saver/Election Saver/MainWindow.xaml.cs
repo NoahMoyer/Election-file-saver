@@ -235,20 +235,6 @@ namespace Election_Saver
                 progressBarLabel.Visibility = Visibility.Hidden;
             }
 
-
-            //for (int i = 0; i < fileCount; i++)
-            //{
-            //    progressBar.Value = 0;
-            //    await Application.Current.Dispatcher.InvokeAsync(() =>
-            //    {
-            //        for (int j = 0; j < waitTimeINSecondsBetweenPrints; j++ )
-            //        {
-            //            progressBar.Value = ((j + 1) / waitTimeINSecondsBetweenPrints) * 100;
-            //            System.Threading.Thread.Sleep(1000); //wait 1 second
-            //        }
-            //    });
-            //}
-
         }
 
         private void timeBetweenPrintsSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -298,7 +284,7 @@ namespace Election_Saver
         private void SetTimer()
         {
             // Create a timer with a half second interval.
-            aTimer = new System.Timers.Timer(1000);
+            aTimer = new System.Timers.Timer(2000);
             // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
@@ -368,11 +354,11 @@ namespace Election_Saver
                     printButton.IsEnabled = false;
                 }
 
-                if (driveSelector.Text == "" && fileCopier.allDrives.Count > 0)
+                if (driveSelector.Text == "" && fileCopier.allDrives.Count > 0 && driveSelector.SelectedItem == null)
                 {
                     driveLockStatusLable.Text = "Select Drive";
                 }
-                else
+                else if(fileCopier.allDrives.Count == 0)
                 {
                     driveLockStatusLable.Text = "No drives available";
                 }

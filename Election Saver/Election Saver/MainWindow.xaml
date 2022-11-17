@@ -25,7 +25,7 @@
                     <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,118,20,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <TextBox x:Name="timeBox" HorizontalAlignment="Left" Margin="154,52,0,0" TextWrapping="Wrap" Text="Enter time between prints here" VerticalAlignment="Top" Width="127" Height="36" Visibility="Hidden" IsEnabled="False" Grid.Column="1"/>
                     <Label x:Name="driveSelectorLabel" Content="Drive selection" HorizontalAlignment="Left" Margin="358,36,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Button x:Name="refreshDrivesButton" Content="Refresh Drives" HorizontalAlignment="Left" Margin="475,42,0,0" VerticalAlignment="Top" Click="refreshDrivesButton_Click" Grid.Column="1"/>
+                    <Button x:Name="refreshDrivesButton" Content="Refresh Drives" HorizontalAlignment="Left" Margin="475,42,0,0" VerticalAlignment="Top" Click="refreshDrivesButton_Click" Grid.Column="1" IsEnabled="False" Visibility="Hidden"/>
                     <Label x:Name="precinctBoxLabel" Content="Enter precinct below" HorizontalAlignment="Left" Margin="342,94,0,0" VerticalAlignment="Top" Cursor="" Width="120" Grid.Column="1"/>
                     <Button Content="Button" Margin="515,78,205,344" Grid.Column="1"/>
                     <Button x:Name="unlockBitlockerButton" Content="Unlock Drive" HorizontalAlignment="Left" Margin="475,67,0,0" VerticalAlignment="Top" Width="79" Click="unlockBitlockerButton_Click" Grid.Column="1"/>
