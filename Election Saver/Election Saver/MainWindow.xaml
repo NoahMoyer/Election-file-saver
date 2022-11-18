@@ -14,41 +14,42 @@
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="37*"/>
-                        <ColumnDefinition Width="360*"/>
+                        <ColumnDefinition Width="240*"/>
+                        <ColumnDefinition Width="120*"/>
                     </Grid.ColumnDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,239,502,56"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,239,262,56"/>
                     <Button x:Name="CopyFilesButton" Content="Copy files" HorizontalAlignment="Left" Margin="271,169,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="CopyFilesButton_Click" IsEnabled="False" Grid.Column="1"/>
-                    <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="414,169,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="printButton_Click" IsEnabled="False" Grid.Column="1"/>
-                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="40" Margin="302,279,0,0" VerticalAlignment="Top" Width="200" Visibility="Visible" Grid.Column="1"/>
+                    <Button x:Name="printButton" Content="Print files" HorizontalAlignment="Left" Margin="414,169,0,0" VerticalAlignment="Top" Height="56" Width="116" Click="printButton_Click" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="40" Margin="302,279,0,0" VerticalAlignment="Top" Width="200" Visibility="Visible" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <ComboBox x:Name="driveSelector" HorizontalAlignment="Left" Margin="342,67,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="18934.85,111261.719" SelectionChanged="driveSelector_SelectionChanged" Grid.Column="1"/>
                     <TextBox x:Name="PrecinctTextBox" HorizontalAlignment="Left" Margin="343,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" TextChanged="PreceintTextBox_TextChanged" Grid.Column="1"/>
-                    <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,118,20,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <CheckBox x:Name="allowOverwriteCheckBox" Content="Check to allow files to be overwritten" HorizontalAlignment="Right" Margin="0,118,20,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <TextBox x:Name="timeBox" HorizontalAlignment="Left" Margin="154,52,0,0" TextWrapping="Wrap" Text="Enter time between prints here" VerticalAlignment="Top" Width="127" Height="36" Visibility="Hidden" IsEnabled="False" Grid.Column="1"/>
                     <Label x:Name="driveSelectorLabel" Content="Drive selection" HorizontalAlignment="Left" Margin="358,36,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Button x:Name="refreshDrivesButton" Content="Refresh Drives" HorizontalAlignment="Left" Margin="475,42,0,0" VerticalAlignment="Top" Click="refreshDrivesButton_Click" Grid.Column="1" IsEnabled="False" Visibility="Hidden"/>
+                    <Button x:Name="refreshDrivesButton" Content="Refresh Drives" HorizontalAlignment="Left" Margin="475,42,0,0" VerticalAlignment="Top" Click="refreshDrivesButton_Click" Grid.Column="1" IsEnabled="False" Visibility="Hidden" Grid.ColumnSpan="2"/>
                     <Label x:Name="precinctBoxLabel" Content="Enter precinct below" HorizontalAlignment="Left" Margin="342,94,0,0" VerticalAlignment="Top" Cursor="" Width="120" Grid.Column="1"/>
-                    <Button Content="Button" Margin="515,78,205,344" Grid.Column="1"/>
-                    <Button x:Name="unlockBitlockerButton" Content="Unlock Drive" HorizontalAlignment="Left" Margin="475,67,0,0" VerticalAlignment="Top" Width="79" Click="unlockBitlockerButton_Click" Grid.Column="1"/>
+                    <Button Content="Button" Margin="35,78,205,344" Grid.Column="2"/>
+                    <Button x:Name="unlockBitlockerButton" Content="Unlock Drive" HorizontalAlignment="Left" Margin="475,67,0,0" VerticalAlignment="Top" Width="79" Click="unlockBitlockerButton_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <Label x:Name="progressBarLabel" Content="Processing please wait..." HorizontalAlignment="Left" Margin="334,253,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <ScrollViewer Margin="22,239,502,56" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                    <ScrollViewer Margin="22,239,262,56" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto">
                             <TextBlock x:Name="localFilesTextBlock" TextWrapping="Wrap" Text="Please enter precinct number." Height="121" Width="221" Grid.ColumnSpan="2"/>
                         </DockPanel>
                     </ScrollViewer>
                     <Label x:Name="fileDataLabel" Content="Files available to copy from flash drive:" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="263"/>
                     <Label x:Name="fileDataLabel_Copy" Content="Files available to print:" HorizontalAlignment="Left" Margin="22,208,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,27,502,287"/>
-                    <ScrollViewer Margin="22,26,502,287" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="22,27,262,287"/>
+                    <ScrollViewer Margin="22,26,262,287" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto">
                             <TextBlock x:Name="flashFilesTextBlock" TextWrapping="Wrap" Text="Please enter precinct number." Height="132" Width="221" Grid.ColumnSpan="2"/>
                         </DockPanel>
                     </ScrollViewer>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="570,62,41,344" >
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Margin="90,62,41,344" >
                         <TextBlock TextWrapping="Wrap" Grid.Column="1"  x:Name="driveLockStatusLable" Text="Drive status" Margin="0,-1,0,1" HorizontalAlignment="Center">
                         </TextBlock>
                     </Border>
 
-                    <Label Grid.Column="1" Content="Drive lock status" HorizontalAlignment="Left" Margin="566,31,0,0" VerticalAlignment="Top" Width="99"/>
+                    <Label Grid.Column="2" Content="Drive lock status" HorizontalAlignment="Left" Margin="86,31,0,0" VerticalAlignment="Top" Width="99"/>
                     <Label x:Name="precintExistStatusLabel" Grid.Column="1" Content="Precint already exists" HorizontalAlignment="Left" Margin="340,135,0,0" VerticalAlignment="Top" Width="124"/>
                 </Grid>
             </TabItem>

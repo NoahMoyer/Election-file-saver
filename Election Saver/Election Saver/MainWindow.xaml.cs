@@ -274,7 +274,7 @@ namespace Election_Saver
         private void refreshDrivesPeriodically()
         {
             SetTimer();
-            Debug.WriteLine("Periodic calls started");
+            Debug.WriteLine("Periodic drive refresh started");
             
             //aTimer.Stop();
             //aTimer.Dispose();
@@ -293,7 +293,7 @@ namespace Election_Saver
         //function called on set time interval by SetTimer()
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            Debug.WriteLine("Periodic call was raised at {0:HH:mm:ss.fff}",
+            Debug.WriteLine("Drives refreshed at {0:HH:mm:ss.fff}",
                               e.SignalTime);
             refresh();
 
@@ -642,5 +642,7 @@ namespace Election_Saver
             fileExtensionToAddButton.IsDefault = false;
             updateBitLockerPasswordButton.IsDefault = true;
         }
+
+       
     }
 }
