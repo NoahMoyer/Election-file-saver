@@ -86,3 +86,29 @@ C:\Users\Nathan\Documents\GitHub\Election-file-saver\Election Saver\Election Sav
 C:\Users\Nathan\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CopyComplete
 C:\Users\Nathan\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe
 C:\Users\Nathan\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.pdb
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.exe.config
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.exe.manifest
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.application
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.exe
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.pdb
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\BitlockerManager.dll
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.AssemblyReference.cache
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.SuggestedBindingRedirects.cache
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\MainWindow.g.cs
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\App.g.cs
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver_MarkupCompile.cache
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver_MarkupCompile.lref
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\MainWindow.baml
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.g.resources
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election_Saver.Properties.Resources.resources
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.GenerateResource.cache
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CoreCompileInputs.cache
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe.manifest
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.application
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CopyComplete
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe
+C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.pdb

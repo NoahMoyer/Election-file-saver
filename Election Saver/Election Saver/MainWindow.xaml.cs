@@ -19,6 +19,7 @@ using System.Text.RegularExpressions;
 using System.Timers;
 using System.Diagnostics;
 
+//new version lol
 namespace Election_Saver
 {
     /// <summary>
