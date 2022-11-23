@@ -56,14 +56,16 @@
             <TabItem Header="Settings">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="781*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <PasswordBox x:Name="bitLockerPasswordTextBox" HorizontalAlignment="Left" Margin="26,25,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="bitlockerPasswordChanged" Grid.Column="1"/>
                     <Button x:Name="updateBitLockerPasswordButton" Content="Set Bitlocker password" HorizontalAlignment="Left" Margin="161,24,0,0" VerticalAlignment="Top" Click="updateBitLockerPassword_Click" Grid.Column="1"/>
                     <Label x:Name="BitlockerLabel" Content="Enter new BitLocker password below" HorizontalAlignment="Left" Margin="26,-1,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label x:Name="networkSaveLocation" Content="Current networksave location" HorizontalAlignment="Left" Margin="26,48,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label x:Name="networkSaveLocationLabelDispalay" Content="Network location should show here" HorizontalAlignment="Left" Margin="26,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568" Grid.Column="1"/>
+                    <Label x:Name="networkSaveLocation" Content="Current network save location" HorizontalAlignment="Left" Margin="26,48,0,0" VerticalAlignment="Top" Grid.Column="1" Width="180" Height="26"/>
+
+                    <TextBlock x:Name="networkSaveLocationLabelDispalay" Text="Network Location will show here" HorizontalAlignment="Left" Margin="26,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.568" Grid.Column="1" TextWrapping="Wrap" Width="421" Height="31"></TextBlock>
+                    
                     <Button x:Name="changeNetworkLocationButton" Content="Change network location" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top" Click="changeNetworkLocationButton_Click" Grid.Column="1"/>
                     <Label x:Name="localSaveLocation" Content="Current local save location" HorizontalAlignment="Left" Margin="26,130,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label x:Name="localSaveLocationLabelDispalay" Content="Local location should show here" HorizontalAlignment="Left" Margin="26,156,0,0" VerticalAlignment="Top" Grid.Column="1"/>

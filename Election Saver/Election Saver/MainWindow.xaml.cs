@@ -61,7 +61,7 @@ namespace Election_Saver
             progressBarLabel.Visibility = Visibility.Hidden;
             precintExistStatusLabel.Visibility = Visibility.Hidden;
             //Noah: comment what we are doing here
-            networkSaveLocationLabelDispalay.Content = fileCopier.getNetworkDestinationPath();
+            networkSaveLocationLabelDispalay.Text = fileCopier.getNetworkDestinationPath();
             localSaveLocationLabelDispalay.Content = fileCopier.getLocalDestinationPath();
             currentDefaultDriveLetterLabel1.Content = fileCopier.getSourcePath();
             //Noah: comment what we are doing here
@@ -473,7 +473,7 @@ namespace Election_Saver
             if (result.ToString() == "Ok")
             {
                 fileCopier.setNetworkDestinationPath(dialog.FileName);
-                networkSaveLocationLabelDispalay.Content = dialog.FileName;
+                networkSaveLocationLabelDispalay.Text = dialog.FileName;
             }
             
 
