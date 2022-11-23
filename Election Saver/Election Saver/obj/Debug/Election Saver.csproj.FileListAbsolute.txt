@@ -112,3 +112,29 @@ C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj
 C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CopyComplete
 C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe
 C:\Users\Noah\source\repos\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.pdb
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.exe.config
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.exe.manifest
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.application
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.exe
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.pdb
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\BitlockerManager.dll
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.AssemblyReference.cache
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.SuggestedBindingRedirects.cache
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\MainWindow.g.cs
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\App.g.cs
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver_MarkupCompile.cache
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver_MarkupCompile.lref
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\MainWindow.baml
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.g.resources
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election_Saver.Properties.Resources.resources
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.GenerateResource.cache
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CoreCompileInputs.cache
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe.manifest
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.application
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.csproj.CopyComplete
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe
+C:\Users\npmoyera\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.pdb
