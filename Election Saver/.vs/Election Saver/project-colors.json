@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5ed1d595-2f09-437f-8d33-71d2a5166723": {
+      "ProjectGuid": "5ed1d595-2f09-437f-8d33-71d2a5166723",
+      "DisplayName": "Election Saver",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -19,6 +19,7 @@ using System.Text.RegularExpressions;
 using System.Timers;
 using System.Diagnostics;
 
+//new version lol
 namespace Election_Saver
 {
     /// <summary>
@@ -161,6 +162,7 @@ namespace Election_Saver
 
         private void PreceintTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+
             if (Regex.IsMatch(PrecinctTextBox.Text, regexExpressionForPrecinctTextBox))
             {
                 CopyFilesButton.IsEnabled = true;
@@ -199,6 +201,12 @@ namespace Election_Saver
             else
             {
                 precintExistStatusLabel.Visibility = Visibility.Hidden;
+            }
+
+            if (driveLockStatusLable.Text == "Locked")
+            {
+                CopyFilesButton.IsEnabled = false;
+                printButton.IsEnabled = false;
             }
 
         }
