@@ -1,0 +1,5 @@
+
+*.vsidx
+*.cache
+*.lref
+*.baml
