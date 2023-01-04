@@ -142,3 +142,7 @@ C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver
 C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.application
 C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe.manifest
 C:\Users\npmoyer\OneDrive - City of Ann Arbor\Election saver\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.application
+C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.exe.manifest
+C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\bin\Debug\Election Saver.application
+C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.exe.manifest
+C:\Users\nmoyer\OneDrive - City of Ann Arbor\Documents\GitHub\Election-file-saver\Election Saver\Election Saver\obj\Debug\Election Saver.application

@@ -94,12 +94,23 @@ namespace Election_Saver
             }
             
 
-            //Get drive lock status
-            driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
+            
+
+            if (fileCopier.testBitLockerPermission())
+            {
+                bitLockerPermStatus.Content = "Enabled";
+
+                //Get drive lock status
+                driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
 
 
-            refreshDrivesPeriodically();
-
+                refreshDrivesPeriodically();
+            }
+            else
+            {
+                bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
+            }
+            
 
         }
         /// <summary>
