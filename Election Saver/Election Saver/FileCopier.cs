@@ -201,6 +201,20 @@ namespace Election_Saver
                 MessageBox.Show("Drive unlock error. Is the password correct?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        public bool testBitLockerPermission()
+        {
+            try
+            {
+                bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+            }
+            catch (Exception Error)
+            {
+                return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// Function to check the lock status of the current selected drive. 
         /// </summary>
@@ -223,7 +237,9 @@ namespace Election_Saver
                 catch (Exception Error)
                 {
                     stringStatus = "ERROR";
-                    MessageBox.Show("Drive status error. Please make sure the drive is plugged in.\n\n" + Error, "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Drive status error. Please make sure the drive is plugged in and that you have permission to unlock bitlocker encrypted drives." +
+                        "\n\nCheck the settings tab for the Bitlocker Permission Status. If this is in the Disabled status please contact your system administrator." +
+                        "\n\n The following error message may also be useful for your administrator:\n\n" + Error, "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return stringStatus;
                 }
 
