@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 namespace Election_Saver
 {
     using BitLockerManager;
+    using System.Diagnostics;
     using System.Windows;
     
 
@@ -192,9 +193,18 @@ namespace Election_Saver
         /// </summary>
         public void unlockBitLocker()
         {
+            string sourceDrive = sourceDir.Root.ToString();
+            sourceDrive = sourceDrive.Remove(sourceDrive.Length - 1, 1);
             try
             {
-                bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+                if (testBitLockerPermission())
+                {
+                    bitManager.UnlockDriveWithPassphrase(bitLockerPassword);
+                }
+                else
+                {
+                    Process.Start("explorer.exe", "/select," + sourceDrive);
+                }
             }
             catch(Exception Error)
             {
@@ -202,6 +212,11 @@ namespace Election_Saver
             }
         }
 
+        /// <summary>
+        /// Function to test if the current user has permission to unlock BitLocker encrypted drives via the command line/powershell. 
+        /// If the user doesn't have the neccessary permissions the function returns false.
+        /// </summary>
+        /// <returns></returns>
         public bool testBitLockerPermission()
         {
             try
