@@ -7,6 +7,7 @@ using System.IO;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
 using System.Text.RegularExpressions;
+using System.Management.Automation;
 
 
 namespace Election_Saver
@@ -203,7 +204,7 @@ namespace Election_Saver
                 }
                 else
                 {
-                    Process.Start("explorer.exe", "/select," + sourceDrive);
+                    Process.Start(@sourceDrive);
                 }
             }
             catch(Exception Error)
@@ -228,6 +229,13 @@ namespace Election_Saver
                 return false;
             }
             return true;
+        }
+
+        public void giveCurrentUserBitlockerPermission()
+        {
+            PowerShell ps = PowerShell.Create();
+            ps.AddScript("wmi.ps1").Invoke();
+
         }
 
         /// <summary>
