@@ -233,9 +233,19 @@ namespace Election_Saver
 
         public void giveCurrentUserBitlockerPermission()
         {
-            PowerShell ps = PowerShell.Create();
-            ps.AddScript("wmi.ps1").Invoke();
 
+            PowerShell ps = PowerShell.Create();
+            //ps.AddScript("wmi.ps1 -namespace root/cimv2/security/MicrosoftVolumeEncryption -account \"city\\nmoyer\" -operation Add -permissions methodexecute").Invoke();
+            string psFile = Directory.GetCurrentDirectory();
+            string psArguments = $"\"{psFile}\\wmi.ps1\"";
+            var wmiPS = new ProcessStartInfo()
+            {
+                Verb = "runas",
+                FileName = psArguments,
+                //Arguments = psArguments,
+                UseShellExecute = true,
+            };
+            Process.Start(wmiPS);
         }
 
         /// <summary>

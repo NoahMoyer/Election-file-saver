@@ -87,6 +87,8 @@
                     <Label x:Name="fileExtensionInfoLabel" Content="Enter drive letter to add here" HorizontalAlignment="Left" Margin="519,333,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label x:Name="bitLockerPermLabel" Grid.Column="1" Content="BitLocker Permission Status" HorizontalAlignment="Left" Margin="26,306,0,0" VerticalAlignment="Top" Width="160"/>
                     <Label x:Name="bitLockerPermStatus" Grid.Column="1" Content="BitLocker status displays here" HorizontalAlignment="Left" Margin="26,328,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.002,-0.06" Width="180"/>
+                    <Button x:Name="BitLockerPermissionEnableButton" Grid.Column="1" Content="Enable" HorizontalAlignment="Left" Margin="26,357,0,0" VerticalAlignment="Top" Width="145" Click="BitLockerPermissionEnableButton_Click"/>
+                    <Button x:Name="BitLockerPermissionDisableButton" Grid.Column="1" Content="Disable" HorizontalAlignment="Left" Margin="26,383,0,0" VerticalAlignment="Top" Width="145" Click="BitLockerPermissionDisableButton_Click"/>
 
                 </Grid>
             </TabItem>

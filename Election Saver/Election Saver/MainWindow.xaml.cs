@@ -662,6 +662,29 @@ namespace Election_Saver
             updateBitLockerPasswordButton.IsDefault = true;
         }
 
-       
+        private void BitLockerPermissionEnableButton_Click(object sender, RoutedEventArgs e)
+        {
+            fileCopier.giveCurrentUserBitlockerPermission();
+
+            if (fileCopier.testBitLockerPermission())
+            {
+                bitLockerPermStatus.Content = "Enabled";
+
+                //Get drive lock status
+                driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
+
+
+                refreshDrivesPeriodically();
+            }
+            else
+            {
+                bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
+            }
+        }
+
+        private void BitLockerPermissionDisableButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
