@@ -14,6 +14,7 @@ namespace Election_Saver
 {
     using BitLockerManager;
     using System.Diagnostics;
+    using System.Management.Automation.Runspaces;
     using System.Windows;
     
 
@@ -55,21 +56,30 @@ namespace Election_Saver
             }
             //allDrives.RemoveAll(p => !p.IsReady); Edge case that isn't working as expected. TODO fix exclusion of drives that are not useable.
 
-            
-            
 
-            
-           
 
-            //establish bitlocker
-            foreach (DriveInfo drive in allDrives)
+
+
+            try
             {
-                string sourceDrive = sourceDir.Root.ToString();
-                if (drive.Name.Contains(sourceDrive)/* && drive.IsReady || getDriveLockStatus(drive) == "Locked"*/)
+                //establish bitlocker
+                foreach (DriveInfo drive in allDrives)
                 {
-                    bitManager = new BitLockerManager(drive);
+                    string sourceDrive = sourceDir.Root.ToString();
+                    if (drive.Name.Contains(sourceDrive)/* && drive.IsReady || getDriveLockStatus(drive) == "Locked"*/)
+                    {
+                        bitManager = new BitLockerManager(drive);
+                    }
                 }
             }
+            catch (Exception Error)
+            {
+                MessageBox.Show("Drive status error. Please make sure the drive is plugged in and that you have permission to unlock bitlocker encrypted drives." +
+                    "\n\nCheck the settings tab for the Bitlocker Permission Status. If this is in the Disabled status please contact your system administrator." +
+                    "\n\n The following error message may also be useful for your administrator:\n\n" + Error, "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            
         }
         /// <summary>
         /// Function to get the settings from the settings file. Settings file is stored in C:\Temp\settings.csv
@@ -231,21 +241,50 @@ namespace Election_Saver
             return true;
         }
 
+        /// <summary>
+        /// This function calls a powershell script that adds the required permission to the currnent user to run bitlocker commands to manage bitlocker drives programatically.
+        /// </summary>
         public void giveCurrentUserBitlockerPermission()
         {
+            //get current user
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
+            //path to powershell script dependency
+            string psFile = $"{Directory.GetCurrentDirectory()}\\wmi.ps1";
+
+            //Setting up the script
+            InitialSessionState iss = InitialSessionState.CreateDefault();
+            Runspace rs = RunspaceFactory.CreateRunspace(iss);
+            rs.Open();
             PowerShell ps = PowerShell.Create();
-            //ps.AddScript("wmi.ps1 -namespace root/cimv2/security/MicrosoftVolumeEncryption -account \"city\\nmoyer\" -operation Add -permissions methodexecute").Invoke();
-            string psFile = Directory.GetCurrentDirectory();
-            string psArguments = $"\"{psFile}\\wmi.ps1\"";
-            var wmiPS = new ProcessStartInfo()
-            {
-                Verb = "runas",
-                FileName = psArguments,
-                //Arguments = psArguments,
-                UseShellExecute = true,
-            };
-            Process.Start(wmiPS);
+            ps.Runspace = rs;
+
+            //this line runs the script as admin (prompting for UAC) then passes all of the neccessary arguments requiretd to add the "methodexecute" permission
+            ps.AddScript($"start-process powershell -verb runas -ArgumentList \"& '{psFile}' -namespace root/cimv2/security/MicrosoftVolumeEncryption -account '{userName}' -operation Add -permissions methodexecute,enable,remoteaccess\"").Invoke();
+            rs.Close();
+        }
+
+        /// <summary>
+        /// This function calls a powershell script that deletes the required permission to the currnent user to run bitlocker commands to manage bitlocker drives programatically.
+        /// </summary>
+        public void deleteCurrentUserBitlockerPermission()
+        {
+            //get current user
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+
+            //path to powershell script dependency
+            string psFile = $"{Directory.GetCurrentDirectory()}\\wmi.ps1";
+
+            //Setting up the script
+            InitialSessionState iss = InitialSessionState.CreateDefault();
+            Runspace rs = RunspaceFactory.CreateRunspace(iss);
+            rs.Open();
+            PowerShell ps = PowerShell.Create();
+            ps.Runspace = rs;
+
+            //this line runs the script as admin (prompting for UAC) then passes all of the neccessary arguments requiretd to delete the "methodexecute" permission
+            ps.AddScript($"start-process powershell -verb runas -ArgumentList \"& '{psFile}' -namespace root/cimv2/security/MicrosoftVolumeEncryption -account '{userName}' -operation Delete\"").Invoke();
+            rs.Close();
         }
 
         /// <summary>

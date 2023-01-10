@@ -33,18 +33,18 @@ has been advised of the possibility of such damages.
 #>
 Param ( 
     [parameter(Mandatory=$true,Position=0)]
-    [string] $namespace = "root/cimv2/security/MicrosoftVolumeEncryption",
+    [string] $namespace,
 
     [parameter(Mandatory=$true,Position=1)]
     [ValidateSet("add", "delete")]
-    [string] $operation = "add",
+    [string] $operation,
 
     [parameter(Mandatory=$true,Position=2)]
-    [string] $account = "city\nmoyer",
+    [string] $account,
 
     [parameter(Position=3)]
     [ValidateSet("partialwrite", "enable", "providerwrite", "readsecurity", "writesecurity", "methodexecute", "remoteaccess", "fullwrite")]
-    [string[]] $permissions = "methodexecute",
+    [string[]] $permissions = $null,
 
     [bool] $allowInherit = $false,
 

@@ -92,9 +92,6 @@ namespace Election_Saver
             {
                 MessageBox.Show("Precint must either be a number or dash encased by numbers. /n Examples: 1-1 or 2", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
-
-            
 
             if (fileCopier.testBitLockerPermission())
             {
@@ -110,7 +107,6 @@ namespace Election_Saver
             {
                 bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
             }
-            
 
         }
         /// <summary>
@@ -679,12 +675,31 @@ namespace Election_Saver
             else
             {
                 bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
+                aTimer.AutoReset = false;
+                aTimer.Enabled = false;
             }
         }
 
         private void BitLockerPermissionDisableButton_Click(object sender, RoutedEventArgs e)
         {
+            fileCopier.deleteCurrentUserBitlockerPermission();
 
+            if (fileCopier.testBitLockerPermission())
+            {
+                bitLockerPermStatus.Content = "Enabled";
+
+                //Get drive lock status
+                driveLockStatusLable.Text = fileCopier.getDriveLockStatus();
+
+
+                refreshDrivesPeriodically();
+            }
+            else
+            {
+                bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
+                aTimer.AutoReset = false;
+                aTimer.Enabled = false;
+            }
         }
     }
 }
