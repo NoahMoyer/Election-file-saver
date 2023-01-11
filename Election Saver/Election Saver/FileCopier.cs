@@ -15,6 +15,7 @@ namespace Election_Saver
     using BitLockerManager;
     using System.Diagnostics;
     using System.Management.Automation.Runspaces;
+    using System.Threading;
     using System.Windows;
     
 
@@ -252,6 +253,8 @@ namespace Election_Saver
             //path to powershell script dependency
             string psFile = $"{Directory.GetCurrentDirectory()}\\wmi.ps1";
 
+            string script = $"start-process powershell -verb runas -ArgumentList \"& '{psFile}' -namespace root/cimv2/security/MicrosoftVolumeEncryption -account '{userName}' -operation Add -permissions methodexecute,enable,remoteaccess\"";
+
             //Setting up the script
             InitialSessionState iss = InitialSessionState.CreateDefault();
             Runspace rs = RunspaceFactory.CreateRunspace(iss);
@@ -260,7 +263,13 @@ namespace Election_Saver
             ps.Runspace = rs;
 
             //this line runs the script as admin (prompting for UAC) then passes all of the neccessary arguments requiretd to add the "methodexecute" permission
-            ps.AddScript($"start-process powershell -verb runas -ArgumentList \"& '{psFile}' -namespace root/cimv2/security/MicrosoftVolumeEncryption -account '{userName}' -operation Add -permissions methodexecute,enable,remoteaccess\"").Invoke();
+            ps.AddScript($"start-process powershell -verb runas -ArgumentList \"& '{psFile}' -namespace root/cimv2/security/MicrosoftVolumeEncryption -account '{userName}' -operation Add -permissions methodexecute,enable,remoteaccess\"");
+            IAsyncResult asyncResult = ps.BeginInvoke();
+            while (asyncResult.IsCompleted == false)
+            {
+                Console.WriteLine("Waiting for pipeline to finish...");
+                Thread.Sleep(2000);
+            }
             rs.Close();
         }
 
@@ -283,7 +292,13 @@ namespace Election_Saver
             ps.Runspace = rs;
 
             //this line runs the script as admin (prompting for UAC) then passes all of the neccessary arguments requiretd to delete the "methodexecute" permission
-            ps.AddScript($"start-process powershell -verb runas -ArgumentList \"& '{psFile}' -namespace root/cimv2/security/MicrosoftVolumeEncryption -account '{userName}' -operation Delete\"").Invoke();
+            ps.AddScript($"start-process powershell -verb runas -ArgumentList \"& '{psFile}' -namespace root/cimv2/security/MicrosoftVolumeEncryption -account '{userName}' -operation Delete\"");
+            IAsyncResult asyncResult = ps.BeginInvoke();
+            while (asyncResult.IsCompleted == false)
+            {
+                Console.WriteLine("Waiting for pipeline to finish...");
+                Thread.Sleep(2000);
+            }
             rs.Close();
         }
 

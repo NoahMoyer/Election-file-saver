@@ -106,6 +106,7 @@ namespace Election_Saver
             else
             {
                 bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
+                driveLockStatusLable.Text = "ERROR";
             }
 
         }
@@ -675,8 +676,14 @@ namespace Election_Saver
             else
             {
                 bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
-                aTimer.AutoReset = false;
-                aTimer.Enabled = false;
+                if(aTimer != null)
+                {
+                    aTimer.Stop();
+                    //aTimer.AutoReset = false;
+                    //aTimer.Enabled = false;
+                }
+                
+                driveLockStatusLable.Text = "ERROR";
             }
         }
 
@@ -697,8 +704,13 @@ namespace Election_Saver
             else
             {
                 bitLockerPermStatus.Content = "Disabled. Please contact system administrator.";
-                aTimer.AutoReset = false;
-                aTimer.Enabled = false;
+                if (aTimer != null)
+                {
+                    aTimer.Stop();
+                    //aTimer.AutoReset = false;
+                    //aTimer.Enabled = false;
+                }
+                driveLockStatusLable.Text = "ERROR";
             }
         }
     }
